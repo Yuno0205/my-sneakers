@@ -1,0 +1,10 @@
+.wrapperr {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: var(--default-layout-width);
+    min-height: 1000px;
+    background-color: aqua;
+}

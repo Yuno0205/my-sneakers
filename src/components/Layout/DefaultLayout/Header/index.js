@@ -1,5 +1,12 @@
+import styles from './Header.module.css';
+import { CartIcon, HeartIcon, LogoIcon } from '../../../Icons';
+
 function Header() {
-    return <h2>Header</h2>;
+    return (
+        <header className={styles.wrapper}>
+            <div className={styles.inner}></div>
+        </header>
+    );
 }
 
 export default Header;
