@@ -4,13 +4,13 @@
     height: var(--default-layout-header-height);
     justify-content: center;
     box-shadow: 0px 1px 1px rgb((0), 0, 0 / 12%);
-    /* position: fixed; */
+    position: fixed;
 }
 
 .inner {
     width: var(--default-layout-width);
     height: 100%;
-    background-color: #ccc;
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,35 +19,56 @@
 
 .logo {
     display: flex;
+    height: 60px;
     align-items: center;
+}
+
+.logo:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }
 
 .nav {
     width: 100%;
     height: 60px;
-    background-color: chocolate;
+    background-color: #fff;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
 }
 
 .menu {
     flex: 1;
 }
 
+.menu a {
+    line-height: var(--default-layout-header-height);
+}
+
 .menu ul {
+    width: 50%;
     height: 60px;
+    margin: 0 auto;
+}
+
+.menuHide {
+    display: none;
 }
 
 .menu ul li {
     height: 100%;
     list-style: none;
     float: left;
+    cursor: pointer;
     padding: 0 12px;
     font-weight: 500;
     font-size: 16px;
-    line-height: 1.5;
+}
+
+.menu ul li:hover {
+    border-bottom: 2px solid #000;
 }
 
 .search {
@@ -72,6 +93,25 @@
     flex: 1;
 }
 
+.search:hover {
+    background-color: #e5e5e5;
+}
+
+.search input:not(:placeholder-shown) {
+    /* Show cancel button */
+}
+
+/* .search:has(> input):focus-within {
+    width: 600px;
+    margin: 0 auto;
+} */
+
+.showSuggest {
+    width: 656px;
+    margin: 0 auto;
+    transition: width 0.5s ease;
+}
+
 .searchBtn {
     top: 0;
     height: 36px;
@@ -81,14 +121,73 @@
     margin-left: 2px;
     margin-right: 16px;
     border-radius: 50%;
-    background: #e5e5e5;
+    background-color: inherit;
+}
+
+.searchBtn:hover {
+    background-color: #e5e5e5;
+}
+
+.suggestions {
+    width: 20%;
+    background-color: aqua;
+}
+
+.suggestions ul li {
+    list-style: none;
+}
+
+.tip {
+    width: var(--default-layout-width);
+    background-color: #000;
+    height: 700px;
 }
 
 .clear {
 }
 
 .action {
-    width: 84px;
-    background-color: blue;
+    width: 126px;
+    background-color: #fff;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.hideActions {
+    display: none;
+}
+
+.cancel {
+    display: none;
+}
+
+.showCancel {
+    display: flex;
+    width: 60px;
+    min-height: 24px;
+    line-height: 24px;
+    justify-content: center;
+}
+
+.showCancel button {
+    background-color: transparent;
+}
+
+.showCancel span {
+    font-size: 1.6rem;
+}
+
+.showCancel button:hover {
+    cursor: pointer;
+    color: #757575;
+}
+
+.hideProducts {
+    display: none;
+}
+.showProducts {
+    display: flex;
+    transition: all 5s ease;
 }
