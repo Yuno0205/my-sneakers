@@ -7,6 +7,7 @@ import styles from './Header.module.css';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import SuggestProducts from '../../../SuggestProducts';
 import clsx from 'clsx';
+import Button from '../../../Button';
 
 console.log(styles);
 
@@ -32,7 +33,11 @@ function Header() {
                         })}
                     >
                         <ul>
-                            <li>
+                            <li
+                            // onMouseEnter={() => {
+                            //     setShowSuggestions(true);
+                            // }}
+                            >
                                 <a>Men</a>
                             </li>
                             <li>
@@ -76,15 +81,16 @@ function Header() {
                         [styles.hideActions]: showSuggestions,
                     })}
                 >
-                    <a>
+                    {/* User Loggin */}
+
+                    {/* <a>
                         <HeartIcon />
                     </a>
                     <a>
                         <CartIcon />
-                    </a>
-                    <a>
-                        <CartIcon />
-                    </a>
+                    </a> */}
+
+                    <Button outline>Log in</Button>
                 </div>
 
                 <div
@@ -101,14 +107,7 @@ function Header() {
                     </button>
                 </div>
             </div>
-            {/* {showSuggestions ? <SuggestProducts /> : <></>} */}
-            <div
-                className={clsx(styles.hideProducts, {
-                    [styles.showProducts]: showSuggestions,
-                })}
-            >
-                <SuggestProducts />
-            </div>
+            {showSuggestions ? <SuggestProducts /> : <></>}
         </header>
     );
 }

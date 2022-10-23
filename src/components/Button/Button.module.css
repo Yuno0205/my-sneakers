@@ -1,0 +1,46 @@
+.wrapper {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    min-width: 100px;
+    padding: 9px 16px;
+    border-radius: 30px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    background-color: var(--white);
+    justify-content: center;
+}
+
+.wrapper + .wrapper {
+    margin-left: 10px;
+}
+
+/* Button type */
+
+.primary {
+    background: #111;
+    color: #fff;
+    text-align: center;
+}
+
+.primary:hover {
+    background-color: #757575;
+}
+
+.outline {
+    color: var(--primary);
+    border-color: currentColor;
+}
+
+/* Button size */
+
+.small {
+}
+
+.large {
+    width: 100%;
+    min-width: 150px;
+    min-height: 60px;
+    padding: 18px 24px;
+}

@@ -183,11 +183,3 @@
     cursor: pointer;
     color: #757575;
 }
-
-.hideProducts {
-    display: none;
-}
-.showProducts {
-    display: flex;
-    transition: all 5s ease;
-}

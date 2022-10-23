@@ -1,6 +1,8 @@
 @import 'normalize.css';
 
 :root {
+    --primary: #111;
+    --white: #fff;
     --black: #000;
     --text-color: #333;
 
@@ -35,6 +37,6 @@ input,
 }
 
 a[href] {
-    color: var(--text-color);
+    /* color: var(--text-color); */
     text-decoration: none;
 }
