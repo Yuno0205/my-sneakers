@@ -147,7 +147,7 @@
 }
 
 .action {
-    width: 126px;
+    min-width: 126px;
     background-color: #fff;
     height: 100%;
     display: flex;
@@ -182,4 +182,15 @@
 .showCancel button:hover {
     cursor: pointer;
     color: #757575;
+}
+
+/* User */
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 12px;
+    cursor: pointer;
 }

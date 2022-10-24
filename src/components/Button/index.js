@@ -7,9 +7,11 @@ function Button({
     href,
     primary = false,
     outline = false,
+    circle,
     small = false,
     large = false,
     onClick,
+    icon,
     children,
     ...passProps
 }) {
@@ -30,11 +32,13 @@ function Button({
     const classes = clsx(styles.wrapper, {
         [styles.primary]: primary,
         [styles.outline]: outline,
+        [styles.circle]: circle,
         [styles.small]: small,
         [styles.large]: large,
     });
     return (
         <Comp className={classes} {...props}>
+            {icon && <span className="icon">{icon}</span>}
             {children}
         </Comp>
     );

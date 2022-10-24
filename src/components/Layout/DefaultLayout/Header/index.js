@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { CartIcon, HeartIcon, SearchIcon } from '../../../Icons';
-import Tippy from '@tippyjs/react/headless';
+import clsx from 'clsx';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
 
 import images from '../../../../assets/images';
 import styles from './Header.module.css';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import SuggestProducts from '../../../SuggestProducts';
-import clsx from 'clsx';
 import Button from '../../../Button';
 
 console.log(styles);
@@ -20,6 +22,8 @@ function Header() {
             setSearchResults([1, 2, 3]);
         }, 0);
     }, []);
+
+    const currentUser = true;
     return (
         <header className={styles.wrapper}>
             <div className={styles.inner}>
@@ -59,7 +63,7 @@ function Header() {
                     </div>
 
                     <div
-                        onFocus={(e) => {
+                        onFocus={() => {
                             setShowSuggestions(true);
                         }}
                         onBlur={() => {
@@ -81,16 +85,29 @@ function Header() {
                         [styles.hideActions]: showSuggestions,
                     })}
                 >
-                    {/* User Loggin */}
+                    {currentUser ? (
+                        <>
+                            <Tippy delay={[0, 200]} content="Wish list" placement="bottom">
+                                <div>
+                                    <Button to="/wishlist" icon={<HeartIcon />} circle></Button>
+                                </div>
+                            </Tippy>
 
-                    {/* <a>
-                        <HeartIcon />
-                    </a>
-                    <a>
-                        <CartIcon />
-                    </a> */}
-
-                    <Button outline>Log in</Button>
+                            <Tippy delay={[0, 200]} content="Your cart" placement="bottom">
+                                <div>
+                                    <Button to="/cart" icon={<CartIcon />} circle></Button>
+                                </div>
+                            </Tippy>
+                            <img
+                                className={styles.userAvatar}
+                                src="https://api.duniagames.co.id/api/content/upload/file/473771541646215343.jpg"
+                            ></img>
+                        </>
+                    ) : (
+                        <>
+                            <Button outline>Log in</Button>{' '}
+                        </>
+                    )}
                 </div>
 
                 <div

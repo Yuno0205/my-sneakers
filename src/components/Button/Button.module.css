@@ -3,7 +3,8 @@
     align-items: center;
     font-size: 1.6rem;
     font-weight: 700;
-    min-width: 100px;
+    min-width: 24px;
+    min-height: 24px;
     padding: 9px 16px;
     border-radius: 30px;
     border: 1.5px solid transparent;
@@ -12,8 +13,8 @@
     justify-content: center;
 }
 
-.wrapper + .wrapper {
-    margin-left: 10px;
+.wrapper > span {
+    height: 24px;
 }
 
 /* Button type */
@@ -31,6 +32,29 @@
 .outline {
     color: var(--primary);
     border-color: currentColor;
+}
+
+.icon {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    width: 40px;
+    background: transparent;
+    height: 40px;
+    color: var(--primary);
+    padding: 6px 9px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.circle:hover {
+    border: none;
+    background-color: #757575;
+    color: white;
 }
 
 /* Button size */
