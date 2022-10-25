@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
-import { CartIcon, HeartIcon, LogoutIcon, OrdersIcon, SearchIcon, SettingIcon, UserIcon } from '../../../Icons';
+import {
+    CartIcon,
+    ClearIcon,
+    HeartIcon,
+    LogoutIcon,
+    OrdersIcon,
+    SearchIcon,
+    SettingIcon,
+    UserIcon,
+} from '../../../Icons';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -11,6 +20,7 @@ import { Wrapper as PopperWrapper } from '../../../Popper';
 import SuggestProducts from '../../../SuggestProducts';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
+import Search from '../../../Search';
 
 console.log(styles);
 
@@ -21,15 +31,8 @@ const MenuItems = [
     { icon: <LogoutIcon />, title: 'Log out' },
 ];
 
-function Header() {
-    const [searchResults, setSearchResults] = useState([]);
+function Header({ setDisplayCoating }) {
     const [showSuggestions, setShowSuggestions] = useState(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([1, 2, 3]);
-        }, 0);
-    }, []);
 
     const currentUser = true;
 
@@ -66,28 +69,18 @@ function Header() {
                                 <a>Sale</a>
                             </li>
                             <li>
-                                <a>Home</a>
+                                <a>Sale</a>
                             </li>
                         </ul>
                     </div>
 
-                    <div
-                        onFocus={() => {
-                            setShowSuggestions(true);
-                        }}
-                        onBlur={() => {
-                            setShowSuggestions(false);
-                        }}
-                        className={clsx(styles.search, {
-                            [styles.showSuggest]: showSuggestions,
-                        })}
-                    >
-                        <input placeholder="Search ..." />
-                        <button className={styles.searchBtn}>
-                            <SearchIcon />
-                        </button>
-                        <button className={styles.clear}></button>
-                    </div>
+                    {/* Search */}
+
+                    <Search
+                        setShowSuggestions={setShowSuggestions}
+                        setDisplayCoating={setDisplayCoating}
+                        showSuggestions={showSuggestions}
+                    />
                 </div>
                 <div
                     className={clsx(styles.action, {
@@ -96,12 +89,17 @@ function Header() {
                 >
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Wish list" placement="bottom">
-                                <Button to="/wishlist" icon={<HeartIcon />} circle></Button>
+                            <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
+                                <div>
+                                    <Button to="/wishlist" icon={<HeartIcon />} circle></Button>
+                                </div>
                             </Tippy>
 
-                            <Tippy interactive delay={[0, 200]} content="Your cart" placement="bottom">
-                                <Button to="/cart" icon={<CartIcon />} circle></Button>
+                            <Tippy interactive delay={[0, 50]} content="Your cart" placement="bottom">
+                                <div className={styles.place}>
+                                    <Button to="/cart" icon={<CartIcon />} circle></Button>
+                                    <span className={clsx(styles.badge)}>12</span>
+                                </div>
                             </Tippy>
                             <Menu items={MenuItems}>
                                 <img

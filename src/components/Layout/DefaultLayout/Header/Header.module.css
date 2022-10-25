@@ -5,6 +5,7 @@
     justify-content: center;
     box-shadow: 0px 1px 1px rgb((0), 0, 0 / 12%);
     position: fixed;
+    z-index: 2;
 }
 
 .inner {
@@ -51,6 +52,7 @@
     width: 50%;
     height: 60px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .menuHide {
@@ -71,63 +73,6 @@
     border-bottom: 2px solid #000;
 }
 
-.search {
-    width: 180px;
-    height: 40px;
-    background-color: #f5f5f5;
-    border-radius: 100px;
-    display: flex;
-    cursor: text;
-    flex-direction: row-reverse;
-    align-items: center;
-}
-
-.search input {
-    width: 100%;
-    font-size: 1.6rem;
-    color: var(--black);
-
-    background-color: transparent;
-
-    height: 100%;
-    flex: 1;
-}
-
-.search:hover {
-    background-color: #e5e5e5;
-}
-
-.search input:not(:placeholder-shown) {
-    /* Show cancel button */
-}
-
-/* .search:has(> input):focus-within {
-    width: 600px;
-    margin: 0 auto;
-} */
-
-.showSuggest {
-    width: 656px;
-    margin: 0 auto;
-    transition: width 0.5s ease;
-}
-
-.searchBtn {
-    top: 0;
-    height: 36px;
-    left: 2px;
-    padding: 6px 8px;
-    display: flex;
-    margin-left: 2px;
-    margin-right: 16px;
-    border-radius: 50%;
-    background-color: inherit;
-}
-
-.searchBtn:hover {
-    background-color: #e5e5e5;
-}
-
 .suggestions {
     width: 20%;
     background-color: aqua;
@@ -143,11 +88,8 @@
     height: 700px;
 }
 
-.clear {
-}
-
 .action {
-    min-width: 126px;
+    min-width: 150px;
     background-color: #fff;
     height: 100%;
     display: flex;
@@ -193,4 +135,25 @@
     border-radius: 50%;
     margin-left: 12px;
     cursor: pointer;
+}
+
+/* Badge */
+
+.place {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -3px;
+    right: -10px;
+    padding: 0px 6px;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--white);
+    font-family: 'ProximaNova', sans-serif;
+    background-color: crimson;
 }

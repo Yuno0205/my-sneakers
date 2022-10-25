@@ -1,5 +1,10 @@
 @import 'normalize.css';
 
+@font-face {
+    font-family: MyFont;
+    src: url('../../assets/fonts/Helvetica/helveticaneue.ttf');
+}
+
 :root {
     --primary: #111;
     --white: #fff;
@@ -22,7 +27,7 @@ html {
 }
 
 body {
-    font-family: Helvetica, sans-serif;
+    font-family: MyFont;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
