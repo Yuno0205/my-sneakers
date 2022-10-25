@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CartIcon, HeartIcon, SearchIcon } from '../../../Icons';
+import { CartIcon, HeartIcon, LogoutIcon, OrdersIcon, SearchIcon, SettingIcon, UserIcon } from '../../../Icons';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -10,8 +10,16 @@ import styles from './Header.module.css';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import SuggestProducts from '../../../SuggestProducts';
 import Button from '../../../Button';
+import Menu from '../../../Popper/Menu';
 
 console.log(styles);
+
+const MenuItems = [
+    { icon: <UserIcon />, title: 'My profile' },
+    { icon: <OrdersIcon />, title: 'My Orders' },
+    { icon: <SettingIcon />, title: 'Setting' },
+    { icon: <LogoutIcon />, title: 'Log out' },
+];
 
 function Header() {
     const [searchResults, setSearchResults] = useState([]);
@@ -24,6 +32,7 @@ function Header() {
     }, []);
 
     const currentUser = true;
+
     return (
         <header className={styles.wrapper}>
             <div className={styles.inner}>
@@ -88,20 +97,18 @@ function Header() {
                     {currentUser ? (
                         <>
                             <Tippy delay={[0, 200]} content="Wish list" placement="bottom">
-                                <div>
-                                    <Button to="/wishlist" icon={<HeartIcon />} circle></Button>
-                                </div>
+                                <Button to="/wishlist" icon={<HeartIcon />} circle></Button>
                             </Tippy>
 
-                            <Tippy delay={[0, 200]} content="Your cart" placement="bottom">
-                                <div>
-                                    <Button to="/cart" icon={<CartIcon />} circle></Button>
-                                </div>
+                            <Tippy interactive delay={[0, 200]} content="Your cart" placement="bottom">
+                                <Button to="/cart" icon={<CartIcon />} circle></Button>
                             </Tippy>
-                            <img
-                                className={styles.userAvatar}
-                                src="https://api.duniagames.co.id/api/content/upload/file/473771541646215343.jpg"
-                            ></img>
+                            <Menu items={MenuItems}>
+                                <img
+                                    className={styles.userAvatar}
+                                    src="https://api.duniagames.co.id/api/content/upload/file/473771541646215343.jpg"
+                                ></img>
+                            </Menu>
                         </>
                     ) : (
                         <>

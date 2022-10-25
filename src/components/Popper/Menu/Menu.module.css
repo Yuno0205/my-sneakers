@@ -1,0 +1,51 @@
+.menuList {
+    width: 224px;
+}
+
+.menuPopper {
+    padding-bottom: 8px;
+}
+
+.menuItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0;
+    padding: 11px 16px;
+    background-color: #fff;
+}
+
+.menuItem > span {
+    margin-right: 25px;
+}
+
+.menuItem:hover {
+    cursor: pointer;
+    background-color: #111;
+    color: var(--white);
+}
+
+.menuItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: aqua;
+
+    transition: tranform 500ms ease-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.menuItem {
+    z-index: 1;
+}
+
+.menuitem:hover::before,
+.menuitem:focus::before {
+    transform: scaleX(1);
+}
