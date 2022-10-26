@@ -33,10 +33,29 @@ const MenuItems = [
 ];
 
 function Header() {
-    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [showResults, setShowResults] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
     const [displayCoating, setDisplayCoating] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const currentUser = true;
+
+    const handleShowResults = (childData) => {
+        setShowResults(childData);
+    };
+
+    const handleShowCoating = (childData) => {
+        setDisplayCoating(childData);
+    };
+
+    const handleSearchValue = (childData) => {
+        setSearchValue(childData);
+    };
+
+    const handleSearchResults = (childData) => {
+        setSearchResults(childData);
+    };
 
     return (
         <header className={styles.wrapper}>
@@ -47,7 +66,7 @@ function Header() {
                 <div className={styles.nav}>
                     <div
                         className={clsx(styles.menu, {
-                            [styles.menuHide]: showSuggestions,
+                            [styles.menuHide]: showResults,
                         })}
                     >
                         <ul>
@@ -72,14 +91,18 @@ function Header() {
                     {/* Search */}
 
                     <Search
-                        setShowSuggestions={setShowSuggestions}
-                        setDisplayCoating={setDisplayCoating}
-                        showSuggestions={showSuggestions}
+                        handleShowResults={handleShowResults}
+                        handleShowCoating={handleShowCoating}
+                        handleSearchValue={handleSearchValue}
+                        handleSearchResults={handleSearchResults}
+                        showResults={showResults}
+                        searchValue={searchValue}
+                        setLoading={setLoading}
                     />
                 </div>
                 <div
                     className={clsx(styles.action, {
-                        [styles.hideActions]: showSuggestions,
+                        [styles.hideActions]: showResults,
                     })}
                 >
                     {currentUser ? (
@@ -112,12 +135,12 @@ function Header() {
 
                 <div
                     className={clsx(styles.cancel, {
-                        [styles.showCancel]: showSuggestions,
+                        [styles.showCancel]: showResults,
                     })}
                 >
                     <button
                         onClick={() => {
-                            setShowSuggestions(false);
+                            setShowResults(false);
                             setDisplayCoating(false);
                         }}
                     >
@@ -130,8 +153,12 @@ function Header() {
                     [styles.coating]: displayCoating,
                 })}
             ></div>
-            {showSuggestions ? (
-                <SuggestProducts setShowSuggestions={setShowSuggestions} setDisplayCoating={setDisplayCoating} />
+            {showResults ? (
+                <SuggestProducts
+                    searchResults={searchResults}
+                    setShowResults={handleShowResults}
+                    setDisplayCoating={handleShowCoating}
+                />
             ) : (
                 <></>
             )}

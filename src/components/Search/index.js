@@ -6,22 +6,35 @@ import styles from './Search.module.css';
 import { ClearIcon, SearchIcon } from '../Icons';
 import SuggestProduct from '../SuggestProducts';
 
-function Search({ showSuggestions, setShowSuggestions, setDisplayCoating }) {
-    const [searchValue, setSearchValue] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
-
+function Search({
+    showResults,
+    handleShowResults,
+    handleShowCoating,
+    handleSearchValue,
+    handleSearchResults,
+    searchValue,
+    setLoading,
+}) {
     const inputRef = useRef();
 
     useEffect(() => {
-        fetch(' https://tiktok.fullstack.edu.vn/api/users/search?q=hoaa&type=less')
+        if (!searchValue.trim()) {
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
-                setSearchResults(res.data);
+                handleSearchResults(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
             });
     }, [searchValue]);
 
     const handleClear = () => {
-        setSearchValue('');
+        handleSearchValue('');
 
         inputRef.current.focus();
     };
@@ -29,18 +42,18 @@ function Search({ showSuggestions, setShowSuggestions, setDisplayCoating }) {
     return (
         <div
             onFocus={() => {
-                setShowSuggestions(true);
-                setDisplayCoating(true);
+                handleShowResults(true);
+                handleShowCoating(true);
             }}
             className={clsx(styles.search, {
-                [styles.showSuggest]: showSuggestions,
+                [styles.showSuggest]: showResults,
             })}
         >
             <input
                 ref={inputRef}
                 value={searchValue}
                 placeholder="Search ..."
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={(e) => handleSearchValue(e.target.value)}
             />
             <button className={styles.searchBtn}>
                 <SearchIcon />
