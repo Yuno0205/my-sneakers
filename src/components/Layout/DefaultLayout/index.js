@@ -7,6 +7,11 @@ import { useState } from 'react';
 
 function DefaultLayout({ children }) {
     const [displayCoating, setDisplayCoating] = useState(false);
+
+    const handleShowCoating = () => {
+        setDisplayCoating(true);
+    };
+
     return (
         <div className={styles.wrapper}>
             <Header setDisplayCoating={setDisplayCoating} />
