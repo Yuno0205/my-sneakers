@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+import Tippy from '@tippyjs/react/headless';
 
 import styles from './Search.module.css';
 import { ClearIcon, SearchIcon } from '../Icons';
+import SuggestProduct from '../SuggestProducts';
 
 function Search({ showSuggestions, setShowSuggestions, setDisplayCoating }) {
     const [searchValue, setSearchValue] = useState('');
@@ -11,13 +13,16 @@ function Search({ showSuggestions, setShowSuggestions, setDisplayCoating }) {
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([1, 2, 3]);
-        }, 0);
-    }, []);
+        fetch(' https://tiktok.fullstack.edu.vn/api/users/search?q=hoaa&type=less')
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResults(res.data);
+            });
+    }, [searchValue]);
 
     const handleClear = () => {
         setSearchValue('');
+
         inputRef.current.focus();
     };
 
@@ -27,10 +32,6 @@ function Search({ showSuggestions, setShowSuggestions, setDisplayCoating }) {
                 setShowSuggestions(true);
                 setDisplayCoating(true);
             }}
-            // onBlur={() => {
-            //     setShowSuggestions(false);
-            //     setDisplayCoating(false);
-            // }}
             className={clsx(styles.search, {
                 [styles.showSuggest]: showSuggestions,
             })}

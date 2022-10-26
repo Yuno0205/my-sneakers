@@ -6,26 +6,15 @@ import clsx from 'clsx';
 import { useState } from 'react';
 
 function DefaultLayout({ children }) {
-    const [displayCoating, setDisplayCoating] = useState(false);
-
-    const handleShowCoating = () => {
-        setDisplayCoating(true);
-    };
-
     return (
         <div className={styles.wrapper}>
-            <Header setDisplayCoating={setDisplayCoating} />
+            <Header />
 
             <div className={styles.container}>
                 <div className="content">{children}</div>
             </div>
 
             <Footer />
-            <div
-                className={clsx({
-                    [styles.coating]: displayCoating,
-                })}
-            ></div>
         </div>
     );
 }

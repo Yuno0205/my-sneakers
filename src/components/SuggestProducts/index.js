@@ -1,9 +1,13 @@
 import Tippy from '@tippyjs/react/headless';
 import styles from './SuggestProduct.module.css';
 
-function SuggestProducts({ setShowSuggestions, setDisplayCoating }) {
+function SuggestProducts({ setDisplayCoating, setShowSuggestions }) {
+    const handleHideResults = () => {
+        setShowSuggestions(false);
+        console.log('Hide');
+    };
     return (
-        <Tippy interactive>
+        <Tippy onClickOutside={handleHideResults} interactive>
             <div className={styles.content}>
                 <div className={styles.suggest}>
                     <p>Top Suggestions</p>

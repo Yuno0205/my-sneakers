@@ -21,6 +21,7 @@ import SuggestProducts from '../../../SuggestProducts';
 import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import Search from '../../../Search';
+import { Link } from 'react-router-dom';
 
 console.log(styles);
 
@@ -31,8 +32,9 @@ const MenuItems = [
     { icon: <LogoutIcon />, title: 'Log out' },
 ];
 
-function Header({ setDisplayCoating }) {
+function Header() {
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const [displayCoating, setDisplayCoating] = useState(false);
 
     const currentUser = true;
 
@@ -49,27 +51,20 @@ function Header({ setDisplayCoating }) {
                         })}
                     >
                         <ul>
-                            <li
-                            // onMouseEnter={() => {
-                            //     setShowSuggestions(true);
-                            // }}
-                            >
-                                <a>Men</a>
+                            <li>
+                                <Link>Men</Link>
                             </li>
                             <li>
-                                <a>Women</a>
+                                <Link>Women</Link>
                             </li>
                             <li>
-                                <a>Kid</a>
+                                <Link>Kid</Link>
                             </li>
                             <li>
-                                <a>Customise</a>
+                                <Link>Customise</Link>
                             </li>
                             <li>
-                                <a>Sale</a>
-                            </li>
-                            <li>
-                                <a>Sale</a>
+                                <Link>Sale</Link>
                             </li>
                         </ul>
                     </div>
@@ -123,13 +118,23 @@ function Header({ setDisplayCoating }) {
                     <button
                         onClick={() => {
                             setShowSuggestions(false);
+                            setDisplayCoating(false);
                         }}
                     >
                         <span>Cancel</span>
                     </button>
                 </div>
             </div>
-            {showSuggestions ? <SuggestProducts /> : <></>}
+            <div
+                className={clsx({
+                    [styles.coating]: displayCoating,
+                })}
+            ></div>
+            {showSuggestions ? (
+                <SuggestProducts setShowSuggestions={setShowSuggestions} setDisplayCoating={setDisplayCoating} />
+            ) : (
+                <></>
+            )}
         </header>
     );
 }
