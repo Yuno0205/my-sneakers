@@ -8,4 +8,5 @@
     min-height: 1000px;
     background-color: aqua;
     margin: 0 auto;
+    margin-top: var(--default-layout-header-height);
 }
