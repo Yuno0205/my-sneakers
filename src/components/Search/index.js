@@ -5,6 +5,7 @@ import Tippy from '@tippyjs/react/headless';
 import styles from './Search.module.css';
 import { ClearIcon, SearchIcon } from '../Icons';
 import SuggestProduct from '../SuggestProducts';
+import { useDebounce } from '../../hooks';
 
 function Search({
     showResults,
@@ -18,13 +19,15 @@ function Search({
 }) {
     const inputRef = useRef();
 
+    const deBounce = useDebounce(searchValue, 500);
+
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!deBounce.trim()) {
             handleSearchResults([]);
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(deBounce)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 handleSearchResults(res.data);
@@ -33,7 +36,7 @@ function Search({
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [deBounce]);
 
     const handleClear = () => {
         handleSearchValue('');
