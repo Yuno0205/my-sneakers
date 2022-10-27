@@ -29,16 +29,14 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                                 className={clsx(styles.item, { [styles.hide]: loading })}
                                 key={result.id}
                             >
-                                <a>
-                                    <div className={styles.image}>
-                                        <img src={result.avatar} alt="image"></img>
-                                    </div>
-                                    <div className={styles.details}>
-                                        <h4>{result.full_name}</h4>
-                                        <p>Men Shoe's</p>
-                                        <span>2,000,000đ</span>
-                                    </div>
-                                </a>
+                                <div className={styles.image}>
+                                    <img src={result.avatar} alt="image"></img>
+                                </div>
+                                <div className={styles.details}>
+                                    <h4>{result.full_name}</h4>
+                                    <p>Men Shoe's</p>
+                                    <span>2,000,000đ</span>
+                                </div>
                             </Link>
                         ))
                     ) : (

@@ -4,9 +4,9 @@ import styles from './Loading.module.css';
 const Loading = () => {
     return (
         <div className={styles.content}>
-            <div class={styles.loader}>
-                <div class={styles.cube1}></div>
-                <div class={styles.cube2}></div>
+            <div className={styles.loader}>
+                <div className={styles.cube1}></div>
+                <div className={styles.cube2}></div>
             </div>
         </div>
     );

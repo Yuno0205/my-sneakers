@@ -1,11 +1,13 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
+import axios from 'axios';
 
 import styles from './Search.module.css';
 import { ClearIcon, SearchIcon } from '../Icons';
 import SuggestProduct from '../SuggestProducts';
 import { useDebounce } from '../../hooks';
+import * as searchSevices from '../../apiServices/searchServices';
 
 function Search({
     showResults,
@@ -26,16 +28,15 @@ function Search({
             handleSearchResults([]);
             return;
         }
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(deBounce)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                handleSearchResults(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+        const fetchAPI = async () => {
+            setLoading(true);
+
+            const results = await searchSevices.search(deBounce);
+            handleSearchResults(results);
+
+            setLoading(false);
+        };
+        fetchAPI();
     }, [deBounce]);
 
     const handleClear = () => {

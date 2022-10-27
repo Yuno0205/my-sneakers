@@ -57,7 +57,11 @@
 }
 
 .image {
+    min-height: 200px;
+    height: 300px;
     max-height: 300px;
+    overflow: hidden;
+    background-size: cover;
 }
 
 .image img {
