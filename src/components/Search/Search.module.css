@@ -11,6 +11,7 @@
 }
 
 .search input {
+    font-family: var(--font-family);
     width: 100%;
     font-size: 1.6rem;
     color: var(--black);

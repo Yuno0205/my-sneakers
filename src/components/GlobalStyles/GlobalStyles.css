@@ -10,6 +10,7 @@
     --white: #fff;
     --black: #000;
     --text-color: #333;
+    --font-family: MyFont;
 
     /* Default layout  */
     --default-layout-header-height: 60px;

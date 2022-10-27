@@ -22,6 +22,7 @@ import Button from '../../../Button';
 import Menu from '../../../Popper/Menu';
 import Search from '../../../Search';
 import { Link } from 'react-router-dom';
+import routesConfig from '../../../../config/routes';
 
 console.log(styles);
 
@@ -61,7 +62,9 @@ function Header() {
         <header className={styles.wrapper}>
             <div className={styles.inner}>
                 <div className={styles.logo}>
-                    <img src={images.logo} width="110" alt="Jorkan - Running Sports Shoes " />
+                    <Link to={routesConfig.home} className={styles.logoLink}>
+                        <img src={images.logo} width="110" alt="Jorkan - Running Sports Shoes " />
+                    </Link>
                 </div>
                 <div className={styles.nav}>
                     <div
