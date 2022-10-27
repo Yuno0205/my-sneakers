@@ -8,21 +8,21 @@ import {
     SearchIcon,
     SettingIcon,
     UserIcon,
-} from '../../../Icons';
+} from '../../../components/Icons';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
-import images from '../../../../assets/images';
+import images from '../../../assets/images';
 import styles from './Header.module.css';
-import { Wrapper as PopperWrapper } from '../../../Popper';
-import SuggestProducts from '../../../SuggestProducts';
-import Button from '../../../Button';
-import Menu from '../../../Popper/Menu';
-import Search from '../../../Search';
+import { Wrapper as PopperWrapper } from '../../../components/Popper/Wrapper';
+import SuggestProducts from '../../../components/SuggestProducts';
+import Button from '../../../components/Button';
+import Menu from '../../../components/Popper/Menu';
+import Search from '../../../components/Search';
 import { Link } from 'react-router-dom';
-import routesConfig from '../../../../config/routes';
+import config from '../../../config';
 
 console.log(styles);
 
@@ -62,7 +62,7 @@ function Header() {
         <header className={styles.wrapper}>
             <div className={styles.inner}>
                 <div className={styles.logo}>
-                    <Link to={routesConfig.home} className={styles.logoLink}>
+                    <Link to={config.routes.home} className={styles.logoLink}>
                         <img src={images.logo} width="110" alt="Jorkan - Running Sports Shoes " />
                     </Link>
                 </div>

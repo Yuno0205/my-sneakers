@@ -7,7 +7,7 @@ import styles from './Search.module.css';
 import { ClearIcon, SearchIcon } from '../Icons';
 import SuggestProduct from '../SuggestProducts';
 import { useDebounce } from '../../hooks';
-import * as searchSevices from '../../apiServices/searchServices';
+import * as searchSevices from '../../services/searchService';
 
 function Search({
     showResults,

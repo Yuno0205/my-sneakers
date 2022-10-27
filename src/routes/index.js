@@ -2,13 +2,13 @@ import Home from '../pages/Home';
 import Products from '../pages/Products';
 import Details from '../pages/Details';
 import Login from '../pages/Login';
-import routesConfig from '../config/routes';
+import config from '../config';
 
 const publicRoutes = [
-    { path: routesConfig.home, component: Home },
-    { path: routesConfig.products, component: Products },
-    { path: routesConfig.details, component: Details },
-    { path: routesConfig.login, component: Login, layout: null },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.products, component: Products },
+    { path: config.routes.details, component: Details },
+    { path: config.routes.login, component: Login, layout: null },
 ];
 
 const privateRoutes = [];
