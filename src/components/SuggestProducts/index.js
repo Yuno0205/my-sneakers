@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 
 import Loading from '../Loading';
+import NoProducts from '../Others/NoProduct';
 
 import styles from './SuggestProduct.module.css';
 
@@ -20,10 +21,14 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                         <li>Nike 1</li>
                     </ul>
                 </div>
-                <div className={clsx(styles.items, { [styles.hide]: loading })}>
-                    {searchResults ? (
+                <div className={clsx(styles.items)}>
+                    {searchResults && searchResults.length > 0 ? (
                         searchResults.map((result) => (
-                            <Link to={'/products'} className={styles.item} key={result.id}>
+                            <Link
+                                to={'/products'}
+                                className={clsx(styles.item, { [styles.hide]: loading })}
+                                key={result.id}
+                            >
                                 <a>
                                     <div className={styles.image}>
                                         <img src={result.avatar} alt="image"></img>
@@ -37,10 +42,10 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                             </Link>
                         ))
                     ) : (
-                        <></>
+                        <>{!loading && <NoProducts />}</>
                     )}
+                    {loading && <Loading />}
                 </div>
-                {loading && <Loading />}
             </div>
         </Tippy>
     );
