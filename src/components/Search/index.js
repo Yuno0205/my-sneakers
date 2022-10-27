@@ -11,6 +11,7 @@ function Search({
     handleShowResults,
     handleShowCoating,
     handleSearchValue,
+
     handleSearchResults,
     searchValue,
     setLoading,
@@ -19,6 +20,7 @@ function Search({
 
     useEffect(() => {
         if (!searchValue.trim()) {
+            handleSearchResults([]);
             return;
         }
         setLoading(true);

@@ -158,6 +158,7 @@ function Header() {
                     searchResults={searchResults}
                     setShowResults={handleShowResults}
                     setDisplayCoating={handleShowCoating}
+                    loading={loading}
                 />
             ) : (
                 <></>

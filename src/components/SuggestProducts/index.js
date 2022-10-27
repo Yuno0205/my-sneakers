@@ -1,10 +1,15 @@
 import Tippy from '@tippyjs/react/headless';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+
+import Loading from '../Loading';
+
 import styles from './SuggestProduct.module.css';
 
-function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults }) {
+function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults, loading }) {
     return (
         <Tippy interactive>
-            <div className={styles.content}>
+            <div className={clsx(styles.content)}>
                 <div className={styles.suggest}>
                     <p>Top Suggestions</p>
                     <ul>
@@ -15,10 +20,10 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults 
                         <li>Nike 1</li>
                     </ul>
                 </div>
-                <div className={styles.items}>
+                <div className={clsx(styles.items, { [styles.hide]: loading })}>
                     {searchResults ? (
                         searchResults.map((result) => (
-                            <div className={styles.item} key={result.id}>
+                            <Link to={'/products'} className={styles.item} key={result.id}>
                                 <a>
                                     <div className={styles.image}>
                                         <img src={result.avatar} alt="image"></img>
@@ -29,12 +34,13 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults 
                                         <span>2,000,000đ</span>
                                     </div>
                                 </a>
-                            </div>
+                            </Link>
                         ))
                     ) : (
                         <></>
                     )}
                 </div>
+                {loading && <Loading />}
             </div>
         </Tippy>
     );
