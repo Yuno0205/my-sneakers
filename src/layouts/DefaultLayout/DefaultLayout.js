@@ -11,7 +11,7 @@ function DefaultLayout({ children }) {
             <Header />
 
             <div className={styles.container}>
-                <div className="content">{children}</div>
+                <div>{children}</div>
             </div>
 
             <Footer />

@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: MyFont;
-    src: url('../../assets/fonts/MyFonts/monster.woff2');
+    src: url('../../assets/fonts/MyFonts/RubikRegular.ttf');
 }
 
 :root {
@@ -43,24 +43,9 @@ html *::-webkit-scrollbar {
     width: 8px;
 }
 
-html *::-webkit-scrollbar {
-    border-radius: 0;
-    width: 8px;
-}
-
 html *::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.15);
-}
-
-html *::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.15);
-}
-
-html *::-webkit-scrollbar-track {
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0);
 }
 
 html *::-webkit-scrollbar-track {
@@ -75,9 +60,13 @@ input,
     outline: none;
 }
 
-a[href] {
+a {
     color: var(--text-color);
     text-decoration: none;
+}
+
+img {
+    max-width: 100%;
 }
 
 /* Custom Tippy */
