@@ -1,5 +1,6 @@
+import styles from './Products.module.css';
 function Products({ children }) {
-    return <div>{children}</div>;
+    return <div className={styles.items}>{children}</div>;
 }
 
 export default Products;

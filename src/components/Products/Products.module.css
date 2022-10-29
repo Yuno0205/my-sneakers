@@ -1,0 +1,9 @@
+.items {
+    display: flex;
+    width: 100%;
+    min-height: 500px;
+    flex-direction: row;
+
+    margin: 60px 0;
+    flex-wrap: wrap;
+}
