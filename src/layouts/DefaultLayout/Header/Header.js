@@ -137,6 +137,7 @@ function Header() {
                         onClick={() => {
                             setShowResults(false);
                             setDisplayCoating(false);
+                            setSearchValue('');
                         }}
                     >
                         <span>Cancel</span>

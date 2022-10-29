@@ -28,7 +28,7 @@ html {
 }
 
 body {
-    font-family: MyFont;
+    font-family: var(--font-family);
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
@@ -72,6 +72,7 @@ img {
 /* Custom Tippy */
 
 .tippy-box {
+    font-family: var(--font-family);
     border-radius: 8px;
     font-weight: 400;
     font-size: 1.6rem;

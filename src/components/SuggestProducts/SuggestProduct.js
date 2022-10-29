@@ -13,13 +13,12 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
         <Tippy interactive>
             <div className={clsx(styles.content)}>
                 <div className={styles.suggest}>
-                    <p>Top Suggestions</p>
+                    <p>Top Suggestions :</p>
                     <ul>
-                        <li>Nike Air Force 10</li>
-                        <li>Nike 1</li>
-                        <li>Nike 1</li>
-                        <li>Nike 1</li>
-                        <li>Nike 1</li>
+                        <li>Nike Air Force 1</li>
+                        <li>Nike Dunk Low</li>
+                        <li>Air Jordan 1</li>
+                        <li>Nike Blazer Low</li>
                     </ul>
                 </div>
                 <div className={clsx(styles.items)}>
