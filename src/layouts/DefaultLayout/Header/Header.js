@@ -117,6 +117,7 @@ function Header() {
                                 <img
                                     className={styles.userAvatar}
                                     src="https://api.duniagames.co.id/api/content/upload/file/473771541646215343.jpg"
+                                    alt="avatar"
                                 ></img>
                             </Menu>
                         </>

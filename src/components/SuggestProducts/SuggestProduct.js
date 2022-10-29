@@ -6,6 +6,7 @@ import Loading from '../Loading';
 import NoProducts from '../Others/NoProduct';
 
 import styles from './SuggestProduct.module.css';
+import Image from '../Image/Image';
 
 function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults, loading }) {
     return (
@@ -30,7 +31,7 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                                 key={result.id}
                             >
                                 <div className={styles.image}>
-                                    <img src={result.avatar} alt="image"></img>
+                                    <Image src={result.avatar} alt="Nhật Hào"></Image>
                                 </div>
                                 <div className={styles.details}>
                                     <h4>{result.full_name}</h4>
