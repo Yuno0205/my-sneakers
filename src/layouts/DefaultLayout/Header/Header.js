@@ -74,7 +74,7 @@ function Header() {
                                 <Link>Kid</Link>
                             </li>
                             <li>
-                                <Link>Customise</Link>
+                                <Link to="/collections">Collections</Link>
                             </li>
                             <li>
                                 <Link>Sale</Link>

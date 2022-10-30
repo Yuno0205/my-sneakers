@@ -1,0 +1,17 @@
+.wrapperr {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: var(--default-layout-width);
+    max-width: 100%;
+    min-height: 1000px;
+    margin-top: var(--default-layout-header-height);
+    background-color: #ddd;
+    display: flex;
+}
+
+.content {
+    flex: 1;
+}
