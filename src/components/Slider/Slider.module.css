@@ -2,6 +2,7 @@
     min-height: 820px;
     margin-top: var(--default-layout-header-height);
     position: relative;
+    overflow: hidden;
 }
 
 .cover {

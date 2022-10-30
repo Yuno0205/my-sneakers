@@ -1,7 +1,3 @@
-import Tippy from '@tippyjs/react';
-import { Link } from 'react-router-dom';
-import Button from '../../components/Button';
-import { CartIcon, HeartIcon, RegularCart, RegularHeart, RegularSearch, SearchIcon } from '../../components/Icons';
 import ProductItem from '../../components/Products/ProductItem/ProductItem';
 import Products from '../../components/Products';
 import styles from './Home.module.css';

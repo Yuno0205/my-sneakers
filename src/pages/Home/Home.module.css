@@ -5,8 +5,6 @@
 
 .content {
     width: var(--default-layout-width);
-
-    padding: 0 36px;
 }
 
 .title {

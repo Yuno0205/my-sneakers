@@ -1,12 +1,16 @@
 import Tippy from '@tippyjs/react';
+import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import Button from '../../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
 import styles from './ProductItem.module.css';
 
-function ProductItem() {
+function ProductItem({ col3 }) {
+    const classes = clsx(styles.item, {
+        [styles.col3]: col3,
+    });
     return (
-        <div className={styles.item}>
+        <div className={classes}>
             <div className={styles.itemContent}>
                 <div className={styles.itemImage}>
                     <Link to={'/'}>

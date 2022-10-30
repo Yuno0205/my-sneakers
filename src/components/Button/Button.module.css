@@ -74,6 +74,8 @@
     margin: 0 12px;
     width: 46px;
     height: 46px;
+    box-shadow: 0 3px 10px #00000014;
+    color: #232529;
 }
 
 .product:hover {

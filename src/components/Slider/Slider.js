@@ -8,10 +8,12 @@ import clsx from 'clsx';
 function Slider() {
     const [change, setChange] = useState(true);
 
-    const handleChange = (value) => {
-        setChange(value);
-        console.log(value);
+    const handleChange = (change) => {
+        {
+            change ? setChange(false) : setChange(true);
+        }
     };
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.cover}>
@@ -20,12 +22,12 @@ function Slider() {
                         [styles.current]: change,
                     })}
                 >
-                    <div onClick={() => handleChange(false)} className={styles.prev}>
+                    <div onClick={() => handleChange(change)} className={styles.prev}>
                         <div className={styles.prevIcon}>
                             <PrevIcon />
                         </div>
                     </div>
-                    <div onClick={() => handleChange(true)} className={styles.next}>
+                    <div onClick={() => handleChange(change)} className={styles.next}>
                         <div className={styles.nextIcon}>
                             <NextIcon />
                         </div>
@@ -82,12 +84,12 @@ function Slider() {
                         [styles.current]: !change,
                     })}
                 >
-                    <div onClick={() => handleChange(false)} className={styles.prev}>
+                    <div onClick={() => handleChange(change)} className={styles.prev}>
                         <div className={styles.prevIcon}>
                             <PrevIcon />
                         </div>
                     </div>
-                    <div onClick={() => handleChange(true)} className={styles.next}>
+                    <div onClick={() => handleChange(change)} className={styles.next}>
                         <div className={styles.nextIcon}>
                             <NextIcon />
                         </div>

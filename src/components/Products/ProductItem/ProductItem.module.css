@@ -5,8 +5,13 @@
     float: left;
 }
 
+.col3 {
+    width: 33.33333%;
+    margin: 0 auto;
+}
+
 .itemContent {
-    max-height: 100%;
+    height: 100%;
 }
 
 .itemImage {
@@ -45,6 +50,8 @@
     transition: 0.4s linear;
     visibility: hidden;
     opacity: 0;
+
+    transition: 0.4s;
 }
 
 .icon:first-child {
@@ -84,4 +91,10 @@
 
 .itemPrice {
     margin-bottom: 1rem;
+}
+
+/* Custom Item */
+
+.col3 {
+    width: 33, 3333%;
 }

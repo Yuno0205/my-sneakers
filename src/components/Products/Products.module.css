@@ -1,9 +1,17 @@
-.items {
-    display: flex;
+.wrapper {
     width: 100%;
     min-height: 500px;
-    flex-direction: row;
 
     margin: 60px 0;
+}
+
+.items {
+    width: var(--default-layout-width);
+    padding: 0 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
