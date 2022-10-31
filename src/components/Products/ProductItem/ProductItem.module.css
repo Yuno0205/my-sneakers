@@ -21,6 +21,78 @@
     position: relative;
 }
 
+/* Sold out */
+
+.soldOut {
+    position: absolute;
+    width: 100px;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.2;
+    transform: translate(-50%, -50%) scale(0);
+    left: 50%;
+    top: 50%;
+    transition: all 0.3s ease;
+    background-color: #ddac55;
+    padding: 10px 15px;
+}
+
+.itemImage:hover > .soldOut {
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.3s ease;
+}
+
+/* Label Sale */
+
+.labelSale {
+    position: absolute;
+    width: 50px;
+    right: 13px;
+    top: 9px;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    background-color: #f44338;
+    line-height: 25px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    font-size: 10px;
+    text-transform: uppercase;
+    padding: 0 10px;
+}
+
+/* Coating  */
+
+.coating {
+    width: auto;
+    height: auto;
+    opacity: 0.3;
+}
+
+/* 2nd product */
+
+.hoverProduct {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+/* show 2nd Product */
+.itemImage:hover .hoverProduct {
+    opacity: 1;
+}
+
+.relative {
+    position: relative;
+}
+
 .actions {
     display: flex;
     position: absolute;
@@ -75,6 +147,10 @@
     font-weight: 400;
     color: #ddac55;
 }
+
+.itemInfo:hover {
+    cursor: pointer;
+}
 .itemInfo s {
     font-size: 1.4rem;
     font-weight: 400;
@@ -91,6 +167,10 @@
 
 .itemPrice {
     margin-bottom: 1rem;
+}
+
+.itemName:hover {
+    color: #ddac55;
 }
 
 /* Custom Item */

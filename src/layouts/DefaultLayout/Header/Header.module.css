@@ -76,8 +76,21 @@
     font-size: 16px;
 }
 
-.menu ul li:hover {
-    border-bottom: 2px solid #000;
+/* Underline */
+.underline::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    display: block;
+    transition: width 0.4s linear 0s;
+    transform: translateY(-10px);
+}
+
+.menu ul li:hover > .underline::after {
+    left: 0;
+
+    width: 100%;
 }
 
 .suggestions {

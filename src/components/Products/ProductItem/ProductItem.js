@@ -5,7 +5,7 @@ import Button from '../../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
 import styles from './ProductItem.module.css';
 
-function ProductItem({ col3 }) {
+function ProductItem({ col3, coating, sale, soldOut }) {
     const classes = clsx(styles.item, {
         [styles.col3]: col3,
     });
@@ -13,26 +13,51 @@ function ProductItem({ col3 }) {
         <div className={classes}>
             <div className={styles.itemContent}>
                 <div className={styles.itemImage}>
-                    <Link to={'/'}>
-                        <img src="https://cdn.shopify.com/s/files/1/0267/0211/8947/products/product5.jpg?v=1570096493" />
+                    <Link
+                        className={clsx({
+                            [styles.coating]: coating,
+                        })}
+                        to={'/'}
+                    >
+                        <div className={styles.relative}>
+                            <img src="https://cdn.shopify.com/s/files/1/0267/0211/8947/products/product5.jpg?v=1570096493" />
+                            <img
+                                className={styles.hoverProduct}
+                                src="https://cdn.shopify.com/s/files/1/0267/0211/8947/products/product6_ff30be10-564e-46e2-9f75-4088d7ea8f0f.jpg?v=1570096386"
+                            />
+                        </div>
                     </Link>
                     <div className={styles.actions}>
-                        <Tippy content="Add to wish list" placement="top">
+                        <Tippy delay={200} content="Add to wish list" placement="top">
                             <div className={styles.icon}>
                                 <Button to="/wishlist" icon={<RegularHeart />} circle product></Button>
                             </div>
                         </Tippy>
 
-                        <Tippy content="Add to cart" placement="top">
+                        <Tippy delay={200} content="Add to cart" placement="top">
                             <div className={styles.icon}>
                                 <Button to="/wishlist" icon={<RegularCart />} circle product></Button>
                             </div>
                         </Tippy>
-                        <Tippy content="More infomation" placement="top">
+                        <Tippy delay={200} content="More infomation" placement="top">
                             <div className={styles.icon}>
                                 <Button to="/wishlist" icon={<RegularSearch />} circle product></Button>
                             </div>
                         </Tippy>
+                    </div>
+                    <div
+                        className={clsx({
+                            [styles.soldOut]: soldOut,
+                        })}
+                    >
+                        Sold out
+                    </div>
+                    <div
+                        className={clsx({
+                            [styles.labelSale]: sale,
+                        })}
+                    >
+                        20 %
                     </div>
                 </div>
                 <div className={styles.itemInfo}>

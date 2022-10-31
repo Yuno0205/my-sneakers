@@ -65,19 +65,21 @@ function Header() {
                     >
                         <ul>
                             <li>
-                                <Link>Men</Link>
+                                <Link className={styles.underline}>Men</Link>
                             </li>
                             <li>
-                                <Link>Women</Link>
+                                <Link className={styles.underline}>Women</Link>
                             </li>
                             <li>
-                                <Link>Kid</Link>
+                                <Link className={styles.underline}>Kid</Link>
                             </li>
                             <li>
-                                <Link to="/collections">Collections</Link>
+                                <Link className={styles.underline} to="/collections">
+                                    Collections
+                                </Link>
                             </li>
                             <li>
-                                <Link>Sale</Link>
+                                <Link className={styles.underline}>Sale</Link>
                             </li>
                         </ul>
                     </div>

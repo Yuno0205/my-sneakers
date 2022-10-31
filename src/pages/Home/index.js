@@ -10,10 +10,10 @@ function Home() {
                         <h3>New Arrivals</h3>
                     </div>
                     <Products>
+                        <ProductItem coating sale soldOut />
                         <ProductItem />
                         <ProductItem />
-                        <ProductItem />
-                        <ProductItem />
+                        <ProductItem sale />
                         <ProductItem />
                     </Products>
                 </div>
