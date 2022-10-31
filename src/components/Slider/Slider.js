@@ -63,11 +63,15 @@ function Slider() {
                                 <p>from 100$</p>
                             </div>
                             <div
-                                className={clsx(styles.boxBtn, {
-                                    [styles.show]: change,
-                                })}
+                                className={clsx(
+                                    styles.boxBtn,
+                                    {
+                                        [styles.show]: change,
+                                    },
+                                    styles.boxAni,
+                                )}
                             >
-                                <a>Shop now</a>
+                                <Link>Shop now</Link>
                             </div>
                         </div>
                         <div

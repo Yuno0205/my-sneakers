@@ -4,14 +4,133 @@
 }
 
 .container {
-    width: var(--default-layout-width);
+    /* width: 100%;
     max-width: 100%;
-    min-height: 1000px;
+    min-height: 1000px; */
     margin-top: var(--default-layout-header-height);
     background-color: #ddd;
-    display: flex;
+
+    position: relative;
+    line-height: 1.75;
+    z-index: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .content {
+    width: var(--default-layout-width);
+    margin: 0 auto;
+    min-height: 1000px;
+    display: flex;
+    position: relative;
+    padding: 0 30px;
+}
+
+.results {
     flex: 1;
+}
+
+.offsetWall {
+    height: 15px;
+}
+
+/* Header of Collections */
+
+.headerCollections {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    transition: transform 150ms ease;
+    height: 50px;
+}
+
+.headerWrapper {
+    height: 100%;
+    padding: 0px 30px 15px;
+    background: #fff;
+}
+
+.headerContent {
+    height: 100%;
+    padding-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.headerTitle {
+    flex: 1 1 0%;
+    line-height: 1.3;
+    padding-bottom: 2px;
+    transform: scale(1);
+    transform-origin: left center;
+    transition: transform 200ms;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.16667;
+    text-align: left;
+}
+
+.itemCount {
+    margin-left: 1rem;
+}
+
+/* Header Nav */
+.headerNav {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.filterBtn {
+    display: flex;
+    font-size: 1.5em;
+    padding: 0px 25px 0px 0px;
+    background: transparent;
+    -webkit-box-align: center;
+    align-items: center;
+    font-weight: 400;
+}
+
+.filterBtn:hover {
+    cursor: pointer;
+}
+
+.filterText {
+    font-size: 1.6rem;
+    padding-right: 8px;
+    color: rgb(17, 17, 17);
+}
+
+.sort {
+    font-size: 1.6rem;
+}
+
+.dropdown {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+.dropdownBtn {
+    font-size: 1.6rem;
+    width: 100%;
+    text-align: right;
+    background-color: white;
+    padding: 0px 6px;
+    height: 100%;
+}
+
+.dropdownBtn:hover {
+    cursor: pointer;
+}
+
+.downIcon {
+    margin-left: 8px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
 }
