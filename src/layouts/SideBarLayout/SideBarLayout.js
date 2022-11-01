@@ -4,6 +4,7 @@ import styles from './SideBarLayout.module.css';
 import SideBar from './SideBar';
 import { DownIcon, FilterIcon } from '../../components/Icons';
 import Menu from '../../components/Popper/Menu';
+import { useState } from 'react';
 function SideBarLayout({ children }) {
     const Options = [
         { title: 'Price : Low - High' },
@@ -11,6 +12,13 @@ function SideBarLayout({ children }) {
         { title: 'Featured' },
         { title: 'Newest' },
     ];
+
+    const [showFilter, setShowFilter] = useState(true);
+
+    const handleShowFilter = (value) => {
+        setShowFilter(value);
+    };
+
     return (
         <div className={styles.wrapper}>
             <Header />
@@ -24,7 +32,7 @@ function SideBarLayout({ children }) {
                                 <span className={styles.itemCount}>(418)</span>
                             </h1>
                             <nav className={styles.headerNav}>
-                                <button className={styles.filterBtn}>
+                                <button onClick={() => handleShowFilter(false)} className={styles.filterBtn}>
                                     <span className={styles.filterText}>Hide Filter</span>
                                     <FilterIcon />
                                 </button>

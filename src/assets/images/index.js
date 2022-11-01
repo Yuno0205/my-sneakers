@@ -1,5 +1,6 @@
 const images = {
     logo: require('../../assets/images/logo_den.png'),
+    logoWhite: require('../../assets/images/logo_trang.png'),
     noProduct: require('../../assets/images/notFound.webp'),
     noImage: require('../images/noImage.jpg'),
     slide1: require('../images/slide1.webp'),
