@@ -29,10 +29,6 @@
     padding: 0 30px;
 }
 
-.results {
-    flex: 1;
-}
-
 .offsetWall {
     height: 15px;
 }
@@ -41,6 +37,7 @@
 
 .headerCollections {
     position: sticky;
+    top: var(--default-layout-header-height);
     left: 0;
     z-index: 3;
     transition: transform 150ms ease;
@@ -138,4 +135,5 @@
 /* Css Collections Content */
 
 .results {
+    flex: 1;
 }

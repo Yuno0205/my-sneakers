@@ -1,4 +1,46 @@
 .wrapper {
     width: 260px;
-    background-color: red;
+    position: sticky;
+    top: 90px;
+
+    left: 0;
+
+    animation: handleShowFilter 500ms forwards;
+    max-height: 606px;
+
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.wrapper.hide {
+    animation: handleHideFilter 500ms forwards;
+}
+
+@keyframes handleShowFilter {
+    from {
+        margin-left: -260px;
+    }
+    to {
+        margin: 0;
+    }
+}
+
+@keyframes handleHideFilter {
+    from {
+        margin: 0;
+    }
+    to {
+        margin-left: -260px;
+    }
+}
+
+.container {
+    overflow: hidden;
+    width: inherit;
+    height: inherit;
+    max-width: inherit;
+    max-height: inherit;
 }

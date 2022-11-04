@@ -9,9 +9,7 @@ function Slider() {
     const [change, setChange] = useState(true);
 
     const handleChange = (change) => {
-        {
-            change ? setChange(false) : setChange(true);
-        }
+        change ? setChange(false) : setChange(true);
     };
 
     return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CartIcon, HeartIcon, LogoutIcon, OrdersIcon, SettingIcon, UserIcon } from '../../../components/Icons';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
@@ -31,6 +31,17 @@ function Header() {
     const [displayCoating, setDisplayCoating] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    const [hideHeader, setHideHeader] = useState(false);
+
+    // useEffect(() => {
+    //     window.addEventListener('scroll', function () {
+    //         if (window.scrollY > 100) {
+    //             setHideHeader(true);
+    //             console.log('hide');
+    //         }
+    //     });
+    // }, []);
+
     const currentUser = true;
 
     const handleShowResults = (childData) => {
@@ -50,8 +61,8 @@ function Header() {
     };
 
     return (
-        <header className={styles.wrapper}>
-            <div className={styles.inner}>
+        <header className={clsx(styles.wrapper)}>
+            <div className={clsx(styles.inner)}>
                 <div className={styles.logo}>
                     <Link to={config.routes.home} className={styles.logoLink}>
                         <img src={images.logo} width="110" alt="Jorkan - Running Sports Shoes " />

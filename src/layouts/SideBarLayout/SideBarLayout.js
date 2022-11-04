@@ -16,7 +16,7 @@ function SideBarLayout({ children }) {
     const [showFilter, setShowFilter] = useState(true);
 
     const handleShowFilter = (value) => {
-        setShowFilter(value);
+        value ? setShowFilter(false) : setShowFilter(true);
     };
 
     return (
@@ -32,8 +32,12 @@ function SideBarLayout({ children }) {
                                 <span className={styles.itemCount}>(418)</span>
                             </h1>
                             <nav className={styles.headerNav}>
-                                <button onClick={() => handleShowFilter(false)} className={styles.filterBtn}>
-                                    <span className={styles.filterText}>Hide Filter</span>
+                                <button onClick={() => handleShowFilter(showFilter)} className={styles.filterBtn}>
+                                    {showFilter ? (
+                                        <span className={styles.filterText}>Hide Filter</span>
+                                    ) : (
+                                        <span className={styles.filterText}>Show Filter</span>
+                                    )}
                                     <FilterIcon />
                                 </button>
                                 <div className={styles.sort}>
@@ -54,7 +58,7 @@ function SideBarLayout({ children }) {
                 </div>
                 <div className={styles.offsetWall}></div>
                 <div className={styles.content}>
-                    <SideBar />
+                    <SideBar showFilter={showFilter} />
                     <div className={styles.results}>{children}</div>
                 </div>
             </div>
