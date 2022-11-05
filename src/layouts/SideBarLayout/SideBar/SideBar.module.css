@@ -1,9 +1,7 @@
 .wrapper {
     width: 260px;
     position: sticky;
-    top: 90px;
-
-    left: 0;
+    top: 160px;
 
     animation: handleShowFilter 500ms forwards;
     max-height: 606px;
@@ -16,7 +14,7 @@
 }
 
 .wrapper.hide {
-    animation: handleHideFilter 500ms forwards;
+    animation: handleHideFilter 300ms forwards;
 }
 
 @keyframes handleShowFilter {
@@ -25,15 +23,17 @@
     }
     to {
         margin: 0;
+        visibility: visible;
     }
 }
 
 @keyframes handleHideFilter {
     from {
-        margin: 0;
+        margin-left: 0;
     }
     to {
         margin-left: -260px;
+        visibility: hidden;
     }
 }
 
@@ -43,4 +43,221 @@
     height: inherit;
     max-width: inherit;
     max-height: inherit;
+}
+
+.contentCover {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.contentWrapper {
+    direction: inherit;
+    position: relative;
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    overflow: hidden scroll;
+}
+
+.content {
+    min-height: 3000px;
+}
+
+.categories {
+    padding: 0 0 40px;
+}
+
+.categoriesContent {
+}
+
+.categoriesItem {
+    color: #111111;
+    font-weight: 500;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.35em;
+    padding-bottom: 1rem;
+    padding-right: 1.1em;
+}
+
+/* Filter css */
+
+.filterItem {
+    border-top: solid 1px #e5e5e5;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    border-bottom: solid 1px #e5e5e5;
+    display: block;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.spanTitle {
+    width: 100%;
+}
+
+.filterContent.gender.hide {
+    max-height: 0;
+    transition: max-height 200ms ease-out;
+
+    /* animation: ActionFilter 1s forwards; */
+}
+
+@keyframes ActionFilter {
+    from {
+        max-height: 500px;
+        visibility: visible;
+    }
+    to {
+        max-height: 0;
+        visibility: hidden;
+    }
+}
+
+.spanTitle .filterTitle {
+    padding: 12px 0px;
+    width: 98%;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.filterLabel {
+}
+
+.filterIcon {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: 20px;
+    right: 4px;
+    transform: translateY(-50%);
+}
+
+.filterContent {
+    margin-top: 5px;
+    height: auto;
+    max-height: 500px;
+    transition: max-height 200ms ease-in;
+    overflow: hidden;
+}
+
+.filterContent.hide {
+    max-height: 0;
+    transition: max-height 200ms ease-out;
+}
+
+.filterInner {
+    padding: 0 0 20px;
+}
+
+.itemsGroup {
+    vertical-align: baseline;
+}
+
+.itemContent {
+    color: #000;
+    margin: 4px 2px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    border: solid 1px #cccccc;
+    border-radius: 4px;
+    margin-right: 6px;
+    display: inline-block;
+    position: relative;
+    border-color: #111111;
+    background: #111111;
+}
+
+.checkboxIcon {
+    color: #fff;
+    position: absolute;
+    top: -3px;
+    left: 1px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.colorsGroup {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colorContent {
+    width: 32%;
+    height: 100%;
+    min-height: 68px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.5;
+    background: transparent;
+    color: #111111;
+    cursor: pointer;
+    overflow-wrap: break-word;
+    position: relative;
+    white-space: nowrap;
+}
+
+.color {
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.isPurple {
+    display: inline-block;
+    background-color: #8d429f;
+}
+
+.isBlack {
+    display: inline-block;
+    background-color: #000;
+}
+
+.isRed {
+    display: inline-block;
+    background-color: #e7352b;
+}
+
+.isBlue {
+    display: inline-block;
+    background-color: #1790c8;
+}
+
+.isWhite {
+    display: inline-block;
+    background-color: #ffffff;
+}
+
+.isPink {
+    display: inline-block;
+    background-color: #f0728f;
+}
+
+.colorName {
+    padding-top: 2px;
+    font-size: 12px;
+    display: inline-block;
+    word-break: break-word;
+    white-space: normal;
 }

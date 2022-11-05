@@ -1,0 +1,90 @@
+.wrapper {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #ccc;
+}
+
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+
+.content {
+    --width: 520px;
+    background: var(--white);
+    border-radius: 30px;
+    max-width: calc(100vw - 32px);
+    min-height: 600px;
+    padding: 40px 16px;
+    position: relative;
+    width: var(--width);
+}
+
+.header {
+    overflow: hidden;
+    padding: 0 100px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    padding-bottom: 10px;
+}
+
+.body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 33px;
+}
+
+.signInButton {
+    --height: 44px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    display: inline-block;
+    height: var(--height);
+    line-height: var(--height);
+    padding-left: 16px;
+    position: relative;
+    text-align: start;
+    width: 380px;
+}
+
+.signInButton + .signInButton {
+    margin-top: 20px;
+}
+
+.signInButton input {
+    width: 100%;
+    font-size: 1.6rem;
+}
+
+.title {
+    color: var(--text-color);
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 40px;
+    outline: 0;
+    text-align: center;
+}
+
+.loginBtn {
+    width: 380px;
+    height: 45px;
+    background-color: black;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto;
+}
