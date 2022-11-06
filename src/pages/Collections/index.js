@@ -9,6 +9,10 @@ function Collections() {
             <CollectionsItem />
             <CollectionsItem />
             <CollectionsItem />
+            <CollectionsItem />
+            <CollectionsItem />
+            <CollectionsItem />
+            <CollectionsItem />
         </CollectionsGroup>
     );
 }

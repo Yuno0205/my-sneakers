@@ -41,6 +41,16 @@
     font-size: 16px;
 }
 
+.itemImage:hover {
+    cursor: pointer;
+}
+
+.itemImage:hover ~ .info .titleInfo,
+.itemImage:hover ~ .info .status,
+.itemImage:hover ~ .info .colours {
+    display: none;
+}
+
 .status {
     color: #9e3500;
     font-size: 16px;
@@ -79,4 +89,16 @@
     padding-right: 5px;
     font-weight: 500;
     color: #111111;
+}
+
+.sale {
+    color: #8d8d8d;
+    text-decoration: line-through;
+    padding: 0 10px;
+}
+
+.pricePerc {
+    color: rgb(65, 161, 57);
+    font-weight: 500;
+    padding-top: 10px;
 }

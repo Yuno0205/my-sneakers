@@ -16,8 +16,6 @@ function App() {
                             Layout = SideBarLayout;
                         }
 
-                        console.log(route);
-
                         const Page = route.component;
                         return (
                             <Route

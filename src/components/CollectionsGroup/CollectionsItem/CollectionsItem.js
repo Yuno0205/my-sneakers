@@ -18,7 +18,11 @@ function CollectionsItem() {
                                 <div className={styles.brand}>Shoes</div>
                             </div>
                             <div className={styles.colours}>7 Colours </div>
-                            <div className={styles.price}>4,100.000 đ</div>
+                            <div className={styles.price}>
+                                <span className={styles.mainPrice}>4,100.000 đ</span>
+                                <span className={styles.sale}>4,100.000 đ</span>
+                            </div>
+                            <div className={styles.pricePerc}>15% off</div>
                         </div>
                     </div>
                 </div>
