@@ -36,7 +36,10 @@ function Sidebar({ showFilter }) {
                             <div className={styles.filter}>
                                 <div className={styles.filterWrapper}>
                                     <div className={styles.filterItem}>
-                                        <span onClick={() => handleFilter(hideFilter)} className={styles.spanTitle}>
+                                        <span
+                                            onClick={() => handleFilter(hideFilter)}
+                                            className={clsx(styles.spanTitle, styles.gender)}
+                                        >
                                             <div className={styles.filterTitle}>
                                                 <div className={styles.filterLabel}>Gender</div>
                                                 <div className={styles.filterIcon}>
@@ -83,7 +86,10 @@ function Sidebar({ showFilter }) {
                                     </div>
 
                                     <div className={styles.filterItem}>
-                                        <span onClick={() => handleFilter(hideFilter)} className={styles.spanTitle}>
+                                        <span
+                                            onClick={() => handleFilter(hideFilter)}
+                                            className={clsx(styles.spanTitle, styles.price)}
+                                        >
                                             <div className={styles.filterTitle}>
                                                 <div className={styles.filterLabel}>Shop by Price</div>
                                                 <div className={styles.filterIcon}>
@@ -156,6 +162,53 @@ function Sidebar({ showFilter }) {
                                                     <div className={styles.colorContent}>
                                                         <div className={clsx(styles.color, styles.isRed)}></div>
                                                         <span className={styles.colorName}>Red</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className={styles.filterItem}>
+                                        <span
+                                            onClick={() => handleFilter(hideFilter)}
+                                            className={clsx(styles.spanTitle, styles.price)}
+                                        >
+                                            <div className={styles.filterTitle}>
+                                                <div className={styles.filterLabel}>Size</div>
+                                                <div className={styles.filterIcon}>
+                                                    {hideFilter ? <DownIcon /> : <UpIcon />}
+                                                </div>
+                                            </div>
+                                        </span>
+                                        <div
+                                            className={clsx(styles.filterContent, styles.price, {
+                                                [styles.hide]: hideFilter,
+                                            })}
+                                        >
+                                            <div className={styles.filterInner}>
+                                                <div className={styles.itemsGroup}>
+                                                    <div className={styles.sizeGroup}>
+                                                        <button className={styles.sizeItem}>
+                                                            <span className={styles.sizeValue}>34</span>
+                                                        </button>
+                                                        <button className={styles.sizeItem}>
+                                                            <span className={styles.sizeValue}>35</span>
+                                                        </button>
+                                                        <button className={styles.sizeItem}>
+                                                            <span className={styles.sizeValue}>36</span>
+                                                        </button>
+                                                        <button className={styles.sizeItem}>
+                                                            <span className={styles.sizeValue}>37</span>
+                                                        </button>
+                                                        <button className={styles.sizeItem}>
+                                                            <span className={styles.sizeValue}>38</span>
+                                                        </button>
+                                                        <button className={styles.sizeItem}>
+                                                            <span className={styles.sizeValue}>39</span>
+                                                        </button>
+                                                        <button className={styles.sizeItem}>
+                                                            <span className={styles.sizeValue}>40</span>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

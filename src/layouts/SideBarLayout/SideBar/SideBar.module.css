@@ -105,7 +105,7 @@
     width: 100%;
 }
 
-.filterContent.gender.hide {
+.spanTitle.gender + .filterContent.gender.hide {
     max-height: 0;
     transition: max-height 200ms ease-out;
 
@@ -260,4 +260,44 @@
     display: inline-block;
     word-break: break-word;
     white-space: normal;
+}
+
+/* Size */
+
+.sizeGroup {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sizeItem {
+    height: 36px;
+    text-align: center;
+    border: solid 1px #e5e5e5;
+    border-radius: 5px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+
+    -ms-flex: 1 0 56px;
+    flex: 1 0 56px;
+
+    display: flex;
+    -webkit-box-pack: center;
+
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.sizeItem:hover {
+    color: #000;
+    box-shadow: inset 0px 0px 0 1px #000;
+}
+
+.sizeValue {
+    padding: 0 0.5em;
+    white-space: nowrap;
+    display: block;
 }

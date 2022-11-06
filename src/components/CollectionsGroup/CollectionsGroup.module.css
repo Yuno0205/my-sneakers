@@ -1,0 +1,11 @@
+.wrapper {
+    width: 100%;
+    min-height: 500px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.items {
+    display: flex;
+    flex-flow: row wrap;
+}

@@ -8,7 +8,6 @@
     max-width: 100%;
     min-height: 1000px; */
     margin-top: var(--default-layout-header-height);
-    background-color: #ddd;
 
     position: relative;
     line-height: 1.75;
