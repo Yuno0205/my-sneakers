@@ -36,7 +36,7 @@ function Cart() {
                                     </div>
                                 </div>
                                 <Button primary large>
-                                    <p className={styles.checkOutText}>Member Checkout</p>
+                                    <p className={styles.checkOutText}>Continued Checkout</p>
                                 </Button>
                             </div>
                         </div>
