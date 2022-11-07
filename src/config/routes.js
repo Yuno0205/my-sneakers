@@ -4,5 +4,7 @@ const routes = {
     details: '/details',
     login: '/login',
     collections: '/collections',
+    cart: '/cart',
+    wishlist: 'wishlist',
 };
 export default routes;

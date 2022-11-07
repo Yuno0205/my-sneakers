@@ -4,10 +4,14 @@ import Details from '../pages/Details';
 import Login from '../pages/Login';
 import Collections from '../pages/Collections';
 import config from '../config';
+import Cart from '../pages/Cart';
+import Wishlist from '../pages/Wishlist';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.products, component: Products },
+    { path: config.routes.cart, component: Cart },
+    { path: config.routes.wishlist, component: Wishlist },
     { path: config.routes.details, component: Details },
     { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.collections, component: Collections, layout: 'sidebar' },

@@ -1,0 +1,108 @@
+.wrapper {
+    padding-top: 40px;
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+.container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Content */
+
+.content {
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 40px;
+}
+
+.bag {
+    flex-basis: 66.6667%;
+    max-width: 66.6667%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.bagContent {
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: rgb(229 229 229) 0px 1px 0px 0px inset; */
+}
+
+.summary {
+    vertical-align: top;
+    margin-bottom: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+}
+
+.cartSummary {
+    padding: 0px 8px;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    width: 100%;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartSummary .title {
+    margin-bottom: 24px;
+}
+
+.summaryInfo {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.total {
+    padding: 16px 0px;
+    border-top: 1px solid rgb(229, 229, 229);
+    border-bottom: 1px solid rgb(229, 229, 229);
+    margin: 0 14px 40px 0px;
+}
+
+.checkOutText {
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    font-weight: 300;
+}
+
+.favourites {
+    min-height: 200px;
+}
+
+.favouriteContent {
+    flex-basis: 50%;
+    max-width: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.viewMore {
+    display: inline-block;
+
+    font-size: 14px;
+    color: rgb(117, 117, 117);
+    box-shadow: rgb(117 117 117) 0px -1px 0px 0px inset;
+}
+
+.viewMore:hover {
+    color: #111;
+}

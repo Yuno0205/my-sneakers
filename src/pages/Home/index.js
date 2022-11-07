@@ -1,9 +1,11 @@
 import ProductItem from '../../components/Products/ProductItem/ProductItem';
 import Products from '../../components/Products';
 import styles from './Home.module.css';
+import Slider from '../../components/Slider';
 function Home() {
     return (
         <div>
+            <Slider />
             <div className={styles.wrapper}>
                 <div className={styles.content}>
                     <div className={styles.title}>

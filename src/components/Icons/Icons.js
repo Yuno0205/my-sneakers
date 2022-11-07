@@ -312,3 +312,22 @@ export const CheckIcon = ({ width = '1.6rem', height = '1.6rem', className }) =>
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
     </svg>
 );
+
+export const TrashBinIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
+    <svg
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        role="img"
+        className={className}
+        width={width}
+        height={height}
+        fill="none"
+    >
+        <path
+            stroke="currentColor"
+            strokeWidth="1.5"
+            d="M14.25 7.5v12m-4.5-12v12M5.25 6v13.5c0 1.24 1.01 2.25 2.25 2.25h9c1.24 0 2.25-1.01 2.25-2.25V5.25h2.75m-2.75 0H21m-12-3h5.25c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5H3"
+        ></path>
+    </svg>
+);

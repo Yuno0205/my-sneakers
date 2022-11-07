@@ -26,7 +26,7 @@
 }
 
 .primary:hover {
-    background-color: #757575;
+    background: rgba(0, 0, 0, 0.75);
 }
 
 .outline {
