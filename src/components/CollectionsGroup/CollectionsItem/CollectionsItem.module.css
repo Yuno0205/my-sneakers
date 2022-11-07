@@ -39,15 +39,16 @@
     padding: 12px 0 2px 0;
     min-height: 185px;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .itemImage:hover {
     cursor: pointer;
 }
 
-.itemImage:hover ~ .info .titleInfo,
-.itemImage:hover ~ .info .status,
-.itemImage:hover ~ .info .colours {
+.body:hover .titleInfo,
+.body:hover .status,
+.body:hover .colours {
     display: none;
 }
 

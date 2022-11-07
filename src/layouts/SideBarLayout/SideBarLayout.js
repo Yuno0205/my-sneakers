@@ -41,12 +41,12 @@ function SideBarLayout({ children }) {
                                     <FilterIcon />
                                 </button>
                                 <div className={styles.sort}>
-                                    <Menu items={Options}>
+                                    <Menu trigger="click" items={Options}>
                                         <div className={styles.dropdown}>
                                             <button className={styles.dropdownBtn}>
                                                 <span>Sort</span>
                                                 <div className={styles.downIcon}>
-                                                    <DownIcon width="2rem" height="2rem" />
+                                                    <DownIcon width="2.4rem" height="2.4rem" />
                                                 </div>
                                             </button>
                                         </div>

@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { CheckIcon, DownIcon, UpIcon } from '../../../components/Icons';
+import ItemContent from './ItemContent';
 import styles from './SideBar.module.css';
 function FilterItem({ title, content }) {
     const [hideFilter, setHideFilter] = useState(false);
 
     const handleFilter = (hideFilter) => {
         hideFilter ? setHideFilter(false) : setHideFilter(true);
-        console.log(hideFilter);
     };
 
     return (
@@ -27,11 +27,7 @@ function FilterItem({ title, content }) {
                     <div className={styles.itemsGroup}>
                         {content.map((item, index) => (
                             <div key={index} className={styles.itemContent}>
-                                <div className={styles.checkbox}>
-                                    <div className={styles.checkboxIcon}>
-                                        <CheckIcon />
-                                    </div>
-                                </div>
+                                <ItemContent />
                                 <span>{item}</span>
                             </div>
                         ))}
