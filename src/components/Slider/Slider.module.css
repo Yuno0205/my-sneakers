@@ -41,7 +41,7 @@
     width: var(--default-layout-width);
     position: relative;
     float: left;
-    left: -1380px;
+    left: calc(var(--default-layout-width) * -1);
     top: 0px;
     display: block;
     opacity: 0;

@@ -2,13 +2,15 @@ import ProductItem from '../../components/Products/ProductItem/ProductItem';
 import Products from '../../components/Products';
 import styles from './Home.module.css';
 import SliderBanner from '../../components/Slider';
-import Banner from '../../components/Banner/Banner';
-
+import Banner from '../../components/Banner';
+import AdService from '../../components/AdService';
 import SaleItem from '../../components/SaleItem';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Advertisement from '../../components/Advertisement/Advertisement';
+import Blogs from '../../components/Blogs/Blogs';
 
 function Home() {
     const settings = {
@@ -118,10 +120,14 @@ function Home() {
         <div>
             <SliderBanner />
             <Banner />
+            <AdService />
             <div className={styles.wrapper}>
                 <div className={styles.content}>
                     <div className={styles.title}>
-                        <h3>Hot Sales</h3>
+                        <h3>Discount Products</h3>
+                        <div className={styles.frag}>
+                            <span>Limited</span>
+                        </div>
                     </div>
 
                     <div className={styles.sliderWrapper}>
@@ -147,6 +153,8 @@ function Home() {
                     </Products>
                 </div>
             </div>
+            <Advertisement />
+            <Blogs />
         </div>
     );
 }

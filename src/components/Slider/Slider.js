@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 function Slider() {
     const [change, setChange] = useState(true);
-    console.log('render');
 
     const handleChange = (change) => {
         change ? setChange(false) : setChange(true);
