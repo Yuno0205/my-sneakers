@@ -6,5 +6,4 @@ function Products({ children }) {
         </div>
     );
 }
-
 export default Products;

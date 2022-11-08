@@ -197,6 +197,8 @@
 
 .boxBtn a:hover {
     color: #fff;
+    cursor: pointer;
+    background-color: #111;
 }
 
 .prev {

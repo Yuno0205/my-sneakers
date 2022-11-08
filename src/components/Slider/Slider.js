@@ -3,14 +3,23 @@ import images from '../../assets/images';
 import Button from '../Button';
 import { NextIcon, PrevIcon } from '../Icons';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 function Slider() {
     const [change, setChange] = useState(true);
+    console.log('render');
 
     const handleChange = (change) => {
         change ? setChange(false) : setChange(true);
     };
+
+    useEffect(() => {
+        const id = setInterval(() => {
+            setChange((prev) => !prev);
+        }, 5000);
+
+        return () => clearInterval(id);
+    }, []);
 
     return (
         <div className={styles.wrapper}>
@@ -61,13 +70,9 @@ function Slider() {
                                 <p>from 100$</p>
                             </div>
                             <div
-                                className={clsx(
-                                    styles.boxBtn,
-                                    {
-                                        [styles.show]: change,
-                                    },
-                                    styles.boxAni,
-                                )}
+                                className={clsx(styles.boxBtn, {
+                                    [styles.show]: change,
+                                })}
                             >
                                 <Link>Shop now</Link>
                             </div>

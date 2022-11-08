@@ -1,14 +1,14 @@
-import Tippy from '@tippyjs/react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import Button from '../../Button';
-import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
-import styles from './ProductItem.module.css';
+import styles from './SaleItem.module.css';
 
-function ProductItem({ coating, sale, soldOut }) {
-    const classes = clsx(styles.item);
+import Tippy from '@tippyjs/react';
+import Button from '../Button';
+import { RegularCart, RegularHeart, RegularSearch } from '../Icons';
+
+function SaleItem({ coating, sale, soldOut, item }) {
     return (
-        <div className={classes}>
+        <div className={styles.item}>
             <div className={styles.itemContent}>
                 <div className={styles.itemImage}>
                     <Link
@@ -48,14 +48,14 @@ function ProductItem({ coating, sale, soldOut }) {
                             [styles.soldOut]: soldOut,
                         })}
                     >
-                        Sold out
+                        {soldOut ? 'Sold out' : ''}
                     </div>
                     <div
                         className={clsx({
                             [styles.labelSale]: sale,
                         })}
                     >
-                        20 %
+                        {sale ? '20 %' : ''}
                     </div>
                 </div>
                 <div className={styles.itemInfo}>
@@ -70,4 +70,4 @@ function ProductItem({ coating, sale, soldOut }) {
     );
 }
 
-export default ProductItem;
+export default SaleItem;
