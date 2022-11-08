@@ -3,7 +3,6 @@ import styles from './Advertisement.module.css';
 import * as image from '../../assets/images';
 
 function Advertisement() {
-    console.log(image);
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>

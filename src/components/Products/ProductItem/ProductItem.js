@@ -5,7 +5,7 @@ import Button from '../../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
 import styles from './ProductItem.module.css';
 
-function ProductItem({ coating, sale, soldOut }) {
+function ProductItem({ coating, sale, soldOut, handleShowModal }) {
     const classes = clsx(styles.item);
     return (
         <div className={classes}>
@@ -38,8 +38,8 @@ function ProductItem({ coating, sale, soldOut }) {
                             </div>
                         </Tippy>
                         <Tippy delay={200} content="More infomation" placement="top">
-                            <div className={styles.icon}>
-                                <Button to="/wishlist" icon={<RegularSearch />} circle product></Button>
+                            <div onClick={() => handleShowModal(true)} className={styles.icon}>
+                                <Button icon={<RegularSearch />} circle product></Button>
                             </div>
                         </Tippy>
                     </div>

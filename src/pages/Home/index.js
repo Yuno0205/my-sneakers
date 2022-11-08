@@ -11,8 +11,16 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Advertisement from '../../components/Advertisement/Advertisement';
 import Blogs from '../../components/Blogs/Blogs';
+import { useState } from 'react';
+import Modal from '../../components/Modal/Modal';
 
 function Home() {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleShowModal = (value) => {
+        setOpenModal(value);
+    };
+
     const settings = {
         dots: true,
         autoplay: true,
@@ -146,7 +154,7 @@ function Home() {
                     </div>
                     <Products>
                         <ProductItem coating sale soldOut />
-                        <ProductItem />
+                        <ProductItem handleShowModal={handleShowModal} />
                         <ProductItem />
                         <ProductItem sale />
                         <ProductItem />
@@ -155,6 +163,7 @@ function Home() {
             </div>
             <Advertisement />
             <Blogs />
+            <Modal handleShowModal={handleShowModal} openModal={openModal} />
         </div>
     );
 }
