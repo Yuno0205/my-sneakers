@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { HeartIcon, TrashBinIcon } from '../../components/Icons/Icons';
+import Button from '../Button/Button';
 import styles from './CartItem.module.css';
-function CartItem() {
+function CartItem({ favorite, openModal, handleShowModal }) {
     return (
         <div className={styles.cartItem}>
             <div className={styles.itemImg}>
@@ -12,9 +13,19 @@ function CartItem() {
                     <div className={styles.basicInfo}>
                         <div className={clsx(styles.infoData, styles.itemName)}>Nike Air Force 1 LV8</div>
                         <div className={styles.infoData}>Men's Shoes</div>
-                        <div className={styles.infoData}>Malachite/Sail/White/Blue Jay</div>
+                        <div
+                            className={clsx(styles.infoData, {
+                                [styles.hide]: favorite,
+                            })}
+                        >
+                            Malachite/Sail/White/Blue Jay
+                        </div>
                         <div className={clsx(styles.infoData, styles.selections)}>
-                            <div className={styles.optionContent}>
+                            <div
+                                className={clsx(styles.optionContent, {
+                                    [styles.hide]: favorite,
+                                })}
+                            >
                                 <span>Size</span>
                                 <div className={styles.sizeOptions}>
                                     <select>
@@ -25,7 +36,11 @@ function CartItem() {
                                     </select>
                                 </div>
                             </div>
-                            <div className={styles.optionContent}>
+                            <div
+                                className={clsx(styles.optionContent, {
+                                    [styles.hide]: favorite,
+                                })}
+                            >
                                 <span>Quantity</span>
                                 <div className={styles.sizeOptions}>
                                     <select>
@@ -36,6 +51,14 @@ function CartItem() {
                                     </select>
                                 </div>
                             </div>
+                            <div
+                                className={clsx(styles.openModal, {
+                                    [styles.show]: favorite,
+                                })}
+                                onClick={() => handleShowModal(true)}
+                            >
+                                Select size
+                            </div>
                         </div>
                     </div>
                     <div className={styles.price}>
@@ -43,11 +66,28 @@ function CartItem() {
                     </div>
                 </div>
                 <div className={styles.actions}>
-                    <div className={clsx(styles.action, styles.heart)}>
+                    <div
+                        className={clsx(styles.action, styles.heart, {
+                            [styles.hide]: favorite,
+                        })}
+                    >
                         <HeartIcon />
                     </div>
-                    <div className={styles.action}>
+                    <div
+                        className={clsx(styles.action, {
+                            [styles.hide]: favorite,
+                        })}
+                    >
                         <TrashBinIcon />
+                    </div>
+                    <div
+                        className={clsx(styles.addBag, {
+                            [styles.show]: favorite,
+                        })}
+                    >
+                        <Button outline>
+                            <p>Add to bag</p>
+                        </Button>
                     </div>
                 </div>
             </div>

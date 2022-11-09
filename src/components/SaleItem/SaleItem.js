@@ -6,7 +6,7 @@ import Tippy from '@tippyjs/react';
 import Button from '../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../Icons';
 
-function SaleItem({ coating, sale, soldOut, item }) {
+function SaleItem({ coating, sale, soldOut, handleShowModal }) {
     return (
         <div className={styles.item}>
             <div className={styles.itemContent}>
@@ -38,8 +38,8 @@ function SaleItem({ coating, sale, soldOut, item }) {
                             </div>
                         </Tippy>
                         <Tippy delay={200} content="More infomation" placement="top">
-                            <div className={styles.icon}>
-                                <Button to="/wishlist" icon={<RegularSearch />} circle product></Button>
+                            <div onClick={() => handleShowModal(true)} className={styles.icon}>
+                                <Button icon={<RegularSearch />} circle product></Button>
                             </div>
                         </Tippy>
                     </div>
@@ -55,7 +55,7 @@ function SaleItem({ coating, sale, soldOut, item }) {
                             [styles.labelSale]: sale,
                         })}
                     >
-                        {sale ? '20 %' : ''}
+                        {sale ? '50 %' : ''}
                     </div>
                 </div>
                 <div className={styles.itemInfo}>

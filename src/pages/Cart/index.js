@@ -4,7 +4,14 @@ import CartItem from '../../components/CartItem/CartItem';
 import { HeartIcon, TrashBinIcon } from '../../components/Icons/Icons';
 import styles from './Cart.module.css';
 import Button from '../../components/Button/Button';
+import Modal from '../../components/Modal';
+import { useState } from 'react';
 function Cart() {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleShowModal = (value) => {
+        setOpenModal(value);
+    };
     return (
         <div>
             <div className={styles.wrapper}>
@@ -45,7 +52,7 @@ function Cart() {
                         <h4 className={styles.title}>Favourites</h4>
                         <div className={styles.content}>
                             <div className={styles.favouriteContent}>
-                                <CartItem />
+                                <CartItem openModal={openModal} handleShowModal={handleShowModal} favorite />
                             </div>
                             <div className={styles.favouriteContent}>
                                 <CartItem />
@@ -57,6 +64,7 @@ function Cart() {
                     </div>
                 </div>
             </div>
+            <Modal openModal={openModal} handleShowModal={handleShowModal} />
         </div>
     );
 }

@@ -14,6 +14,7 @@ const Button = forwardRef(
             circle,
             small = false,
             large = false,
+            grey,
             onClick,
             icon,
             children,
@@ -42,6 +43,7 @@ const Button = forwardRef(
             [styles.small]: small,
             [styles.large]: large,
             [styles.product]: product,
+            [styles.grey]: grey,
         });
         return (
             <Comp ref={ref} className={classes} {...props}>

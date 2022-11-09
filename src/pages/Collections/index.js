@@ -5,7 +5,7 @@ import styles from './Collections.module.css';
 function Collections() {
     return (
         <CollectionsGroup>
-            <CollectionsItem />
+            <CollectionsItem favorite />
             <CollectionsItem />
             <CollectionsItem />
             <CollectionsItem />

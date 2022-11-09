@@ -141,7 +141,7 @@ function Home() {
                     <div className={styles.sliderWrapper}>
                         <Slider {...settings}>
                             {data.map((item, index) => {
-                                return <SaleItem key={index} item={item} />;
+                                return <SaleItem sale key={index} item={item} handleShowModal={handleShowModal} />;
                             })}
                         </Slider>
                     </div>
