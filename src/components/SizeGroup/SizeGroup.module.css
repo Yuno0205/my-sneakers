@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100%;
+}
+
+.content {
+    max-width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.sizeTitle {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 16px;
+    margin-bottom: 12px;
+}

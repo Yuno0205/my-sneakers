@@ -90,7 +90,9 @@ function Header() {
                                 </Link>
                             </li>
                             <li>
-                                <Link className={styles.underline}>Sale</Link>
+                                <Link to="./details" className={styles.underline}>
+                                    Sale
+                                </Link>
                             </li>
                         </ul>
                     </div>

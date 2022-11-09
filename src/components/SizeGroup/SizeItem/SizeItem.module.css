@@ -1,0 +1,23 @@
+.sizeItem {
+    width: 18%;
+    padding: 0 10px;
+    margin: 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(17, 17, 17);
+    min-width: initial;
+    max-width: initial;
+    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.sizeItem:hover {
+    border: 1px solid rgb(17, 17, 17);
+    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
+}

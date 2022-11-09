@@ -1,0 +1,32 @@
+.wrapper {
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: auto;
+    margin-bottom: 20px;
+}
+
+.item {
+    width: 18%;
+    background: #ccc;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 5px auto;
+    float: left;
+}
+
+.item:hover {
+    border: 1px solid #111;
+    cursor: pointer;
+}
+
+.item img {
+    height: 100%;
+    max-height: 125px;
+    object-fit: cover;
+}

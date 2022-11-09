@@ -1,0 +1,81 @@
+.wrapper {
+    width: 100%;
+}
+
+.container {
+    max-width: var(--default-layout-width);
+    display: flex;
+    margin: 100px auto;
+    min-height: 200px;
+}
+
+.content {
+    flex: 1;
+}
+
+.items {
+    width: 100%;
+    padding: 0 40px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    width: 50%;
+    padding: 0 8px;
+    margin-bottom: 12px;
+}
+
+.info {
+    width: 456px;
+}
+
+.infoWrapper {
+    padding: 0 44px;
+    height: 100%;
+}
+
+.infoContent {
+    margin-bottom: 32px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.productInfo h1 {
+    font-size: 2.8rem;
+    font-weight: 200;
+}
+
+.productInfo h2 {
+    font-size: 1.6rem;
+    font-weight: 200;
+}
+
+.productInfo p {
+    padding: 15px 0;
+}
+
+.colorGroup {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.action {
+    margin: 10px 0;
+}
+
+.action span {
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.descriptions {
+    padding: 24px 0;
+}
+
+.descriptions p {
+    line-height: 1.75;
+}
