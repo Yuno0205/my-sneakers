@@ -34,6 +34,10 @@
     border-color: currentColor;
     text-align: center;
 }
+.outline:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
 
 .icon {
     text-align: center;

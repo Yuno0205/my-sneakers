@@ -49,53 +49,7 @@
     flex-direction: column;
     margin-top: 33px;
     justify-content: center;
-}
-
-.signInButton {
-    --height: 50px;
-    background-color: #fff;
-    min-height: var(--height);
-    line-height: var(--height);
-    position: relative;
-    text-align: start;
-    width: 380px;
-}
-
-.signInButton input {
-    width: 100%;
-    font-size: 2.3rem;
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 6px;
-    outline: none;
-    z-index: 2;
-}
-
-.signInButton span {
-    position: absolute;
-    top: 18px;
-    left: 30px;
-    transition: 0.5s;
-    pointer-events: none;
-    text-align: center;
-    line-height: 100%;
-}
-
-.signInButton input:valid ~ span,
-.signInButton input:focus ~ span {
-    transform: translateX(10px) translateY(-24px);
-    font-size: 1.4rem;
-    padding: 0 10px;
-    background: #fff;
-}
-
-.signInButton input:valid,
-.signInButton input:focus {
-    border-color: #111;
-}
-
-.signInButton + .signInButton {
-    margin-top: 20px;
+    padding: 0 50px;
 }
 
 .title {

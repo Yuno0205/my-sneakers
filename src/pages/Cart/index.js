@@ -6,6 +6,7 @@ import styles from './Cart.module.css';
 import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal';
 import { useState } from 'react';
+import CartSumary from '../../components/CartSumary/CartSumary';
 function Cart() {
     const [openModal, setOpenModal] = useState(false);
 
@@ -26,26 +27,7 @@ function Cart() {
                             </div>
                         </div>
                         <div className={styles.summary}>
-                            <div className={styles.cartSummary}>
-                                <h4 className={styles.title}>Summary</h4>
-                                <div className={styles.summaryInfo}>
-                                    <div className={styles.textInfo}>Subtotal :</div>
-                                    <div className={styles.textInfo}>8,000,000đ</div>
-                                </div>
-                                <div className={styles.summaryInfo}>
-                                    <div className={styles.textInfo}>Estimated Delivery & Handling :</div>
-                                    <div className={styles.textInfo}>35,000,000đ</div>
-                                </div>
-                                <div className={clsx(styles.summaryInfo, styles.total)}>
-                                    <div className={styles.textInfo}>Total :</div>
-                                    <div className={styles.textInfo}>
-                                        <h4>15,000,000đ</h4>
-                                    </div>
-                                </div>
-                                <Button primary large>
-                                    <p className={styles.checkOutText}>Continued Checkout</p>
-                                </Button>
-                            </div>
+                            <CartSumary />
                         </div>
                     </div>
                     <div className={styles.favourites}>

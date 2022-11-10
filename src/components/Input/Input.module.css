@@ -1,0 +1,48 @@
+.wrapper {
+    --height: 50px;
+    background-color: transparent;
+    min-height: var(--height);
+    line-height: var(--height);
+    position: relative;
+    text-align: start;
+    width: 100%;
+    color: #ccc;
+}
+
+.wrapper input {
+    width: 100%;
+    font-size: 2.3rem;
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    z-index: 2;
+}
+
+.wrapper span {
+    position: absolute;
+    top: 18px;
+    left: 30px;
+    transition: 0.5s;
+    pointer-events: none;
+    text-align: center;
+    line-height: 100%;
+}
+
+.wrapper input:valid ~ span,
+.wrapper input:focus ~ span {
+    transform: translateX(10px) translateY(-24px);
+    font-size: 1.4rem;
+    padding: 0 10px;
+    background: #fff;
+    color: #111;
+}
+
+.wrapper input:valid,
+.wrapper input:focus {
+    border-color: #111;
+}
+
+.wrapper + .wrapper {
+    margin-top: 20px;
+}
