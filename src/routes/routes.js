@@ -6,6 +6,7 @@ import Collections from '../pages/Collections';
 import config from '../config';
 import Cart from '../pages/Cart';
 import Wishlist from '../pages/Wishlist';
+import Checkout from '../pages/Checkout';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -13,6 +14,7 @@ const publicRoutes = [
     { path: config.routes.cart, component: Cart },
     { path: config.routes.wishlist, component: Wishlist },
     { path: config.routes.details, component: Details },
+    { path: config.routes.checkout, component: Checkout },
     { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.collections, component: Collections, layout: 'sidebar' },
 ];
