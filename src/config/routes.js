@@ -5,7 +5,8 @@ const routes = {
     login: '/login',
     collections: '/collections',
     cart: '/cart',
-    wishlist: 'wishlist',
-    checkout: 'checkout',
+    wishlist: '/wishlist',
+    checkout: '/checkout',
+    loading: '/loading',
 };
 export default routes;

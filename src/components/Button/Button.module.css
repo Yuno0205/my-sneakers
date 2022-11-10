@@ -37,6 +37,7 @@
 .outline:hover {
     background-color: var(--primary);
     color: #fff;
+    border-color: currentColor;
 }
 
 .icon {

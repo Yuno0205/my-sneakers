@@ -6,7 +6,7 @@ function Blogs() {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.title}>
-                        <h3> New</h3>
+                        <h3> News</h3>
                     </div>
                     <div className={styles.items}>
                         <div className={styles.item}>
