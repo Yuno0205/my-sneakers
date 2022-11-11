@@ -8,13 +8,34 @@
     flex-direction: column;
 }
 
+.label {
+    font-size: 2.5rem;
+    font-weight: 200;
+    padding-bottom: 25px;
+}
+
 .container .title {
+    margin-bottom: 24px;
+}
+
+.cartSummary {
+    padding: 0px 8px;
+    margin-top: 0px;
+    margin-bottom: 24px;
+    width: 100%;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartSummary .title {
     margin-bottom: 24px;
 }
 
 .summaryInfo {
     margin-bottom: 8px;
     display: flex;
+
     justify-content: space-between;
 }
 
@@ -22,7 +43,7 @@
     padding: 16px 0px;
     border-top: 1px solid rgb(229, 229, 229);
     border-bottom: 1px solid rgb(229, 229, 229);
-    margin: 0 14px 40px 0px;
+    margin: 0 14px 30px 0px;
 }
 
 /* .checkOutText {

@@ -28,6 +28,11 @@ function Cart() {
                         </div>
                         <div className={styles.summary}>
                             <CartSumary />
+                            <Link to="/checkout">
+                                <Button primary large>
+                                    <span>Check out</span>
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                     <div className={styles.favourites}>
@@ -37,7 +42,7 @@ function Cart() {
                                 <CartItem openModal={openModal} handleShowModal={handleShowModal} favorite />
                             </div>
                             <div className={styles.favouriteContent}>
-                                <CartItem />
+                                <CartItem openModal={openModal} handleShowModal={handleShowModal} favorite />
                             </div>
                         </div>
                         <Link className={styles.viewMore} to="/">

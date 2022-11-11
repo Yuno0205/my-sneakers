@@ -1,11 +1,13 @@
 .wrapper {
-    width: 100%;
-    position: relative;
-}
-
-body {
-    background-color: #70e1f5;
+    background-image: linear-gradient(to right, #36d1dc, #5b86e5);
     overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.body {
     position: absolute;
     top: 50%;
     margin-left: -50px;
@@ -28,10 +30,9 @@ body {
     font-weight: 300;
     font-size: 1.8rem;
     text-transform: uppercase;
-    left: 50%;
-    top: 50%;
-    margin-top: 30px;
-    margin-left: 20px;
+    left: 48%;
+    top: 60%;
+
     color: #000;
 }
 

@@ -3,6 +3,8 @@ import styles from './Checkout.module.css';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import CartSumary from '../../components/CartSumary/CartSumary';
+import CheckOutItem from './CheckOutItem/CheckOutItem';
+import { Link } from 'react-router-dom';
 function Checkout() {
     return (
         <div className={styles.wrapper}>
@@ -39,6 +41,13 @@ function Checkout() {
                                 </div>
                                 <div className={styles.info}>
                                     <div className={styles.inputItem}>
+                                        <Link to="/cart">
+                                            <div className={styles.checkout}>
+                                                <span>Back to your bag</span>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                    <div className={styles.inputItem}>
                                         <div className={styles.checkout}>
                                             <span>Check out</span>
                                         </div>
@@ -48,8 +57,11 @@ function Checkout() {
                         </div>
                     </div>
                     <div className={styles.summary}>
-                        <CartSumary />
-                        <div>Product info</div>
+                        <CartSumary title="In your bag" />
+
+                        <div>Product's infomation :</div>
+                        <CheckOutItem />
+                        <CheckOutItem />
                     </div>
                 </div>
             </div>

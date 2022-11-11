@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import styles from './CartSumary.module.css';
-function CartSumary() {
+function CartSumary({ title = 'Summary' }) {
     return (
         <div className={styles.container}>
-            <h4 className={styles.label}>Summary</h4>
+            <h4 className={styles.label}>{title}</h4>
             <div className={styles.summaryInfo}>
                 <div className={styles.text}>Subtotal :</div>
                 <div className={styles.text}>8,000,000đ</div>

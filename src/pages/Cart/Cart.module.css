@@ -48,31 +48,10 @@
     flex-grow: 1;
 }
 
-.cartSummary {
-    padding: 0px 8px;
-    margin-top: 0px;
-    margin-bottom: 24px;
-    width: 100%;
-    vertical-align: top;
-    display: flex;
-    flex-direction: column;
-}
-
-.cartSummary .title {
-    margin-bottom: 24px;
-}
-
-.summaryInfo {
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.total {
-    padding: 16px 0px;
-    border-top: 1px solid rgb(229, 229, 229);
-    border-bottom: 1px solid rgb(229, 229, 229);
-    margin: 0 14px 40px 0px;
+.summary span {
+    font-size: 1.8rem;
+    font-weight: 100;
+    color: #fff;
 }
 
 .checkOutText {

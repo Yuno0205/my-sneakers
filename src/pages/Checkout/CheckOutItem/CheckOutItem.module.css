@@ -1,0 +1,30 @@
+.wrapper {
+    width: 100%;
+}
+
+.content {
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    padding: 10px 0;
+}
+
+.image {
+    width: 60px;
+}
+
+.info {
+    flex: 1;
+    padding: 0px 20px;
+}
+
+.details {
+    padding: 10px 0;
+}
+
+.details span {
+    display: block;
+    width: 100%;
+    font-size: 1.6rem;
+    color: #757575;
+}
