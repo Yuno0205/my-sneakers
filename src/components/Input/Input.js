@@ -6,7 +6,11 @@ function Input({ content = '', ...props }) {
 
     return (
         <div className={styles.wrapper}>
-            <input {...field} {...props} className={meta.touched && meta.error ? styles.inputError : ''}></input>
+            <input
+                {...field}
+                {...props}
+                className={meta.touched && meta.error ? styles.inputError : styles.normal}
+            ></input>
 
             <span>{content} </span>
             {meta.touched && meta.error && <div className={styles.error}>{meta.error}</div>}

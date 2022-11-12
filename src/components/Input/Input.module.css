@@ -18,7 +18,27 @@
     border-radius: 6px;
     outline: none;
     z-index: 2;
+    transition: 0.5s;
     -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.wrapper input:not([value='']) ~ span {
+    transform: translateX(10px) translateY(-24px);
+    font-size: 1.4rem;
+    padding: 0 10px;
+    background: #fff;
+    color: #4bb543;
+}
+
+.wrapper input:not([value='']) {
+    border-color: #4bb543;
+}
+
+.wrapper input[value='']:focus {
+    border-color: #ccc !important;
+}
+.wrapper input[value='']:focus ~ span {
+    color: #ccc !important;
 }
 
 .wrapper span {
@@ -42,10 +62,6 @@
     border-color: #fc8181 !important;
 }
 
-.inputError ~ span {
-    color: #fc8181 !important;
-}
-
 .wrapper input:focus ~ span {
     transform: translateX(10px) translateY(-24px);
     font-size: 1.4rem;
@@ -56,6 +72,10 @@
 
 .wrapper input:focus {
     border-color: #111;
+}
+
+.inputError ~ span {
+    color: #fc8181 !important;
 }
 
 .wrapper + .wrapper {
