@@ -7,6 +7,7 @@
     text-align: start;
     width: 100%;
     color: #ccc;
+    padding: 0 40px;
 }
 
 .wrapper input {
@@ -17,19 +18,34 @@
     border-radius: 6px;
     outline: none;
     z-index: 2;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
 .wrapper span {
     position: absolute;
     top: 18px;
-    left: 30px;
+    left: 60px;
     transition: 0.5s;
     pointer-events: none;
     text-align: center;
     line-height: 100%;
 }
 
-.wrapper input:valid ~ span,
+.error {
+    color: #fc8181;
+    line-height: 100%;
+    text-align: left;
+    margin-top: 0.25rem;
+}
+
+.inputError {
+    border-color: #fc8181 !important;
+}
+
+.inputError ~ span {
+    color: #fc8181 !important;
+}
+
 .wrapper input:focus ~ span {
     transform: translateX(10px) translateY(-24px);
     font-size: 1.4rem;
@@ -38,11 +54,10 @@
     color: #111;
 }
 
-.wrapper input:valid,
 .wrapper input:focus {
     border-color: #111;
 }
 
 .wrapper + .wrapper {
-    margin-top: 20px;
+    margin-top: 15px;
 }

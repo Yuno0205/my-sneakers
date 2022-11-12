@@ -1,0 +1,15 @@
+.wrapper {
+    width: 100%;
+}
+
+.container {
+    width: var(--default-layout-width);
+    margin: 0 auto;
+    min-height: 100px;
+    background-color: aquamarine;
+    text-align: center;
+}
+
+.title {
+    margin: 0 auto;
+}

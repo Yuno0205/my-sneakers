@@ -1,11 +1,15 @@
+import { useField } from 'formik';
 import styles from './Input.module.css';
 
-function Input({ value = '', type = 'text' }) {
+function Input({ content = '', ...props }) {
+    const [field, meta] = useField(props);
+
     return (
         <div className={styles.wrapper}>
-            <input type={type} required></input>
+            <input {...field} {...props} className={meta.touched && meta.error ? styles.inputError : ''}></input>
 
-            <span>{value} </span>
+            <span>{content} </span>
+            {meta.touched && meta.error && <div className={styles.error}>{meta.error}</div>}
         </div>
     );
 }

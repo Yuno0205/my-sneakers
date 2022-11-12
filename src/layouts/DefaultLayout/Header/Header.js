@@ -18,10 +18,10 @@ import config from '../../../config';
 console.log(styles);
 
 const MenuItems = [
-    { icon: <UserIcon />, title: 'My profile' },
-    { icon: <OrdersIcon />, title: 'My Orders' },
-    { icon: <SettingIcon />, title: 'Setting' },
-    { icon: <LogoutIcon />, title: 'Log out' },
+    { icon: <UserIcon />, title: 'My profile', to: '/login' },
+    { icon: <OrdersIcon />, title: 'My Orders', to: '/login' },
+    { icon: <SettingIcon />, title: 'Setting', to: '/login' },
+    { icon: <LogoutIcon />, title: 'Log out', to: '/login' },
 ];
 
 function Header() {
@@ -138,7 +138,7 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button outline>Log in</Button>{' '}
+                            <Button outline>Log in</Button>
                         </>
                     )}
                 </div>
