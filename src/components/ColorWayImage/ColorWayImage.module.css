@@ -3,30 +3,44 @@
 }
 
 .content {
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+
     padding: auto;
     margin-bottom: 20px;
 }
 
+.content.small {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    display: block;
+    max-height: 45px;
+}
+
 .item {
-    width: 18%;
-    background: #ccc;
+    width: 20%;
     border: 1px solid transparent;
     border-radius: 4px;
     overflow: hidden;
-    margin: 5px auto;
+    padding: 1px;
     float: left;
 }
 
+.item.small {
+    max-height: 45px;
+    object-fit: cover;
+}
+
 .item:hover {
-    border: 1px solid #111;
+    border-color: #111;
     cursor: pointer;
 }
 
 .item img {
     height: 100%;
+    width: auto;
     max-height: 125px;
     object-fit: cover;
+    border-radius: 4px;
 }

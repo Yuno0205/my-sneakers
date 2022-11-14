@@ -2,7 +2,8 @@ import styles from './Details.module.css';
 import Button from '../../components/Button';
 import SizeGroup from '../../components/SizeGroup/SizeGroup';
 import SizeItem from '../../components/SizeGroup/SizeItem/SizeItem';
-import ProductsCarolsel from '../../components/ProductsCarolsel/ProductCarolsel';
+
+import ColorWayImage from '../../components/ColorWayImage/ColorWayImage';
 function Details() {
     return (
         <div className={styles.wrapper}>
@@ -28,7 +29,7 @@ function Details() {
                                 <h2>Men's Shoes</h2>
                                 <p>160$</p>
                             </div>
-                            <ProductsCarolsel></ProductsCarolsel>
+                            <ColorWayImage />
                             <SizeGroup>
                                 <SizeItem>38</SizeItem>
                                 <SizeItem>39</SizeItem>

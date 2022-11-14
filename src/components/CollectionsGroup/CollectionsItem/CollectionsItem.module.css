@@ -42,6 +42,28 @@
     cursor: pointer;
 }
 
+.colorWay {
+    width: 70%;
+    max-height: 45px;
+    position: relative;
+    display: none;
+}
+
+.remain {
+    width: 41px;
+    height: 41px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #ccc;
+    position: absolute;
+    right: -43px;
+    top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: text;
+}
+
 .itemImage:hover {
     cursor: pointer;
 }
@@ -50,6 +72,10 @@
 .body:hover .status,
 .body:hover .colours {
     display: none;
+}
+
+.body:hover .colorWay {
+    display: block;
 }
 
 .hide {
