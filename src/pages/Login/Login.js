@@ -53,7 +53,7 @@ function Login() {
                                 <div className={styles.resgister}>
                                     <p>
                                         Don't have account?
-                                        <Link>
+                                        <Link to="/resgister">
                                             <span> Request now ...</span>
                                         </Link>
                                     </p>

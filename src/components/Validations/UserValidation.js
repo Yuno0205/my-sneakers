@@ -5,6 +5,8 @@ import * as yup from 'yup';
 
 export const basicSchema = yup.object().shape({
     email: yup.string().email('Please enter a valid email').required('Email is required'),
+    firstName: yup.string().min(2).required('Your first name is required !'),
+    lastName: yup.string().min(2).required('Your last name is required !'),
     password: yup.string().min(6).required('Password is required'),
     confirmPassword: yup
         .string()
