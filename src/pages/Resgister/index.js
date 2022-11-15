@@ -33,9 +33,10 @@ function Resgister() {
                                 </div>
                                 <Input content="Email" name="email" type="text" />
                                 <Input content="Password" name="password" type="password" />
+                                <Input content="Confirm password" name="confirmPassword" type="password" />
 
                                 <button disabled={isSubmitting} type="submit" className={styles.loginBtn}>
-                                    <span>Sign in</span>
+                                    <span>Sign up</span>
                                 </button>
 
                                 <div className={styles.resgister}>

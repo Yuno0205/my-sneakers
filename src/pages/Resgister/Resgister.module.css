@@ -44,3 +44,33 @@
 .form {
     margin-top: 20px;
 }
+
+.loginBtn {
+    width: 528px;
+    margin: 25px auto 0px;
+    background-color: #111;
+    height: 60px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.loginBtn:hover {
+    background: #757575;
+}
+
+.loginBtn span {
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.resgister {
+    margin-top: 20px;
+}
+
+.resgister span {
+    font-weight: 700;
+}
