@@ -31,18 +31,38 @@ function Header() {
     const [displayCoating, setDisplayCoating] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const [hideHeader, setHideHeader] = useState(false);
+    // const [hideHeader, setHideHeader] = useState(false);
 
-    // useEffect(() => {
-    //     window.addEventListener('scroll', function () {
-    //         if (window.scrollY > 100) {
-    //             setHideHeader(true);
-    //             console.log('hide');
-    //         }
-    //     });
-    // }, []);
+    const [user, setUser] = useState(null);
 
-    const currentUser = true;
+    useEffect(() => {
+        const getUser = () => {
+            fetch('http://localhost:5000/auth/login/success', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': true,
+                },
+            })
+                .then((response) => {
+                    if (response.status === 200) return response.json();
+
+                    throw new Error('authentication has been failed!');
+                })
+                .then((resObject) => {
+                    setUser(resObject.user);
+                    console.log(user);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        };
+        getUser();
+    }, []);
+
+    // const currentUser = true;
 
     const handleShowResults = (childData) => {
         setShowResults(childData);
@@ -114,7 +134,7 @@ function Header() {
                         [styles.hideActions]: showResults,
                     })}
                 >
-                    {currentUser ? (
+                    {user ? (
                         <>
                             <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
                                 <div>
@@ -129,16 +149,14 @@ function Header() {
                                 </div>
                             </Tippy>
                             <Menu items={MenuItems}>
-                                <img
-                                    className={styles.userAvatar}
-                                    src="https://api.duniagames.co.id/api/content/upload/file/473771541646215343.jpg"
-                                    alt="avatar"
-                                ></img>
+                                <img className={styles.userAvatar} src={user.photos[0].value} alt="avatar"></img>
                             </Menu>
                         </>
                     ) : (
                         <>
-                            <Button outline>Log in</Button>
+                            <Button outline>
+                                <Link to="/login">Log in</Link>
+                            </Button>
                         </>
                     )}
                 </div>

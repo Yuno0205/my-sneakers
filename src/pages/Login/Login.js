@@ -13,6 +13,17 @@ const onSubmit = async (values, actions) => {
 };
 
 function Login() {
+    const google = () => {
+        window.open('http://localhost:5000/auth/google', '_self');
+    };
+
+    const github = () => {
+        window.open('http://localhost:5000/auth/github', '_self');
+    };
+
+    const facebook = () => {
+        window.open('http://localhost:5000/auth/facebook', '_self');
+    };
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -39,7 +50,7 @@ function Login() {
                                     <span>-- Or Login With --</span>
                                 </div>
 
-                                <div className={styles.social}>
+                                <div onClick={google} className={styles.social}>
                                     <div className={styles.socialGroup}>
                                         <div className={styles.socialItem}>
                                             <div className={styles.logo}>
