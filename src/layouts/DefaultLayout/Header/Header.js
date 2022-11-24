@@ -17,23 +17,27 @@ import config from '../../../config';
 
 console.log(styles);
 
+const logout = () => {
+    window.open('http://localhost:5000/auth/logout', '_self');
+};
+
 const MenuItems = [
     { icon: <UserIcon />, title: 'My profile', to: '/login' },
     { icon: <OrdersIcon />, title: 'My Orders', to: '/login' },
     { icon: <SettingIcon />, title: 'Setting', to: '/login' },
-    { icon: <LogoutIcon />, title: 'Log out', to: '/login' },
+    { icon: <LogoutIcon />, title: 'Log out', onClick: logout },
 ];
 
-function Header() {
+const Header = () => {
     const [showResults, setShowResults] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [displayCoating, setDisplayCoating] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    // const [hideHeader, setHideHeader] = useState(false);
-
     const [user, setUser] = useState(null);
+
+    // const [hideHeader, setHideHeader] = useState(false);
 
     useEffect(() => {
         const getUser = () => {
@@ -48,12 +52,10 @@ function Header() {
             })
                 .then((response) => {
                     if (response.status === 200) return response.json();
-
                     throw new Error('authentication has been failed!');
                 })
                 .then((resObject) => {
                     setUser(resObject.user);
-                    console.log(user);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -61,8 +63,6 @@ function Header() {
         };
         getUser();
     }, []);
-
-    // const currentUser = true;
 
     const handleShowResults = (childData) => {
         setShowResults(childData);
@@ -194,6 +194,6 @@ function Header() {
             )}
         </header>
     );
-}
+};
 
 export default Header;

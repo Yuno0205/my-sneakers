@@ -3,7 +3,7 @@ import Footer from './Footer';
 
 import styles from './DefaultLayout.module.css';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function DefaultLayout({ children }) {
     return (
