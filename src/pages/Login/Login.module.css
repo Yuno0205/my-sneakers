@@ -36,16 +36,11 @@
 .header {
     overflow: hidden;
     padding: 0 100px;
-    margin-bottom: 20px;
 }
 
 .header h1 {
     font-size: 2.5rem;
     padding-bottom: 10px;
-}
-
-.header span {
-    margin-bottom: 20px;
 }
 
 .body {
@@ -90,18 +85,25 @@
 }
 
 .otherSignIn {
+    padding-top: 10px;
+    margin-top: 20px;
+    font-size: 2.2rem;
+}
+
+.auth {
     padding: 20px 0;
 }
 
 .social {
     width: 100%;
-    min-height: 100px;
+
     padding: 0 40px;
 }
 
 .socialGroup {
     display: flex;
-    min-height: 100px;
+    min-height: 60px;
+    margin: 20px auto;
 }
 
 .socialItem {
@@ -121,7 +123,20 @@
 
 .socialItem:hover {
     color: #fff;
-    background-image: linear-gradient(to right, #00d2ff, #3a7bd5);
+    /* background-image: linear-gradient(to right, #00d2ff, #3a7bd5); */
+    background-color: #4285f4;
+    border: none;
+}
+
+.socialItem.git:hover {
+    color: #fff;
+    background-color: #333;
+    border: none;
+}
+
+.socialItem.fb:hover {
+    color: #fff;
+    background-color: #4267b2;
     border: none;
 }
 
@@ -136,6 +151,10 @@
 .socialItem:hover .logo {
     filter: none;
     cursor: pointer;
+}
+
+.resgister {
+    padding: 10px 0;
 }
 
 .resgister span {

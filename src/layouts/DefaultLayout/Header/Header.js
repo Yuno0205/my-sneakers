@@ -149,7 +149,7 @@ const Header = () => {
                                 </div>
                             </Tippy>
                             <Menu items={MenuItems}>
-                                <img className={styles.userAvatar} src={user.photos[0].value} alt="avatar"></img>
+                                <img className={styles.userAvatar} src={user.image} alt="avatar"></img>
                             </Menu>
                         </>
                     ) : (
