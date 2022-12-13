@@ -5,13 +5,6 @@ import styles from './Collections.module.css';
 function Collections() {
     return (
         <CollectionsGroup>
-            <CollectionsItem favorite />
-            <CollectionsItem />
-            <CollectionsItem />
-            <CollectionsItem />
-            <CollectionsItem />
-            <CollectionsItem />
-            <CollectionsItem />
             <CollectionsItem />
         </CollectionsGroup>
     );

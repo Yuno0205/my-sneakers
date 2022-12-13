@@ -14,6 +14,8 @@ import Menu from '../../../components/Popper/Menu';
 import Search from '../../../components/Search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUser } from '../../../redux/userSlice';
 
 console.log(styles);
 
@@ -35,7 +37,9 @@ const Header = () => {
     const [displayCoating, setDisplayCoating] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
 
     // const [hideHeader, setHideHeader] = useState(false);
 
@@ -55,7 +59,7 @@ const Header = () => {
                     throw new Error('authentication has been failed!');
                 })
                 .then((resObject) => {
-                    setUser(resObject.user);
+                    dispatch(getCurrentUser(resObject.user));
                 })
                 .catch((err) => {
                     console.log(err);

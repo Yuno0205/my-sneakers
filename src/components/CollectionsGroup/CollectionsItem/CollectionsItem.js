@@ -1,6 +1,22 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProducts } from '../../../redux/apiCall';
+import { getProductFailure, getProductStart, getProductSuccess } from '../../../redux/productSlice';
 import ColorWayImage from '../../ColorWayImage/ColorWayImage';
 import styles from './CollectionsItem.module.css';
+
 function CollectionsItem() {
+    const dispatch = useDispatch();
+    // const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        getProducts(dispatch);
+    }, [dispatch]);
+
+    const listProduct = useSelector((state) => state.product);
+    console.log('data :' + listProduct);
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.body}>

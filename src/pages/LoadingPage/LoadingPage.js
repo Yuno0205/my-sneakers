@@ -1,5 +1,8 @@
 import styles from './LoadingPage.module.css';
 function LoadingPage() {
+    setTimeout(function () {
+        window.location.href = 'http://localhost:3000';
+    }, 2000);
     return (
         <div className={styles.wrapper}>
             <div className={styles.body}>
