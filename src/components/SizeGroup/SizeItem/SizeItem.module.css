@@ -21,3 +21,15 @@
     border: 1px solid rgb(17, 17, 17);
     box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
 }
+
+.outOfStock {
+    cursor: default;
+    color: rgb(221, 221, 221);
+    background: rgb(247, 247, 247);
+    border: 1px solid rgb(247, 247, 247);
+}
+
+.outOfStock:hover {
+    border-color: rgb(221, 221, 221);
+    box-shadow: none;
+}

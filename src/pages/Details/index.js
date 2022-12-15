@@ -2,40 +2,58 @@ import styles from './Details.module.css';
 import Button from '../../components/Button';
 import SizeGroup from '../../components/SizeGroup/SizeGroup';
 import SizeItem from '../../components/SizeGroup/SizeItem/SizeItem';
-
 import ColorWayImage from '../../components/ColorWayImage/ColorWayImage';
-function Details() {
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import Image from '../../components/Image/Image';
+
+const Details = () => {
+    const location = useLocation();
+    const id = location.pathname.split('/')[2];
+
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        const getSingleProduct = async () => {
+            try {
+                const res = await axios.get('http://localhost:5000/api/products/find/' + id);
+
+                setData(res.data);
+            } catch {
+                console.log('err when get single product');
+            }
+        };
+        getSingleProduct();
+    }, [id]);
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.items}>
-                        <div className={styles.item}>
-                            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0448e779-4c0c-4627-84f3-08c7eb3e7978/air-max-270-mens-shoe-KkLcGR.png" />
-                        </div>
-                        <div className={styles.item}>
-                            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0448e779-4c0c-4627-84f3-08c7eb3e7978/air-max-270-mens-shoe-KkLcGR.png" />
-                        </div>
-                        <div className={styles.item}>
-                            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/0448e779-4c0c-4627-84f3-08c7eb3e7978/air-max-270-mens-shoe-KkLcGR.png" />
-                        </div>
+                        {data.imageMain?.map((images, index) => (
+                            <div key={index} className={styles.item}>
+                                <Image alt="" src={images} />
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <div className={styles.info}>
                     <div className={styles.infoWrapper}>
                         <div className={styles.infoContent}>
                             <div className={styles.productInfo}>
-                                <h1>Nike Air Force 1</h1>
+                                <h1>{data.title}</h1>
                                 <h2>Men's Shoes</h2>
-                                <p>160$</p>
+                                {data.fullPrice ? <p>{data.fullPrice}</p> : <p>{data.currentPrice}</p>}
                             </div>
                             <ColorWayImage />
                             <SizeGroup>
-                                <SizeItem>38</SizeItem>
-                                <SizeItem>39</SizeItem>
-                                <SizeItem>40</SizeItem>
-                                <SizeItem>41</SizeItem>
-                                <SizeItem>42</SizeItem>
+                                {data.skuData?.map((data) => (
+                                    <SizeItem key={data._id} inStock={data.inStock}>
+                                        {data.size}
+                                    </SizeItem>
+                                ))}
                             </SizeGroup>
                             <div className={styles.descriptions}>
                                 <p>
@@ -44,6 +62,7 @@ function Details() {
                                     showcases one of our greatest innovations yet with its large Air window. Deep red
                                     accents pop against the lightweight black knit upper for a look that's striking and
                                     versatile.
+                                    {data.description}
                                 </p>
                             </div>
                             <div className={styles.action}>
@@ -62,6 +81,6 @@ function Details() {
             </div>
         </div>
     );
-}
+};
 
 export default Details;
