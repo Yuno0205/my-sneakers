@@ -1,18 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
     name: 'user',
     initialState: {
-        displayName: 'Customer',
-        image: 'https://cdn-icons-png.flaticon.com/512/2948/2948035.png',
+        currentUser: null,
+        isFetching: false,
+        error: false,
     },
     reducers: {
-        getCurrentUser: (state, action) => {
-            state.displayName = action.payload.displayName;
-            state.image = action.payload.image;
+        loginStart: (state) => {
+            state.isFetching = true;
+        },
+        loginSuccess: (state, action) => {
+            state.isFetching = false;
+            state.currentUser = action.payload;
+        },
+        loginFailure: (state) => {
+            state.isFetching = false;
+            state.error = true;
         },
     },
 });
 
-export const { getCurrentUser } = userSlice.actions;
+export const { loginStart, loginSuccess, loginFailure } = userSlice.actions;
 export default userSlice.reducer;

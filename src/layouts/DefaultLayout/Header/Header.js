@@ -15,7 +15,7 @@ import Search from '../../../components/Search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentUser } from '../../../redux/userSlice';
+import { loginFailure, loginStart, loginSuccess } from '../../../redux/userSlice';
 
 console.log(styles);
 
@@ -37,14 +37,14 @@ const Header = () => {
     const [displayCoating, setDisplayCoating] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    // const [user, setUser] = useState(null);
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
+    const user = useSelector((state) => state.user.currentUser);
 
     // const [hideHeader, setHideHeader] = useState(false);
 
     useEffect(() => {
         const getUser = () => {
+            dispatch(loginStart());
             fetch('http://localhost:5000/auth/login/success', {
                 method: 'GET',
                 credentials: 'include',
@@ -56,13 +56,14 @@ const Header = () => {
             })
                 .then((response) => {
                     if (response.status === 200) return response.json();
+                    dispatch(loginFailure());
                     throw new Error('authentication has been failed!');
                 })
                 .then((resObject) => {
-                    dispatch(getCurrentUser(resObject.user));
+                    dispatch(loginSuccess(resObject.user));
                 })
                 .catch((err) => {
-                    console.log(err);
+                    dispatch(loginFailure());
                 });
         };
         getUser();
