@@ -86,6 +86,7 @@
     line-height: 1.35em;
     padding-bottom: 1rem;
     padding-right: 1.1em;
+    cursor: pointer;
 }
 
 /* Filter css */
@@ -305,4 +306,13 @@
     padding: 0 0.5em;
     white-space: nowrap;
     display: block;
+}
+
+/* ItemContent css */
+
+.contentItem {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -7,8 +7,12 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Image from '../../components/Image/Image';
+import { useDispatch, useSelector } from 'react-redux';
+import { addProduct } from '../../redux/cartSlice';
 
 const Details = () => {
+    const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(1);
     const location = useLocation();
     const id = location.pathname.split('/')[2];
 
@@ -26,6 +30,17 @@ const Details = () => {
         };
         getSingleProduct();
     }, [id]);
+
+    const handleAddToCart = () => {
+        dispatch(
+            addProduct({
+                ...data,
+                quantity,
+                color: data.color,
+                price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+            }),
+        );
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -66,7 +81,7 @@ const Details = () => {
                                 </p>
                             </div>
                             <div className={styles.action}>
-                                <Button primary large>
+                                <Button onClick={handleAddToCart} primary large>
                                     <span>Add to bag</span>
                                 </Button>
                             </div>

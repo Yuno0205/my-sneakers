@@ -27,8 +27,7 @@ function FilterItem({ title, content }) {
                     <div className={styles.itemsGroup}>
                         {content.map((item, index) => (
                             <div key={index} className={styles.itemContent}>
-                                <ItemContent />
-                                <span>{item}</span>
+                                <ItemContent title={title} item={item} />
                             </div>
                         ))}
                     </div>

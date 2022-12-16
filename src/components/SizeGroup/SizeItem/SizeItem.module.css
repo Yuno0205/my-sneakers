@@ -1,5 +1,5 @@
 .sizeItem {
-    width: 18%;
+    /* width: 18%;
     padding: 0 10px;
     margin: 10px;
     background-color: rgb(255, 255, 255);
@@ -14,16 +14,49 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    outline: none; */
+    position: relative;
+    width: 18%;
+    margin: 10px;
+}
+
+.sizeItem input {
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+.sizeContent {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    color: rgb(17, 17, 17);
+    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
+    height: 48px;
+    border-radius: 4px;
     outline: none;
 }
 
-.sizeItem:hover {
-    border: 1px solid rgb(17, 17, 17);
-    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
+.sizeContent:hover {
+    box-shadow: rgb(17 17 17) 0px 0px 0px 1px inset;
+    cursor: pointer;
 }
 
+.sizeItem input[type='radio']:checked + label {
+    box-shadow: rgb(17 17 17) 0px 0px 0px 1px inset;
+}
+
+/* .sizeItem:hover {
+    border: 1px solid rgb(17, 17, 17);
+    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
+} */
+
 .outOfStock {
-    cursor: default;
+    cursor: default !important;
     color: rgb(221, 221, 221);
     background: rgb(247, 247, 247);
     border: 1px solid rgb(247, 247, 247);
@@ -32,4 +65,9 @@
 .outOfStock:hover {
     border-color: rgb(221, 221, 221);
     box-shadow: none;
+}
+
+.selected {
+    border: 1px solid rgb(17, 17, 17);
+    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
 }

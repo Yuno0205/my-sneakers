@@ -39,6 +39,7 @@ const Header = () => {
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.currentUser);
+    const cart = useSelector((state) => state.cart);
 
     // const [hideHeader, setHideHeader] = useState(false);
 
@@ -150,7 +151,7 @@ const Header = () => {
                             <Tippy interactive delay={[0, 50]} content="Your cart" placement="bottom">
                                 <div className={styles.place}>
                                     <Button to="/cart" icon={<CartIcon />} circle></Button>
-                                    <span className={clsx(styles.badge)}>12</span>
+                                    <span className={clsx(styles.badge)}>{cart.quantity}</span>
                                 </div>
                             </Tippy>
                             <Menu items={MenuItems}>
