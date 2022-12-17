@@ -9,10 +9,14 @@ import axios from 'axios';
 import Image from '../../components/Image/Image';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../redux/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Details = () => {
+    const notifySizeValidate = () => toast.error('Opps ! You must choose at least one size !');
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
+    const [size, setSize] = useState();
     const location = useLocation();
     const id = location.pathname.split('/')[2];
 
@@ -32,14 +36,21 @@ const Details = () => {
     }, [id]);
 
     const handleAddToCart = () => {
-        dispatch(
-            addProduct({
-                ...data,
-                quantity,
-                color: data.color,
-                price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
-            }),
-        );
+        size
+            ? dispatch(
+                  addProduct({
+                      ...data,
+                      quantity,
+                      color: data.color,
+                      size: size,
+                      price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+                  }),
+              )
+            : notifySizeValidate();
+    };
+
+    const handleSetSize = (value) => {
+        setSize(value);
     };
 
     return (
@@ -65,7 +76,7 @@ const Details = () => {
                             <ColorWayImage />
                             <SizeGroup>
                                 {data.skuData?.map((data) => (
-                                    <SizeItem key={data._id} inStock={data.inStock}>
+                                    <SizeItem handleSetSize={handleSetSize} key={data._id} inStock={data.inStock}>
                                         {data.size}
                                     </SizeItem>
                                 ))}
@@ -84,6 +95,7 @@ const Details = () => {
                                 <Button onClick={handleAddToCart} primary large>
                                     <span>Add to bag</span>
                                 </Button>
+                                <ToastContainer />
                             </div>
                             <div className={styles.action}>
                                 <Button primary large>
