@@ -22,8 +22,6 @@ function Cart() {
                             <h4 className={styles.title}>Bag</h4>
                             <div className={styles.bagContent}>
                                 <CartItem />
-                                <CartItem />
-                                <CartItem />
                             </div>
                         </div>
                         <div className={styles.summary}>

@@ -17,7 +17,11 @@ function SizeItem({ children, inStock, handleSetSize }) {
     };
 
     return (
-        <div className={clsx(styles.sizeItem)}>
+        <div
+            className={clsx(styles.sizeItem, {
+                [styles.defaultPointer]: !inStock,
+            })}
+        >
             <input name="size" value={children} type="radio" onClick={handleChecked} onChange={handleChangeSize} />
             <label
                 className={clsx(styles.sizeContent, {

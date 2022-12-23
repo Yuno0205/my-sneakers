@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { CheckIcon, DownIcon, UpIcon } from '../../../components/Icons';
 import ItemContent from './ItemContent';
 import styles from './SideBar.module.css';
-function FilterItem({ title, content }) {
+function FilterItem({ title, content, handleSetValueFilter }) {
     const [hideFilter, setHideFilter] = useState(false);
 
     const handleFilter = (hideFilter) => {

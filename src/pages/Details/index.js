@@ -75,8 +75,8 @@ const Details = () => {
                             </div>
                             <ColorWayImage />
                             <SizeGroup>
-                                {data.skuData?.map((data) => (
-                                    <SizeItem handleSetSize={handleSetSize} key={data._id} inStock={data.inStock}>
+                                {data.skuData?.map((data, index) => (
+                                    <SizeItem handleSetSize={handleSetSize} key={index} inStock={data.inStock}>
                                         {data.size}
                                     </SizeItem>
                                 ))}

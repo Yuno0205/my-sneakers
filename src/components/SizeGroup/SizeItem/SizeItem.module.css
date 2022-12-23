@@ -42,35 +42,32 @@
     outline: none;
 }
 
-.sizeContent:hover {
-    box-shadow: rgb(17 17 17) 0px 0px 0px 1px inset;
-    cursor: pointer;
-}
-
 .sizeItem input[type='radio']:checked + label {
     box-shadow: rgb(17 17 17) 0px 0px 0px 1px inset;
     cursor: pointer;
 }
 
-/* .sizeItem:hover {
-    border: 1px solid rgb(17, 17, 17);
-    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
-} */
+.sizeItem input[type='radio']:hover {
+    cursor: pointer;
+}
+
+.sizeItem:hover .sizeContent {
+    box-shadow: rgb(17 17 17) 0px 0px 0px 1px inset;
+}
 
 .outOfStock {
-    cursor: default !important;
+    cursor: default;
     color: rgb(221, 221, 221);
     background: rgb(247, 247, 247);
     border: 1px solid rgb(247, 247, 247);
+    cursor: default;
 }
 
-.outOfStock:hover {
+.defaultPointer input[type='radio']:hover {
+    cursor: default;
+}
+
+.defaultPointer label {
+    box-shadow: none !important;
     border-color: rgb(221, 221, 221);
-    box-shadow: none;
-    pointer-events: none;
-}
-
-.selected {
-    border: 1px solid rgb(17, 17, 17);
-    box-shadow: rgb(229 229 229) 0px 0px 0px 1px;
 }
