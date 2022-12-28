@@ -1,14 +1,18 @@
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import { HeartIcon, TrashBinIcon } from '../../components/Icons/Icons';
+import { changeQuantity, changeSize, getCartTotal, removeFromCart } from '../../redux/cartSlice';
 import Button from '../Button/Button';
 import styles from './CartItem.module.css';
 function CartItem({ favorite, openModal, handleShowModal }) {
+    const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
 
     return (
         <>
-            {cart.items.map((item, index) => (
+            {cart.items?.map((item, index) => (
                 <div key={index} className={styles.cartItem}>
                     <div className={styles.itemImg}>
                         <img src={item.imageMain[0]} alt="" />
@@ -23,7 +27,7 @@ function CartItem({ favorite, openModal, handleShowModal }) {
                                         [styles.hide]: favorite,
                                     })}
                                 >
-                                    Malachite/Sail/White/Blue Jay
+                                    {item.color}
                                 </div>
                                 <div className={clsx(styles.infoData, styles.selections)}>
                                     <div
@@ -33,12 +37,27 @@ function CartItem({ favorite, openModal, handleShowModal }) {
                                     >
                                         <span>Size</span>
                                         <div className={styles.sizeOptions}>
-                                            <select>
-                                                {item.skuData?.map((size, index) =>
-                                                    size.inStock ? <option key={index}>{size.size}</option> : '',
+                                            <select
+                                                value={item.size}
+                                                onChange={(e) => {
+                                                    dispatch(
+                                                        changeSize({
+                                                            ...item,
+                                                            size: e.target.value,
+                                                        }),
+                                                    );
+                                                }}
+                                            >
+                                                {item.skuData ? (
+                                                    item.skuData.map((size, index) =>
+                                                        size.inStock ? <option key={index}>{size.size}</option> : '',
+                                                    )
+                                                ) : (
+                                                    <></>
                                                 )}
                                             </select>
                                         </div>
+                                        <ToastContainer />
                                     </div>
                                     <div
                                         className={clsx(styles.optionContent, {
@@ -47,11 +66,28 @@ function CartItem({ favorite, openModal, handleShowModal }) {
                                     >
                                         <span>Quantity</span>
                                         <div className={styles.sizeOptions}>
-                                            <select>
+                                            <select
+                                                value={item.quantity}
+                                                onChange={(e) => {
+                                                    dispatch(
+                                                        changeQuantity({
+                                                            ...item,
+                                                            quantity: e.target.value,
+                                                        }),
+                                                    );
+                                                    dispatch(getCartTotal());
+                                                }}
+                                            >
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
                                                 <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
                                             </select>
                                         </div>
                                     </div>
@@ -66,7 +102,7 @@ function CartItem({ favorite, openModal, handleShowModal }) {
                                 </div>
                             </div>
                             <div className={styles.price}>
-                                <span>4,250,200đ</span>
+                                <span>{item.price}đ</span>
                             </div>
                         </div>
                         <div className={styles.actions}>
@@ -78,6 +114,10 @@ function CartItem({ favorite, openModal, handleShowModal }) {
                                 <HeartIcon />
                             </div>
                             <div
+                                onClick={() => {
+                                    dispatch(removeFromCart(item));
+                                    dispatch(getCartTotal());
+                                }}
                                 className={clsx(styles.action, {
                                     [styles.hide]: favorite,
                                 })}

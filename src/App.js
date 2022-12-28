@@ -2,10 +2,7 @@ import { Fragment, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
 
-// import DefaultLayout from './layouts/DefaultLayout';
 import LoadingPage from './pages/LoadingPage/LoadingPage';
-// import SideBarLayout from './layouts/SideBarLayout/SideBarLayout';
-
 const SideBarLayout = lazy(() => import('./layouts/SideBarLayout/SideBarLayout'));
 const DefaultLayout = lazy(() => import('./layouts/DefaultLayout'));
 

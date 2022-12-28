@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Image from '../../components/Image/Image';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct } from '../../redux/cartSlice';
+import { addToCart } from '../../redux/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -38,7 +38,7 @@ const Details = () => {
     const handleAddToCart = () => {
         size
             ? dispatch(
-                  addProduct({
+                  addToCart({
                       ...data,
                       quantity,
                       color: data.color,
@@ -83,7 +83,7 @@ const Details = () => {
                             </SizeGroup>
                             <div className={styles.descriptions}>
                                 <p>
-                                    Nike’s 1st lifestyle Air Max brings you style, comfort and big attitude. With a
+                                    Nike's 1st lifestyle Air Max brings you style, comfort and big attitude. With a
                                     design that draws inspiration from past Air Max icons, the Nike Air Max 270
                                     showcases one of our greatest innovations yet with its large Air window. Deep red
                                     accents pop against the lightweight black knit upper for a look that's striking and

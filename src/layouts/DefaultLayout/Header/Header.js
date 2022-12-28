@@ -151,7 +151,7 @@ const Header = () => {
                             <Tippy interactive delay={[0, 50]} content="Your cart" placement="bottom">
                                 <div className={styles.place}>
                                     <Button to="/cart" icon={<CartIcon />} circle></Button>
-                                    <span className={clsx(styles.badge)}>{cart.quantity}</span>
+                                    <span className={clsx(styles.badge)}>{cart.totalCount}</span>
                                 </div>
                             </Tippy>
                             <Menu items={MenuItems}>
