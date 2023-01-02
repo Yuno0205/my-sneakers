@@ -3,6 +3,7 @@ import userReducer from './userSlice';
 import productReducer from './productSlice';
 import cartReducer from './cartSlice';
 import filterReducer from './filterSlice';
+import wishlistReducer from './wishlistSlice';
 
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -18,12 +19,14 @@ const rootReducer = combineReducers({
     product: productReducer,
     cart: cartReducer,
     filter: filterReducer,
+    wishlist: wishlistReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
     reducer: persistedReducer,
+
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {

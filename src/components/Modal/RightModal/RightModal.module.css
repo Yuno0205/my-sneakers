@@ -1,0 +1,104 @@
+.modalBackground {
+    background-color: hsla(0, 0%, 7%, 0.36);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.modalContainer {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    padding: 8px 16px 16px;
+    width: 100%;
+    min-width: 320px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 300px;
+    z-index: 20;
+}
+
+.items {
+    width: 100%;
+
+    display: flex;
+    padding: 8px;
+}
+
+.imageItem {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.infoItem {
+    position: relative;
+    min-height: 1px;
+
+    font-size: 16px;
+    line-height: 1.75;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.actions {
+    display: flex;
+    padding: 10px 0px;
+}
+
+.viewBag {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    background: 0px 0px;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+
+    color: rgb(17, 17, 17);
+    box-shadow: rgb(204 204 204) 0px 1px 0px 0px inset, rgb(204 204 204) -1px 0px 0px 0px inset,
+        rgb(204 204 204) 0px -1px 0px 0px inset, rgb(204 204 204) 1px 0px 0px 0px inset;
+    flex: 1;
+    margin: 0 10px;
+    padding: 18px 24px;
+    border-radius: 30px;
+}
+
+.checkOut {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    box-shadow: rgb(204 204 204) 0px 1px 0px 0px inset, rgb(204 204 204) -1px 0px 0px 0px inset,
+        rgb(204 204 204) 0px -1px 0px 0px inset, rgb(204 204 204) 1px 0px 0px 0px inset;
+    flex: 1;
+    margin: 0 10px;
+    padding: 18px 24px;
+    border-radius: 30px;
+    background: rgb(17, 17, 17);
+    color: rgb(255, 255, 255);
+}
+
+.checkOut:hover {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.hide {
+    display: none;
+}
+
+.infoItem p + p {
+    margin-top: 20px;
+}

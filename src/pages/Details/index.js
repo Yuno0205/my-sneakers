@@ -11,8 +11,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { HeartIcon } from '../../components/Icons';
+import RightModal from '../../components/Modal/RightModal/RightModal';
+import { addToWishlist } from '../../redux/wishlistSlice';
 
 const Details = () => {
+    const [modalOpen, setModalOpen] = useState(false);
     const notifySizeValidate = () => toast.error('Opps ! You must choose at least one size !');
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
@@ -51,6 +55,10 @@ const Details = () => {
 
     const handleSetSize = (value) => {
         setSize(value);
+    };
+
+    const handleAddToWishlist = () => {
+        console.log('haha');
     };
 
     return (
@@ -97,8 +105,14 @@ const Details = () => {
                                 </Button>
                                 <ToastContainer />
                             </div>
-                            <div className={styles.action}>
-                                <Button primary large>
+                            <div
+                                onClick={() => {
+                                    setModalOpen(true);
+                                    dispatch(addToWishlist(data));
+                                }}
+                                className={styles.action}
+                            >
+                                <Button icon={<HeartIcon />} outline large>
                                     <span> Favourite</span>
                                 </Button>
                             </div>
@@ -106,6 +120,7 @@ const Details = () => {
                     </div>
                 </div>
             </div>
+            {modalOpen && <RightModal data={data} setOpenModal={setModalOpen} />}
         </div>
     );
 };

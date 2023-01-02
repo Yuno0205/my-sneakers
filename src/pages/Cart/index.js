@@ -30,6 +30,9 @@ function Cart() {
                                 <Button primary large>
                                     <span>Check out</span>
                                 </Button>
+                                <Button icon={<HeartIcon />} outline large>
+                                    <span>Wishlist</span>
+                                </Button>
                             </Link>
                         </div>
                     </div>

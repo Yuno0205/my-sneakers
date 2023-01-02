@@ -35,13 +35,11 @@ const cartSlice = createSlice({
             const itemIndex = state.items.findIndex((item) => item._id === action.payload._id);
 
             state.items[itemIndex].size = action.payload.size;
-            toast.info('Size updated !');
         },
         changeQuantity(state, action) {
             const itemIndex = state.items.findIndex((item) => item._id === action.payload._id);
 
             state.items[itemIndex].quantity = action.payload.quantity;
-            toast.info('Quantity updated !');
         },
         removeFromCart(state, action) {
             const existingIndex = state.items.findIndex(

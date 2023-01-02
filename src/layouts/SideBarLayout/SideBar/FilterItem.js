@@ -5,10 +5,26 @@ import ItemContent from './ItemContent';
 import styles from './SideBar.module.css';
 function FilterItem({ title, content, handleSetValueFilter }) {
     const [hideFilter, setHideFilter] = useState(false);
+    const [filterValue, setFilterValue] = useState({});
 
     const handleFilter = (hideFilter) => {
         hideFilter ? setHideFilter(false) : setHideFilter(true);
     };
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        const isChecked = e.target.checked;
+        const name = e.target.name;
+
+        setFilterValue((prev) => {
+            console.log(prev);
+            return { ...prev, [name]: e.target.value };
+        });
+
+        // setFilterValue(isChecked ? [...filterValue, value] : filterValue.filter((item) => item !== value));
+    };
+
+    console.log(filterValue);
 
     return (
         <div className={styles.filterItem}>
@@ -23,15 +39,19 @@ function FilterItem({ title, content, handleSetValueFilter }) {
                     [styles.hide]: hideFilter,
                 })}
             >
-                <div className={styles.filterInner}>
-                    <div className={styles.itemsGroup}>
-                        {content.map((item, index) => (
-                            <div key={index} className={styles.itemContent}>
-                                <ItemContent title={title} item={item} />
-                            </div>
-                        ))}
+                {content?.map((item, index) => (
+                    <div className={styles.inputItem} key={index}>
+                        <input
+                            name={title}
+                            className={styles.cb}
+                            type="checkbox"
+                            id={index}
+                            value={item}
+                            onChange={handleChange}
+                        />
+                        <label htmlFor={index}>{item}</label>
                     </div>
-                </div>
+                ))}
             </div>
         </div>
     );

@@ -196,3 +196,11 @@
     backdrop-filter: blur(4px);
     z-index: 0;
 }
+
+/* Responsive */
+
+@media (max-width: 1023px) {
+    .menu ul {
+        display: none;
+    }
+}

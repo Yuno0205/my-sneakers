@@ -3,7 +3,9 @@ import Button from '../../components/Button';
 import CollectionsGroup from '../../components/CollectionsGroup';
 import CollectionsItem from '../../components/CollectionsGroup/CollectionsItem/CollectionsItem';
 import FavouriteItem from '../../components/CollectionsGroup/FavouriteItem/Favourite';
+import { useSelector } from 'react-redux';
 function Wishlist() {
+    const wishlist = useSelector((state) => state.wishlist);
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -13,7 +15,7 @@ function Wishlist() {
                         <div className={styles.headerContent}>
                             <h1 className={styles.headerTitle}>
                                 Favourites
-                                <span className={styles.itemCount}>(4)</span>
+                                <span className={styles.itemCount}>({wishlist.items.length})</span>
                             </h1>
                             <nav className={styles.headerNav}>
                                 <Button outline grey>
@@ -27,10 +29,7 @@ function Wishlist() {
                 <div className={styles.content}>
                     <div className={styles.results}>
                         <CollectionsGroup>
-                            <FavouriteItem />
-                            <FavouriteItem />
-                            <FavouriteItem />
-                            <FavouriteItem />
+                            <FavouriteItem data={wishlist} />
                         </CollectionsGroup>
                     </div>
                 </div>

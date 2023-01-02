@@ -47,8 +47,8 @@ const Button = forwardRef(
         });
         return (
             <Comp ref={ref} className={classes} {...props}>
-                {icon && <span className="icon">{icon}</span>}
                 {children}
+                {icon && <span>{icon}</span>}
             </Comp>
         );
     },

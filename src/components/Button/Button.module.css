@@ -13,6 +13,10 @@
     justify-content: center;
 }
 
+.wrapper + .wrapper {
+    margin-top: 20px;
+}
+
 .wrapper > span {
     height: 24px;
 }
@@ -26,21 +30,26 @@
 }
 
 .primary:hover {
-    background: rgba(0, 0, 0, 0.75);
+    background: #757575;
 }
 
 .outline {
     color: var(--primary);
-    border-color: currentColor;
+    border-color: #ccc;
     text-align: center;
 }
 .outline:hover {
-    background-color: var(--primary);
-    border-color: currentColor;
+    border-color: var(--primary);
 }
 
-.outline:hover a {
-    color: #fff;
+/* .outline:hover a,
+.outline:hover span {
+    color: #fff !important;
+} */
+
+.outline span {
+    color: var(--primary) !important;
+    margin: 0 5px;
 }
 
 .icon {
