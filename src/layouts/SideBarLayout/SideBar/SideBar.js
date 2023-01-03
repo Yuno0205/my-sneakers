@@ -1,12 +1,16 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 import { CheckIcon, DownIcon, UpIcon } from '../../../components/Icons/Icons';
-import ColoursItem from './ColoursItem';
+import ColoursWay from './ColoursWay/ColoursWay';
 import FilterItem from './FilterItem';
 import styles from './SideBar.module.css';
 import SizeItem from './SizeItem';
 
 function Sidebar({ showFilter }) {
+    const [filterValue, setFilterValue] = useState({});
+
+    console.log(filterValue);
+
     return (
         <div
             className={clsx(styles.wrapper, {
@@ -32,13 +36,25 @@ function Sidebar({ showFilter }) {
 
                             <div className={styles.filter}>
                                 <div className={styles.filterWrapper}>
-                                    <FilterItem title="Gender" content={['Male', 'Female', 'Unisex']} />
-                                    <FilterItem title="Brand" content={['Jordan', 'Nike', 'Puma', 'Adidas']} />
                                     <FilterItem
+                                        filterValue={filterValue}
+                                        setFilterValue={setFilterValue}
+                                        title="Gender"
+                                        content={['Male', 'Female', 'Unisex']}
+                                    />
+                                    <FilterItem
+                                        filterValue={filterValue}
+                                        setFilterValue={setFilterValue}
+                                        title="Brand"
+                                        content={['Jordan', 'Nike', 'Puma', 'Adidas']}
+                                    />
+                                    <FilterItem
+                                        filterValue={filterValue}
+                                        setFilterValue={setFilterValue}
                                         title="Shop by price"
                                         content={['Under 1,000,000đ', '1,000,000đ to 4,000,000đ', 'Over 4,000,000đ']}
                                     />
-                                    <ColoursItem />
+                                    <ColoursWay />
                                     <SizeItem />
                                 </div>
                             </div>

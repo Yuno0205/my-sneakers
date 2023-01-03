@@ -3,9 +3,8 @@ import { useState } from 'react';
 import { CheckIcon, DownIcon, UpIcon } from '../../../components/Icons';
 import ItemContent from './ItemContent';
 import styles from './SideBar.module.css';
-function FilterItem({ title, content, handleSetValueFilter }) {
+function FilterItem({ title, content, handleSetValueFilter, setFilterValue, filterValue }) {
     const [hideFilter, setHideFilter] = useState(false);
-    const [filterValue, setFilterValue] = useState({});
 
     const handleFilter = (hideFilter) => {
         hideFilter ? setHideFilter(false) : setHideFilter(true);
@@ -16,15 +15,13 @@ function FilterItem({ title, content, handleSetValueFilter }) {
         const isChecked = e.target.checked;
         const name = e.target.name;
 
-        setFilterValue((prev) => {
-            console.log(prev);
-            return { ...prev, [name]: e.target.value };
+        setFilterValue({
+            ...filterValue,
+            [e.target.name]: value,
         });
 
         // setFilterValue(isChecked ? [...filterValue, value] : filterValue.filter((item) => item !== value));
     };
-
-    console.log(filterValue);
 
     return (
         <div className={styles.filterItem}>

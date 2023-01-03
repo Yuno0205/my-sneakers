@@ -215,10 +215,20 @@
     line-height: 1.5;
     background: transparent;
     color: #111111;
-    cursor: pointer;
+
     overflow-wrap: break-word;
     position: relative;
     white-space: nowrap;
+}
+
+.colorContent input {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
 }
 
 .color {
@@ -228,43 +238,21 @@
     border-radius: 50%;
 }
 
-.isPurple {
-    display: inline-block;
-    background-color: #8d429f;
-}
-
-.isBlack {
-    display: inline-block;
-    background-color: #000;
-}
-
-.isRed {
-    display: inline-block;
-    background-color: #e7352b;
-}
-
-.isBlue {
-    display: inline-block;
-    background-color: #1790c8;
-}
-
-.isWhite {
-    display: inline-block;
-    background-color: #ffffff;
-    border: solid 2px #e5e5e5;
-}
-
-.isPink {
-    display: inline-block;
-    background-color: #f0728f;
-}
-
 .colorName {
     padding-top: 2px;
     font-size: 12px;
     display: inline-block;
     word-break: break-word;
     white-space: normal;
+}
+
+.iconCheck {
+    position: absolute;
+    color: white;
+    top: 5px;
+}
+
+.check {
 }
 
 /* Size */

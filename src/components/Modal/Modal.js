@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import ColoursItem from '../../layouts/SideBarLayout/SideBar/ColoursItem';
+import ColoursWay from '../../layouts/SideBarLayout/SideBar/ColoursWay/ColoursWay';
 import Button from '../Button';
 import styles from './Modal.module.css';
 

@@ -7,7 +7,6 @@ function SizeItem() {
 
     const handleFilter = (hideFilter) => {
         hideFilter ? setHideFilter(false) : setHideFilter(true);
-        console.log(hideFilter);
     };
     return (
         <div className={styles.filterItem}>
