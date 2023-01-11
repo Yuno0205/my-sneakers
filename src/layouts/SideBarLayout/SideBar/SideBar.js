@@ -7,9 +7,7 @@ import styles from './SideBar.module.css';
 import SizeItem from './SizeItem';
 
 function Sidebar({ showFilter }) {
-    const [filterValue, setFilterValue] = useState({});
-
-    console.log(filterValue);
+    const [filters, setFilters] = useState({});
 
     return (
         <div
@@ -37,20 +35,17 @@ function Sidebar({ showFilter }) {
                             <div className={styles.filter}>
                                 <div className={styles.filterWrapper}>
                                     <FilterItem
-                                        filterValue={filterValue}
-                                        setFilterValue={setFilterValue}
+                                        setFilters={setFilters}
                                         title="Gender"
                                         content={['Male', 'Female', 'Unisex']}
                                     />
                                     <FilterItem
-                                        filterValue={filterValue}
-                                        setFilterValue={setFilterValue}
+                                        setFilters={setFilters}
                                         title="Brand"
                                         content={['Jordan', 'Nike', 'Puma', 'Adidas']}
                                     />
                                     <FilterItem
-                                        filterValue={filterValue}
-                                        setFilterValue={setFilterValue}
+                                        setFilters={setFilters}
                                         title="Shop by price"
                                         content={['Under 1,000,000đ', '1,000,000đ to 4,000,000đ', 'Over 4,000,000đ']}
                                     />

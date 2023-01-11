@@ -167,3 +167,9 @@
 .itemName:hover {
     color: #ddac55;
 }
+
+@media (max-width: 740px) {
+    .actions {
+        top: 40%;
+    }
+}

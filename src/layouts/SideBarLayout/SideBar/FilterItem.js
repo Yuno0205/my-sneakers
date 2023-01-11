@@ -1,10 +1,13 @@
 import clsx from 'clsx';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { CheckIcon, DownIcon, UpIcon } from '../../../components/Icons';
 import ItemContent from './ItemContent';
 import styles from './SideBar.module.css';
-function FilterItem({ title, content, handleSetValueFilter, setFilterValue, filterValue }) {
+function FilterItem({ title, content, handleSetValueFilter }) {
     const [hideFilter, setHideFilter] = useState(false);
+    const [filterValue, setFilterValue] = useState({});
+    const [search, setSearch] = useSearchParams();
 
     const handleFilter = (hideFilter) => {
         hideFilter ? setHideFilter(false) : setHideFilter(true);
@@ -13,15 +16,19 @@ function FilterItem({ title, content, handleSetValueFilter, setFilterValue, filt
     const handleChange = (e) => {
         const value = e.target.value;
         const isChecked = e.target.checked;
+
         const name = e.target.name;
 
-        setFilterValue({
-            ...filterValue,
-            [e.target.name]: value,
-        });
-
         // setFilterValue(isChecked ? [...filterValue, value] : filterValue.filter((item) => item !== value));
+
+        if (isChecked) {
+            setFilterValue([...filterValue, value]);
+        } else {
+            setFilterValue(filterValue.filter((item) => item !== value));
+        }
     };
+
+    console.log(filterValue);
 
     return (
         <div className={styles.filterItem}>

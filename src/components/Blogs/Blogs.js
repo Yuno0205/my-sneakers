@@ -1,6 +1,25 @@
+import Slider from 'react-slick';
 import styles from './Blogs.module.css';
 
 function Blogs() {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+            {
+                breakpoint: 740,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    dots: true,
+                },
+            },
+        ],
+    };
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -8,7 +27,7 @@ function Blogs() {
                     <div className={styles.title}>
                         <h3> News</h3>
                     </div>
-                    <div className={styles.items}>
+                    <Slider {...settings} className={styles.items}>
                         <div className={styles.item}>
                             <div className={styles.image}>
                                 <img
@@ -54,7 +73,7 @@ function Blogs() {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </Slider>
                 </div>
             </div>
         </div>

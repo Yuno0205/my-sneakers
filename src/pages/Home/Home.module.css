@@ -59,3 +59,23 @@
     font-weight: 200;
     line-height: 100%;
 }
+
+@media (max-width: 1023px) {
+    .content {
+        width: 100%;
+    }
+
+    .frag {
+        left: 80%;
+    }
+}
+
+@media (max-width: 740px) {
+    .content {
+        width: 100%;
+    }
+
+    .frag {
+        left: calc(60% -20px);
+    }
+}

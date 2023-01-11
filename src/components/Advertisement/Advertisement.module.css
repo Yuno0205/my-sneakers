@@ -40,7 +40,7 @@
 .title {
     color: #000;
     margin-top: 0;
-    font-size: 40px;
+    font-size: 4rem;
     line-height: 55px;
     margin-bottom: 30px;
     font-weight: 300;
@@ -60,4 +60,15 @@
     font-size: 1.6rem;
     cursor: pointer;
     color: tomato;
+}
+
+@media (max-width: 740px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 0;
+    }
+
+    .redirect {
+        display: none;
+    }
 }

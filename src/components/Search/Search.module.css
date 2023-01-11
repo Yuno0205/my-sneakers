@@ -77,3 +77,29 @@
 /* .search input:not(:placeholder-shown) ~ .clear {
     display: flex;
 } */
+
+/* Responsive */
+
+@media (max-width: 1023px) {
+    .search {
+        width: 40px;
+    }
+
+    .search input {
+        display: none;
+    }
+
+    .showSuggest {
+        width: 600px;
+        margin: 0 auto;
+        transition: width 0.5s ease;
+    }
+}
+
+@media (max-width: 740px) {
+    .showSuggest {
+        width: 220px;
+        margin: 0 auto;
+        transition: width 0.5s ease;
+    }
+}

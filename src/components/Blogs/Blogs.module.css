@@ -51,8 +51,6 @@
 }
 
 .item {
-    width: 33.3333%;
-    max-width: 33.33333%;
     padding: 0 15px;
     margin-top: 50px;
 }
@@ -82,4 +80,10 @@
     font-weight: 400;
     margin-top: 10px;
     line-height: 26px;
+}
+
+@media (max-width: 740px) {
+    .container {
+        width: 100%;
+    }
 }

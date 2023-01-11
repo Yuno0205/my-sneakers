@@ -11,7 +11,7 @@
 }
 
 .container {
-    margin: 0 auto;
+    margin: 20px auto;
 
     display: flex;
 }
@@ -36,7 +36,7 @@
 .bannerImg {
     overflow: hidden;
     cursor: pointer;
-    height: 385px;
+    max-height: 385px;
     transition: all 0.3s ease;
 }
 
@@ -81,4 +81,16 @@
 .textShop:hover {
     font-size: 2rem;
     color: tomato;
+}
+
+@media (max-width: 740px) {
+    .container {
+        flex-wrap: wrap;
+    }
+    .content {
+        flex: 0 0 100%;
+        padding-left: 0;
+        max-width: 100%;
+        height: auto;
+    }
 }

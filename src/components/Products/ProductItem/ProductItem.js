@@ -27,35 +27,31 @@ function ProductItem({ coating, sale, soldOut, handleShowModal }) {
                     </Link>
                     <div className={styles.actions}>
                         <Tippy delay={200} content="Add to wish list" placement="top">
-                            <div className={styles.icon}>
+                            <div className={clsx(styles.icon, { [styles.hide]: soldOut })}>
                                 <Button to="/wishlist" icon={<RegularHeart />} circle product></Button>
                             </div>
                         </Tippy>
 
                         <Tippy delay={200} content="Add to cart" placement="top">
-                            <div className={styles.icon}>
+                            <div className={clsx(styles.icon, { [styles.hide]: soldOut })}>
                                 <Button to="/wishlist" icon={<RegularCart />} circle product></Button>
                             </div>
                         </Tippy>
                         <Tippy delay={200} content="More infomation" placement="top">
-                            <div onClick={() => handleShowModal(true)} className={styles.icon}>
+                            <div
+                                onClick={() => handleShowModal(true)}
+                                className={clsx(styles.icon, { [styles.hide]: soldOut })}
+                            >
                                 <Button icon={<RegularSearch />} circle product></Button>
                             </div>
                         </Tippy>
                     </div>
                     <div
-                        className={clsx({
+                        className={clsx(styles.hide, {
                             [styles.soldOut]: soldOut,
                         })}
                     >
                         Sold out
-                    </div>
-                    <div
-                        className={clsx({
-                            [styles.labelSale]: sale,
-                        })}
-                    >
-                        20 %
                     </div>
                 </div>
                 <div className={styles.itemInfo}>

@@ -15,16 +15,16 @@
 
 .serviceType {
     padding: 0 15px;
-
+    width: 100%;
     overflow: hidden;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 33.33%;
+    height: 60px;
     flex: 1;
-    max-width: 100%;
+    text-align: center;
     user-select: none;
 }
 
@@ -41,12 +41,15 @@
 
 .serviceImg {
     margin-right: 20px;
-    font-size: 80px;
+    width: 50px;
+    height: 50px;
     font-weight: 400;
     user-select: none;
+    display: inline-block;
 }
 
 .serviceInfo {
+    display: inline-block;
 }
 
 .serviceTitle {
@@ -64,4 +67,14 @@
     color: #868686;
     line-height: 24px;
     margin-bottom: 0;
+}
+
+@media (max-width: 740px) {
+    .serviceContent {
+        width: 100%;
+        flex-flow: column wrap;
+    }
+    .serviceType {
+        width: 100%;
+    }
 }

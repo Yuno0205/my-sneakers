@@ -14,3 +14,11 @@
     flex-wrap: wrap;
     margin: 0 auto;
 }
+
+@media (max-width: 740px) {
+    .items {
+        width: 100%;
+        flex-flow: row wrap;
+        padding: 0 10px;
+    }
+}

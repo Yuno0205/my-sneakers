@@ -1,5 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { CartIcon, HeartIcon, LogoutIcon, OrdersIcon, SettingIcon, UserIcon } from '../../../components/Icons';
+import {
+    BarsIcon,
+    CartIcon,
+    HeartIcon,
+    LogoutIcon,
+    OrdersIcon,
+    SettingIcon,
+    UserIcon,
+} from '../../../components/Icons';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -16,8 +24,7 @@ import { Link } from 'react-router-dom';
 import config from '../../../config';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFailure, loginStart, loginSuccess } from '../../../redux/userSlice';
-
-console.log(styles);
+import Image from '../../../components/Image/Image';
 
 const logout = () => {
     window.open('http://localhost:5000/auth/logout', '_self');
@@ -89,7 +96,11 @@ const Header = () => {
     return (
         <header className={clsx(styles.wrapper)}>
             <div className={clsx(styles.inner)}>
-                <div className={styles.logo}>
+                <div
+                    className={clsx(styles.logo, {
+                        [styles.hide]: showResults,
+                    })}
+                >
                     <Link to={config.routes.home} className={styles.logoLink}>
                         <img src={images.logo} width="110" alt="Jorkan - Running Sports Shoes " />
                     </Link>
@@ -144,7 +155,12 @@ const Header = () => {
                         <>
                             <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
                                 <div>
-                                    <Button to="/wishlist" icon={<HeartIcon />} circle></Button>
+                                    <Button
+                                        className={styles.wishlist}
+                                        to="/wishlist"
+                                        icon={<HeartIcon />}
+                                        circle
+                                    ></Button>
                                 </div>
                             </Tippy>
 
@@ -155,8 +171,11 @@ const Header = () => {
                                 </div>
                             </Tippy>
                             <Menu items={MenuItems}>
-                                <img className={styles.userAvatar} src={user.image} alt="avatar"></img>
+                                <Image className={styles.userAvatar} src={user.image} alt="avatar"></Image>
                             </Menu>
+                            <div className={styles.bars}>
+                                <BarsIcon />
+                            </div>
                         </>
                     ) : (
                         <>

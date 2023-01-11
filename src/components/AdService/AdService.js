@@ -1,8 +1,25 @@
+import Slider from 'react-slick';
+
 import styles from './AdService.module.css';
 function AdService() {
+    const settings = {
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        autoplay: true,
+        responsive: [
+            {
+                breakpoint: 740,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    };
     return (
-        <div className={styles.service}>
-            <div className={styles.serviceContent}>
+        <div {...settings} className={styles.service}>
+            <Slider className={styles.serviceContent}>
                 <div className={styles.serviceType}>
                     <div className={styles.serviceImg}>
                         <img src="https://cdn.shopify.com/s/files/1/0267/0211/8947/files/icon-3.jpg?v=1613628845" />
@@ -19,7 +36,7 @@ function AdService() {
                     </div>
                     <div className={styles.serviceInfo}>
                         <div className={styles.serviceTitle}>Huge system</div>
-                        <div className={styles.contentInfo}>The system with variety of products</div>
+                        <div className={styles.contentInfo}>System with variety of products</div>
                     </div>
                 </div>
                 <div className={styles.serviceType}>
@@ -31,7 +48,7 @@ function AdService() {
                         <div className={styles.contentInfo}>Return service within 7 days</div>
                     </div>
                 </div>
-            </div>
+            </Slider>
         </div>
     );
 }

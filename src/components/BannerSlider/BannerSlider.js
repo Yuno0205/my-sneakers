@@ -5,7 +5,8 @@ import { NextIcon, PrevIcon } from '../Icons';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
-function Slider() {
+import Slider from 'react-slick';
+function BannerSlider() {
     const [change, setChange] = useState(true);
 
     const handleChange = (change) => {
@@ -152,4 +153,4 @@ function Slider() {
     );
 }
 
-export default Slider;
+export default BannerSlider;

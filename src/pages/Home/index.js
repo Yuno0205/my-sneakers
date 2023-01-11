@@ -1,7 +1,7 @@
 import ProductItem from '../../components/Products/ProductItem/ProductItem';
 import Products from '../../components/Products';
 import styles from './Home.module.css';
-import SliderBanner from '../../components/Slider';
+import SliderBanner from '../../components/BannerSlider';
 import Banner from '../../components/Banner';
 import AdService from '../../components/AdService';
 import SaleItem from '../../components/SaleItem';
@@ -13,6 +13,7 @@ import Advertisement from '../../components/Advertisement/Advertisement';
 import Blogs from '../../components/Blogs/Blogs';
 import { useState } from 'react';
 import Modal from '../../components/Modal/Modal';
+import Fake from '../../components/Fake';
 
 function Home() {
     const [openModal, setOpenModal] = useState(false);
@@ -22,7 +23,7 @@ function Home() {
     };
 
     const settings = {
-        dots: true,
+        dot: true,
         autoplay: true,
         infinite: true,
         speed: 500,
@@ -31,12 +32,12 @@ function Home() {
         initialSlide: 0,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 1023,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
-                    dots: true,
+                    dot: true,
                 },
             },
             {
@@ -45,6 +46,7 @@ function Home() {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     initialSlide: 2,
+                    dot: true,
                 },
             },
             {
@@ -53,6 +55,7 @@ function Home() {
                     slidesToShow: 1,
                     slidesToScroll: 1,
                 },
+                dot: true,
             },
         ],
     };
@@ -126,7 +129,8 @@ function Home() {
     ];
     return (
         <div>
-            <SliderBanner />
+            {/* <SliderBanner /> */}
+            <Fake />
             <Banner />
             <AdService />
             <div className={styles.wrapper}>
