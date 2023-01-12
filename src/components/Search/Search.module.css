@@ -85,21 +85,26 @@
         width: 40px;
     }
 
-    .search input {
-        display: none;
-    }
-
     .showSuggest {
-        width: 600px;
+        width: 100%;
         margin: 0 auto;
         transition: width 0.5s ease;
     }
 }
 
 @media (max-width: 740px) {
+    .search input {
+        opacity: 0;
+    }
+
     .showSuggest {
-        width: 220px;
+        width: 100%;
         margin: 0 auto;
         transition: width 0.5s ease;
+        opacity: 1;
+    }
+
+    .showSuggest input {
+        opacity: 1;
     }
 }

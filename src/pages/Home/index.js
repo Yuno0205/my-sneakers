@@ -23,7 +23,7 @@ function Home() {
     };
 
     const settings = {
-        dot: true,
+        dots: true,
         autoplay: true,
         infinite: true,
         speed: 500,
@@ -37,7 +37,7 @@ function Home() {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     infinite: true,
-                    dot: true,
+                    dots: true,
                 },
             },
             {
@@ -46,7 +46,7 @@ function Home() {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     initialSlide: 2,
-                    dot: true,
+                    dots: true,
                 },
             },
             {
@@ -54,8 +54,8 @@ function Home() {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    dots: true,
                 },
-                dot: true,
             },
         ],
     };

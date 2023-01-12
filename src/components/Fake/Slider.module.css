@@ -235,6 +235,17 @@
     color: #fff;
 }
 
+@media (max-width: 1024px) {
+    .picture {
+        width: 50%;
+        left: 5%;
+    }
+
+    .content {
+        right: 10%;
+    }
+}
+
 @media (max-width: 740px) {
     .boxBtn,
     .picture {
@@ -242,12 +253,15 @@
     }
 
     .boxContent {
-        right: 15%;
+        left: 50%;
+        top: 50%;
+        width: 90%;
+        transform: translate(-50%, -50%);
     }
 
     .title h3,
     .title2 h3 {
-        font-size: 5rem;
+        font-size: 3.5rem;
         font-weight: 100;
     }
 }

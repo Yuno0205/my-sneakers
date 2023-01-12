@@ -183,11 +183,17 @@
     width: 33, 3333%;
 }
 
+@media (max-width: 1024px) {
+    .item {
+        width: 33.33333%;
+    }
+}
+
 @media (max-width: 740px) {
     .item {
         width: 50%;
     }
     .itemPrice {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 }

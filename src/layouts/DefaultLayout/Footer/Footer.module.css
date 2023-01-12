@@ -63,6 +63,12 @@
 }
 
 .listIcons {
+    margin: 0 auto;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .listIcons ul {
@@ -85,4 +91,26 @@
 .socialIcon:hover {
     cursor: pointer;
     filter: none;
+}
+
+@media (max-width: 740px) {
+    .content {
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        max-width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .title::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+
+        background-color: #fff;
+    }
 }

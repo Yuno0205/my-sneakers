@@ -60,13 +60,15 @@
     line-height: 100%;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     .content {
         width: 100%;
     }
 
     .frag {
-        left: 80%;
+        left: 65%;
+        right: 35%;
+        width: 100px;
     }
 }
 

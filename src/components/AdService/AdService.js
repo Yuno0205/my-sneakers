@@ -15,11 +15,18 @@ function AdService() {
                     slidesToScroll: 1,
                 },
             },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
         ],
     };
     return (
-        <div {...settings} className={styles.service}>
-            <Slider className={styles.serviceContent}>
+        <div className={styles.service}>
+            <Slider {...settings} className={styles.serviceContent}>
                 <div className={styles.serviceType}>
                     <div className={styles.serviceImg}>
                         <img src="https://cdn.shopify.com/s/files/1/0267/0211/8947/files/icon-3.jpg?v=1613628845" />

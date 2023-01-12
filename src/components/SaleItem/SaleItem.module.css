@@ -168,6 +168,16 @@
     color: #ddac55;
 }
 
+@media (max-width: 1024px) {
+    .item {
+        height: 100%;
+    }
+
+    .itemImage {
+        height: 100%;
+    }
+}
+
 @media (max-width: 740px) {
     .actions {
         top: 40%;

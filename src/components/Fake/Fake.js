@@ -22,7 +22,8 @@ function BannerSlider() {
     // }, []);
 
     const settings = {
-        autoPlay: true,
+        dots: true,
+        autoplay: true,
         fade: true,
         arrows: true,
         infinite: true,

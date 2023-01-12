@@ -18,6 +18,15 @@ function Blogs() {
                     dots: true,
                 },
             },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    dots: true,
+                },
+            },
         ],
     };
     return (

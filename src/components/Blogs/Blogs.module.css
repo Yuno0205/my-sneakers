@@ -82,6 +82,12 @@
     line-height: 26px;
 }
 
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+}
+
 @media (max-width: 740px) {
     .container {
         width: 100%;

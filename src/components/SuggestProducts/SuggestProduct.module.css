@@ -80,3 +80,22 @@
     align-self: center;
     margin-right: 50%;
 }
+
+@media (max-width: 740px) {
+    .content {
+        flex-flow: row wrap;
+        padding: 20px;
+    }
+
+    .suggest {
+        width: 100%;
+    }
+
+    .items {
+        width: 100%;
+    }
+
+    .item {
+        width: 50%;
+    }
+}

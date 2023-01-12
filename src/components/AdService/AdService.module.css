@@ -69,6 +69,12 @@
     margin-bottom: 0;
 }
 
+@media (max-width: 1024px) {
+    .serviceContent {
+        width: 100%;
+    }
+}
+
 @media (max-width: 740px) {
     .serviceContent {
         width: 100%;
