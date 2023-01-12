@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import {
     BarsIcon,
     CartIcon,
+    ClearIcon,
     HeartIcon,
     LogoutIcon,
+    NextIcon,
     OrdersIcon,
     SettingIcon,
     UserIcon,
@@ -43,6 +45,7 @@ const Header = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [displayCoating, setDisplayCoating] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [show, setShow] = useState(false);
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.currentUser);
@@ -92,6 +95,8 @@ const Header = () => {
     const handleSearchResults = (childData) => {
         setSearchResults(childData);
     };
+
+    const toggleShow = () => setShow((value) => !value);
 
     return (
         <header className={clsx(styles.wrapper)}>
@@ -173,7 +178,7 @@ const Header = () => {
                             <Menu items={MenuItems}>
                                 <Image className={styles.userAvatar} src={user.image} alt="avatar"></Image>
                             </Menu>
-                            <div className={styles.bars}>
+                            <div onClick={toggleShow} className={styles.bars}>
                                 <BarsIcon />
                             </div>
                         </>
@@ -217,6 +222,32 @@ const Header = () => {
             ) : (
                 <></>
             )}
+            <div className={clsx(styles.mobileMenu, { [styles.show]: show })}>
+                <div onClick={toggleShow} className={styles.btnClose}>
+                    <ClearIcon />
+                </div>
+                <div className={styles.content}>
+                    <Link className={styles.menuMobileItem}>
+                        <span>Hi , {user.displayName}</span>
+                    </Link>
+                    <Link className={styles.menuMobileItem}>
+                        <span>New and Featured</span>
+                        <NextIcon width="2.4rem" height="2.4rem" />
+                    </Link>
+                    <Link className={styles.menuMobileItem}>
+                        <span>Men</span>
+                        <NextIcon width="2.4rem" height="2.4rem" />
+                    </Link>
+                    <Link className={styles.menuMobileItem}>
+                        <span>Woman</span>
+                        <NextIcon width="2.4rem" height="2.4rem" />
+                    </Link>
+                    <Link className={styles.menuMobileItem}>
+                        <span>Sale</span>
+                        <NextIcon width="2.4rem" height="2.4rem" />
+                    </Link>
+                </div>
+            </div>
         </header>
     );
 };
