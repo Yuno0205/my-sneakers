@@ -5,6 +5,7 @@ import SideBar from './SideBar';
 import { DownIcon, FilterIcon } from '../../components/Icons';
 import Menu from '../../components/Popper/Menu';
 import { useState } from 'react';
+import Button from '../../components/Button';
 function SideBarLayout({ children }) {
     const Options = [
         { title: 'Price : Low - High' },
@@ -52,6 +53,12 @@ function SideBarLayout({ children }) {
                                         </div>
                                     </Menu>
                                 </div>
+                                <div className={styles.filterMobile}>
+                                    <Button outline>
+                                        <p>Filter</p>
+                                        <FilterIcon />
+                                    </Button>
+                                </div>
                             </nav>
                         </div>
                     </header>
@@ -63,6 +70,11 @@ function SideBarLayout({ children }) {
                 </div>
             </div>
             <Footer />
+            <div className={styles.filterTable}>
+                <div className={styles.tableContent}>
+                    <h1>Hehe</h1>
+                </div>
+            </div>
         </div>
     );
 }

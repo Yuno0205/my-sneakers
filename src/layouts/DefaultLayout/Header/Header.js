@@ -234,6 +234,10 @@ const Header = () => {
                         <span>New and Featured</span>
                         <NextIcon width="2.4rem" height="2.4rem" />
                     </Link>
+                    <Link to="/collections" className={styles.menuMobileItem}>
+                        <span>Collections</span>
+                        <NextIcon width="2.4rem" height="2.4rem" />
+                    </Link>
                     <Link className={styles.menuMobileItem}>
                         <span>Men</span>
                         <NextIcon width="2.4rem" height="2.4rem" />

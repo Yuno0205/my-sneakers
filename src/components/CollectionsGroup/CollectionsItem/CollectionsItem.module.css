@@ -133,3 +133,21 @@
     font-weight: 500;
     padding-top: 10px;
 }
+
+@media (max-width: 1024px) {
+    .wrapper {
+        width: 50%;
+    }
+}
+
+@media (max-width: 740px) {
+    .body:hover .colorWay {
+        display: none;
+    }
+
+    .body:hover .titleInfo,
+    .body:hover .status,
+    .body:hover .colours {
+        display: block;
+    }
+}

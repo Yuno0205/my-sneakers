@@ -14,7 +14,6 @@ function Search({
     handleShowResults,
     handleShowCoating,
     handleSearchValue,
-
     handleSearchResults,
     searchValue,
     setLoading,

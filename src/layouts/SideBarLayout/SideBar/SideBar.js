@@ -1,5 +1,9 @@
 import clsx from 'clsx';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import FilterByBrand from '../../../components/Filters/FilterByBrand';
+import FilterByGender from '../../../components/Filters/FilterByGender';
+import FilterByPrice from '../../../components/Filters/FilterByPrice';
 import { CheckIcon, DownIcon, UpIcon } from '../../../components/Icons/Icons';
 import ColoursWay from './ColoursWay/ColoursWay';
 import FilterItem from './FilterItem';
@@ -8,6 +12,7 @@ import SizeItem from './SizeItem';
 
 function Sidebar({ showFilter }) {
     const [filters, setFilters] = useState({});
+    const [search, setSearch] = useSearchParams();
 
     return (
         <div
@@ -34,21 +39,9 @@ function Sidebar({ showFilter }) {
 
                             <div className={styles.filter}>
                                 <div className={styles.filterWrapper}>
-                                    <FilterItem
-                                        setFilters={setFilters}
-                                        title="Gender"
-                                        content={['Male', 'Female', 'Unisex']}
-                                    />
-                                    <FilterItem
-                                        setFilters={setFilters}
-                                        title="Brand"
-                                        content={['Jordan', 'Nike', 'Puma', 'Adidas']}
-                                    />
-                                    <FilterItem
-                                        setFilters={setFilters}
-                                        title="Shop by price"
-                                        content={['Under 1,000,000đ', '1,000,000đ to 4,000,000đ', 'Over 4,000,000đ']}
-                                    />
+                                    <FilterByGender search={search} setSearch={setSearch} />
+                                    <FilterByBrand search={search} setSearch={setSearch} />
+                                    <FilterByPrice search={search} setSearch={setSearch} />
                                     <ColoursWay />
                                     <SizeItem />
                                 </div>
