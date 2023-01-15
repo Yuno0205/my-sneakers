@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { HeartIcon } from '../../components/Icons';
 import RightModal from '../../components/Modal/RightModal/RightModal';
 import { addToWishlist } from '../../redux/wishlistSlice';
+import Slider from 'react-slick';
+import { NumericFormat } from 'react-number-format';
 
 const Details = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -61,6 +63,14 @@ const Details = () => {
         console.log('haha');
     };
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -79,7 +89,23 @@ const Details = () => {
                             <div className={styles.productInfo}>
                                 <h1>{data.title}</h1>
                                 <h2>Men's Shoes</h2>
-                                {data.fullPrice ? <p>{data.fullPrice}</p> : <p>{data.currentPrice}</p>}
+                                <p>
+                                    <NumericFormat
+                                        thousandSeparator={true}
+                                        value={data.fullPrice ? data.fullPrice : data.currentPrice}
+                                        suffix="  VND"
+                                        displayType="text"
+                                    />
+                                </p>
+                            </div>
+                            <div className={styles.imagesSlider}>
+                                <Slider {...settings}>
+                                    {data.imageMain?.map((images, index) => (
+                                        <div key={index} className={styles.slide}>
+                                            <Image alt="" src={images} />
+                                        </div>
+                                    ))}
+                                </Slider>
                             </div>
                             <ColorWayImage />
                             <SizeGroup>

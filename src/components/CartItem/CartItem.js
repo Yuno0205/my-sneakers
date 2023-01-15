@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useEffect } from 'react';
+import { NumericFormat } from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { HeartIcon, TrashBinIcon } from '../../components/Icons/Icons';
@@ -102,7 +103,14 @@ function CartItem({ favorite, openModal, handleShowModal }) {
                                 </div>
                             </div>
                             <div className={styles.price}>
-                                <span>{item.price}đ</span>
+                                <span>
+                                    <NumericFormat
+                                        thousandSeparator={true}
+                                        value={item.price}
+                                        suffix="  VND"
+                                        displayType="text"
+                                    />
+                                </span>
                             </div>
                         </div>
                         <div className={styles.actions}>

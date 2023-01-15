@@ -46,6 +46,10 @@
     margin: 0 14px 30px 0px;
 }
 
+.text span {
+    color: #000 !important;
+}
+
 /* .checkOutText {
     white-space: nowrap;
     text-align: center;

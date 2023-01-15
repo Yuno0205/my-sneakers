@@ -39,6 +39,7 @@
 
 .infoWrapper {
     padding: 0 44px;
+
     height: 100%;
 }
 
@@ -83,4 +84,31 @@
 
 .descriptions p {
     line-height: 1.75;
+}
+
+.imagesSlider {
+    cursor: pointer;
+    max-width: 100%;
+    padding: 15px 0;
+    display: none;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+    .content {
+        display: none;
+    }
+
+    .info {
+        flex: 1;
+        max-width: 100%;
+    }
+
+    .imagesSlider {
+        display: block;
+    }
+}
+
+@media (max-width: 740px) {
 }

@@ -148,3 +148,13 @@
     color: red;
     cursor: pointer;
 }
+
+@media (max-width: 740px) {
+    .itemInfo {
+        flex-wrap: wrap;
+    }
+
+    .actions {
+        margin-top: 10px;
+    }
+}

@@ -85,3 +85,27 @@
 .viewMore:hover {
     color: #111;
 }
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+    .content {
+        flex-flow: row wrap;
+    }
+
+    .bag {
+        flex: 1;
+        max-width: 100%;
+    }
+    .favouriteContent {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 740px) {
+    .favouriteContent {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
