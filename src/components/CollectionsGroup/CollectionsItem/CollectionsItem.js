@@ -3,6 +3,7 @@ import ColorWayImage from '../../ColorWayImage/ColorWayImage';
 import styles from './CollectionsItem.module.css';
 
 function CollectionsItem({ item }) {
+    console.log(item.otherOptions);
     return (
         <div className={styles.wrapper}>
             <Link to={`/collections/${item._id}`} key={item._id} className={styles.body}>
@@ -12,10 +13,10 @@ function CollectionsItem({ item }) {
                     </div>
                     <div className={styles.info}>
                         <div className={styles.colorWay}>
-                            <ColorWayImage small />
-                            <div className={styles.remain}>
+                            <ColorWayImage items={item.otherOptions} small />
+                            {/* <div className={styles.remain}>
                                 <span>+4</span>
-                            </div>
+                            </div> */}
                         </div>
 
                         {item.feature ? <div className={styles.status}>{item.feature}</div> : ''}

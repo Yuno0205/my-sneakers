@@ -1,4 +1,4 @@
-export const HeartIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
+export const HeartIcon = ({ width = '2.4rem', height = '2.4rem', className, fill = 'none' }) => (
     <svg
         className={className}
         focusable="false"
@@ -6,7 +6,7 @@ export const HeartIcon = ({ width = '2.4rem', height = '2.4rem', className }) =>
         role="img"
         width={width}
         height={height}
-        fill="none"
+        fill={fill}
     >
         <path
             stroke="currentColor"

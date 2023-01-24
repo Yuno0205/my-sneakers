@@ -42,9 +42,6 @@ function Cart() {
                             <div className={styles.favouriteContent}>
                                 <CartItem openModal={openModal} handleShowModal={handleShowModal} favorite />
                             </div>
-                            <div className={styles.favouriteContent}>
-                                <CartItem openModal={openModal} handleShowModal={handleShowModal} favorite />
-                            </div>
                         </div>
                         <Link className={styles.viewMore} to="/">
                             View More Wishlist

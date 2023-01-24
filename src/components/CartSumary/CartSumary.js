@@ -28,7 +28,7 @@ function CartSumary({ title = 'Summary' }) {
                 </div>
             </div>
             <div className={styles.summaryInfo}>
-                <div className={styles.text}>Estimated Delivery & Handling :</div>
+                <div className={styles.text}> Delivery & Handling :</div>
                 <div className={styles.text}>
                     {cart.totalAmount ? (
                         <NumericFormat thousandSeparator={true} value={35000} suffix="  VND" displayType="text" />

@@ -4,8 +4,12 @@ import CollectionsGroup from '../../components/CollectionsGroup';
 import CollectionsItem from '../../components/CollectionsGroup/CollectionsItem/CollectionsItem';
 import FavouriteItem from '../../components/CollectionsGroup/FavouriteItem/Favourite';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import clsx from 'clsx';
 function Wishlist() {
     const wishlist = useSelector((state) => state.wishlist);
+    const [hide, setHide] = useState(false);
+    const toggleHide = () => setHide((value) => !value);
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -18,9 +22,16 @@ function Wishlist() {
                                 <span className={styles.itemCount}>({wishlist.items.length})</span>
                             </h1>
                             <nav className={styles.headerNav}>
-                                <Button outline grey>
-                                    <span> Edit </span>
-                                </Button>
+                                <div className={clsx({ [styles.hide]: hide })}>
+                                    <Button onClick={toggleHide} outline grey>
+                                        <span> Edit </span>
+                                    </Button>
+                                </div>
+                                <div className={clsx({ [styles.hide]: !hide })}>
+                                    <Button onClick={toggleHide} primary grey>
+                                        <span> Done </span>
+                                    </Button>
+                                </div>
                             </nav>
                         </div>
                     </header>
@@ -29,7 +40,7 @@ function Wishlist() {
                 <div className={styles.content}>
                     <div className={styles.results}>
                         <CollectionsGroup>
-                            <FavouriteItem data={wishlist} />
+                            <FavouriteItem hide={hide} data={wishlist} />
                         </CollectionsGroup>
                     </div>
                 </div>

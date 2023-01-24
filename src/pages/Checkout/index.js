@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -15,6 +15,7 @@ const onSubmit = async (values, actions) => {
 };
 
 function Checkout() {
+    const navigate = useNavigate();
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>
@@ -25,12 +26,8 @@ function Checkout() {
                     <div className={styles.infoUser}>
                         <h4 className={styles.label}>Customer's Infomations</h4>
 
-                        <Formik
-                            initialValues={{ email: '', password: '' }}
-                            validationSchema={basicSchema}
-                            onSubmit={onSubmit}
-                        >
-                            {({ isSubmitting }) => (
+                        <Formik initialValues={{}} validationSchema={basicSchema} onSubmit={onSubmit}>
+                            {({ isSubmitting, isSubmitted }) => (
                                 <Form className={styles.form}>
                                     <div className={styles.info}>
                                         <div className={styles.nameInfo}>
@@ -52,18 +49,34 @@ function Checkout() {
                                         </p>
                                     </div>
 
-                                    <Input content="Adress" name="adress" type="text" />
+                                    <Input content="Adress" name="address" type="text" />
                                     <div className={styles.info}>
                                         <div>
                                             <Input type="text" name="email" content="Email" />
                                         </div>
                                         <div>
-                                            <Input type="text" name="firstName" content="Phone Number" />
+                                            <Input type="text" name="phoneNumber" content="Phone Number" />
                                         </div>
                                     </div>
-                                    <button disabled={isSubmitting} type="submit" className={styles.loginBtn}>
-                                        <span>Check out</span>
-                                    </button>
+                                    <div className={styles.continued}>
+                                        <Button primary large disabled={isSubmitting} type="submit">
+                                            <Link to="/success">
+                                                <span className={styles.white}>Check out</span>
+                                            </Link>
+                                        </Button>
+                                        <Button outline large disabled={isSubmitting} type="submit">
+                                            <Link to="/collections">
+                                                <span className={styles.black}>Countinued Shopping</span>
+                                            </Link>
+                                        </Button>
+                                        <button
+                                            onClick={onSubmit}
+                                            disabled={!(Formik.isValid && Formik.dirty)}
+                                            className={clsx(styles.loginBtn)}
+                                        >
+                                            haha
+                                        </button>
+                                    </div>
                                 </Form>
                             )}
                         </Formik>
@@ -72,7 +85,6 @@ function Checkout() {
                         <CartSumary title="In your bag" />
 
                         <div>Product's infomation :</div>
-                        <CheckOutItem />
                         <CheckOutItem />
                     </div>
                 </div>

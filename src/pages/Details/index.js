@@ -26,7 +26,8 @@ const Details = () => {
     const location = useLocation();
     const id = location.pathname.split('/')[2];
 
-    const [data, setData] = useState({});
+    const [data, setData] = useState();
+    const [options, setOptions] = useState();
 
     useEffect(() => {
         const getSingleProduct = async () => {
@@ -34,6 +35,7 @@ const Details = () => {
                 const res = await axios.get('http://localhost:5000/api/products/find/' + id);
 
                 setData(res.data);
+                setOptions(res.data.otherOptions);
             } catch {
                 console.log('err when get single product');
             }
@@ -76,7 +78,7 @@ const Details = () => {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.items}>
-                        {data.imageMain?.map((images, index) => (
+                        {data?.imageMain.map((images, index) => (
                             <div key={index} className={styles.item}>
                                 <Image alt="" src={images} />
                             </div>
@@ -87,12 +89,12 @@ const Details = () => {
                     <div className={styles.infoWrapper}>
                         <div className={styles.infoContent}>
                             <div className={styles.productInfo}>
-                                <h1>{data.title}</h1>
+                                <h1>{data?.title}</h1>
                                 <h2>Men's Shoes</h2>
                                 <p>
                                     <NumericFormat
                                         thousandSeparator={true}
-                                        value={data.fullPrice ? data.fullPrice : data.currentPrice}
+                                        value={data?.fullPrice ? data.fullPrice : data?.currentPrice}
                                         suffix="  VND"
                                         displayType="text"
                                     />
@@ -100,16 +102,17 @@ const Details = () => {
                             </div>
                             <div className={styles.imagesSlider}>
                                 <Slider {...settings}>
-                                    {data.imageMain?.map((images, index) => (
+                                    {data?.imageMain.map((images, index) => (
                                         <div key={index} className={styles.slide}>
                                             <Image alt="" src={images} />
                                         </div>
                                     ))}
                                 </Slider>
                             </div>
-                            <ColorWayImage />
+
+                            <ColorWayImage items={options} />
                             <SizeGroup>
-                                {data.skuData?.map((data, index) => (
+                                {data?.skuData.map((data, index) => (
                                     <SizeItem handleSetSize={handleSetSize} key={index} inStock={data.inStock}>
                                         {data.size}
                                     </SizeItem>
@@ -122,7 +125,7 @@ const Details = () => {
                                     showcases one of our greatest innovations yet with its large Air window. Deep red
                                     accents pop against the lightweight black knit upper for a look that's striking and
                                     versatile.
-                                    {data.description}
+                                    {data?.description}
                                 </p>
                             </div>
                             <div className={styles.action}>

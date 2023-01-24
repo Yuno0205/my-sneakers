@@ -22,13 +22,11 @@ const wishlistSlice = createSlice({
         },
 
         removeFromWishlist(state, action) {
-            const existingIndex = state.items.findIndex(
-                (item) => item._id === action.payload._id && item.size === action.payload.size,
-            );
+            console.log(action.payload._id);
+            const existingIndex = state.items.findIndex((item) => item._id === action.payload._id);
 
             if (existingIndex >= 0) {
                 state.items.splice(existingIndex, 1);
-                toast.error('delete');
             }
             state.totalCount -= 1;
         },

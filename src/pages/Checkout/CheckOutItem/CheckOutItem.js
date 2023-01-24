@@ -1,27 +1,50 @@
+import { NumericFormat } from 'react-number-format';
+import { useSelector } from 'react-redux';
 import styles from './CheckOutItem.module.css';
 function CheckOutItem() {
+    const cart = useSelector((state) => state.cart);
+    console.log(cart);
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.content}>
-                <div className={styles.image}>
-                    <img src="https://secure-images.nike.com/is/image/DotCom/DQ4686_300?wid=80&hei=80&align=0,1&cropN=0,0,0,0&fmt=png-alpha&resMode=sharp&defaultImage=DotCom/SEARCH_002" />
-                </div>
-                <div className={styles.info}>
-                    <div className={styles.name}>
-                        <span>Nike Air Max 270 Men's Shoes</span>
+        <>
+            {cart.items?.map((item, index) => (
+                <div key={index} className={styles.wrapper}>
+                    <div className={styles.content}>
+                        <div className={styles.image}>
+                            <img alt="" src={item.imageMain[0]} />
+                        </div>
+                        <div className={styles.info}>
+                            <div className={styles.name}>
+                                <span>{item.title}</span>
+                            </div>
+                            <div className={styles.details}>
+                                <span>Style : {item.subCategory[0]}</span>
+                                <span>Size: {item.size}</span>
+                                <span>Color: {item.color}</span>
+
+                                <span>
+                                    <NumericFormat
+                                        thousandSeparator={true}
+                                        prefix="Price : "
+                                        value={item.fullPrice ? item.fullPrice : item.currentPrice}
+                                        suffix="  VND"
+                                        displayType="text"
+                                    />
+                                </span>
+                                <span>Quantity: {item.quantity} </span>
+                                <span>
+                                    <NumericFormat
+                                        thousandSeparator={true}
+                                        value={(item.fullPrice ? item.fullPrice : item.currentPrice) * item.quantity}
+                                        suffix="  VND"
+                                        displayType="text"
+                                    />
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div className={styles.details}>
-                        <span>Style #: DQ4686-300</span>
-                        <span>Size: 7</span>
-                        <span>Color: Rough</span>
-                        <span>Green/Sequoia/Hot Curry/Dark Russet</span>
-                        <span>Price : 1,500,000đ</span>
-                        <span>Quantity: 2 </span>
-                        <span> 3,000,000đ</span>
-                    </div>
                 </div>
-            </div>
-        </div>
+            ))}
+        </>
     );
 }
 

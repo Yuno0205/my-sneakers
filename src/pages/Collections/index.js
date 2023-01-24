@@ -18,7 +18,7 @@ function Collections() {
 
     return (
         <CollectionsGroup>
-            {listProduct.map((item) => (
+            {listProduct?.map((item) => (
                 <CollectionsItem item={item} key={item._id} />
             ))}
         </CollectionsGroup>

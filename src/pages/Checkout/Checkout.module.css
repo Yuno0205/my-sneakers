@@ -67,10 +67,18 @@
     display: flex;
     flex-direction: row;
     margin: 20px 0;
+    width: 100%;
 }
 
+.nameInfo {
+    flex: 1;
+    max-width: 100%;
+}
+.hide {
+    display: none;
+}
 .loginBtn {
-    width: 500px;
+    width: 100%;
     margin: 25px auto 0px;
 
     background-color: #111;
@@ -159,4 +167,33 @@
 
 .viewMore:hover {
     color: #111;
+}
+
+.continued {
+    margin: 20px 0;
+}
+
+.white {
+    color: #fff;
+    font-weight: 100;
+}
+.black {
+    color: #000;
+    font-weight: 100;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        flex-wrap: wrap;
+    }
+    .infoUser {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 740px) {
+    .info {
+        flex-direction: column;
+    }
 }

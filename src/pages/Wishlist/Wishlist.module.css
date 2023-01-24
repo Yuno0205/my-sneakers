@@ -28,6 +28,10 @@
     padding: 0 30px;
 }
 
+.hide {
+    display: none;
+}
+
 .offsetWall {
     height: 15px;
 }

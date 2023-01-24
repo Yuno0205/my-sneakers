@@ -86,3 +86,33 @@
     font-size: 1.8rem;
     font-weight: 200;
 }
+
+.heart {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    display: none;
+    opacity: 0;
+    vertical-align: top;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border-radius: 50%;
+
+    font-size: 12px;
+    color: rgb(17, 17, 17);
+    background: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+}
+
+.show {
+    display: flex;
+    opacity: 1;
+    height: 40px;
+    width: 40px;
+    padding: 6px;
+}
