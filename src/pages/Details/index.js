@@ -27,20 +27,32 @@ const Details = () => {
     const id = location.pathname.split('/')[2];
 
     const [data, setData] = useState();
-    const [options, setOptions] = useState();
+    const [option, setOption] = useState();
 
     useEffect(() => {
         const getSingleProduct = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/products/find/' + id);
+                const res = await axios.get('http://localhost:5000/api/options/find/' + id);
 
                 setData(res.data);
-                setOptions(res.data.otherOptions);
             } catch {
                 console.log('err when get single product');
             }
         };
         getSingleProduct();
+    }, [id]);
+
+    useEffect(() => {
+        const getRealtedProduct = async () => {
+            try {
+                const res = await axios.get('http://localhost:5000/api/products/related/' + id);
+
+                setOption(res.data[0].options);
+            } catch {
+                console.log('err when get single product');
+            }
+        };
+        getRealtedProduct();
     }, [id]);
 
     const handleAddToCart = () => {
@@ -110,7 +122,7 @@ const Details = () => {
                                 </Slider>
                             </div>
 
-                            <ColorWayImage items={options} />
+                            <ColorWayImage data={option} />
                             <SizeGroup>
                                 {data?.skuData.map((data, index) => (
                                     <SizeItem handleSetSize={handleSetSize} key={index} inStock={data.inStock}>

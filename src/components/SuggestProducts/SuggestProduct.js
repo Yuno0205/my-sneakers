@@ -1,14 +1,19 @@
 import Tippy from '@tippyjs/react/headless';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 import Loading from '../Loading';
 import NoProducts from '../Others/NoProduct';
-
 import styles from './SuggestProduct.module.css';
 import Image from '../Image/Image';
+import { NumericFormat } from 'react-number-format';
 
 function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults, loading }) {
+    const navigate = useNavigate();
+
+    const handleClick = (id) => {
+        navigate(`collections/${id}`);
+    };
     return (
         <Tippy interactive>
             <div className={clsx(styles.content)}>
@@ -25,17 +30,24 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                     {searchResults && searchResults.length > 0 ? (
                         searchResults.map((result) => (
                             <Link
-                                to={'/products'}
+                                to={`collections/${result._id}`}
                                 className={clsx(styles.item, { [styles.hide]: loading })}
                                 key={result.id}
                             >
                                 <div className={styles.image}>
-                                    <Image src={result.avatar} alt="Nhật Hào"></Image>
+                                    <Image src={result.imageMain[0]} alt="Nhật Hào"></Image>
                                 </div>
                                 <div className={styles.details}>
-                                    <h4>{result.full_name}</h4>
+                                    <h4>{result.title}</h4>
                                     <p>Men Shoe's</p>
-                                    <span>2,000,000đ</span>
+                                    <span>
+                                        <NumericFormat
+                                            thousandSeparator={true}
+                                            value={result.fullPrice ? result.fullPrice : result.currentPrice}
+                                            suffix="  VND"
+                                            displayType="text"
+                                        />
+                                    </span>
                                 </div>
                             </Link>
                         ))

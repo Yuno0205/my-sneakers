@@ -62,8 +62,7 @@
 
 .image {
     min-height: 250px;
-    height: 290px;
-    max-height: 290px;
+
     overflow: hidden;
     background-size: cover;
 }

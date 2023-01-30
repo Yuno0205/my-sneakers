@@ -30,7 +30,7 @@ function Search({
         const fetchAPI = async () => {
             setLoading(true);
 
-            const results = await searchSevices.search(deBounce);
+            const results = await searchSevices.searchService(deBounce);
             handleSearchResults(results);
 
             setLoading(false);

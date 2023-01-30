@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import styles from './ColorWayImage.module.css';
 import { useNavigate } from 'react-router-dom';
 
-function ColorWayImage({ data }) {
+function ColorWaySmall({ data }) {
     return (
         <div className={styles.wrapper}>
-            <div className={clsx(styles.content)}>
+            <div className={clsx(styles.content, styles.small)}>
                 {data?.map((item, index) => (
-                    <div key={index} className={clsx(styles.item)}>
+                    <div key={index} className={clsx(styles.item, styles.small)}>
                         <Link to={`/collections/${item._id}`}>
                             <img alt="" src={item.imageExtra[0]} />
                         </Link>
@@ -21,4 +21,4 @@ function ColorWayImage({ data }) {
     );
 }
 
-export default ColorWayImage;
+export default ColorWaySmall;

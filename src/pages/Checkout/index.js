@@ -10,12 +10,12 @@ import styles from './Checkout.module.css';
 import { basicSchema } from '../../components/Validations/UserValidation';
 
 const onSubmit = async (values, actions) => {
+    console.log('hahahaha');
     await new Promise((resolve) => setTimeout(resolve, 1000));
     actions.resetForm();
 };
 
 function Checkout() {
-    const navigate = useNavigate();
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>
@@ -26,8 +26,18 @@ function Checkout() {
                     <div className={styles.infoUser}>
                         <h4 className={styles.label}>Customer's Infomations</h4>
 
-                        <Formik initialValues={{}} validationSchema={basicSchema} onSubmit={onSubmit}>
-                            {({ isSubmitting, isSubmitted }) => (
+                        <Formik
+                            initialValues={{
+                                email: '',
+                                phoneNumber: '',
+                                firstName: '',
+                                lastName: '',
+                                address: '',
+                            }}
+                            validationSchema={basicSchema}
+                            onSubmit={onSubmit}
+                        >
+                            {({ props }) => (
                                 <Form className={styles.form}>
                                     <div className={styles.info}>
                                         <div className={styles.nameInfo}>
@@ -59,23 +69,17 @@ function Checkout() {
                                         </div>
                                     </div>
                                     <div className={styles.continued}>
-                                        <Button primary large disabled={isSubmitting} type="submit">
+                                        <Button onClick={() => console.log(props)} primary large type="submit">
                                             <Link to="/success">
                                                 <span className={styles.white}>Check out</span>
                                             </Link>
                                         </Button>
-                                        <Button outline large disabled={isSubmitting} type="submit">
+                                        <Button outline large type="submit">
                                             <Link to="/collections">
                                                 <span className={styles.black}>Countinued Shopping</span>
                                             </Link>
                                         </Button>
-                                        <button
-                                            onClick={onSubmit}
-                                            disabled={!(Formik.isValid && Formik.dirty)}
-                                            className={clsx(styles.loginBtn)}
-                                        >
-                                            haha
-                                        </button>
+                                        <button type="submit">Submit</button>
                                     </div>
                                 </Form>
                             )}

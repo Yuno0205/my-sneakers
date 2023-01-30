@@ -47,8 +47,14 @@
     margin: 2px 0;
 }
 
+.feature {
+    color: #9e3500;
+}
+
 .hide {
     display: none !important;
+    margin: 2px 0;
+    white-space: nowrap;
 }
 
 .show {

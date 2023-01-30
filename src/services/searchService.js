@@ -1,14 +1,14 @@
-import * as request from '../utils/request';
+import { publicRequest } from '../utils/request';
 
-export const search = async (q, type = 'less') => {
+export const searchService = async (search) => {
     try {
-        const res = await request.get(`users/search`, {
+        const res = await publicRequest.get(`options/filter`, {
             params: {
-                q,
-                type,
+                search,
             },
         });
-        return res.data;
+
+        return res.data.options;
     } catch (error) {
         console.log(error);
     }

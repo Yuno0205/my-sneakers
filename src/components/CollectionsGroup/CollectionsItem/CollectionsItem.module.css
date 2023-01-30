@@ -122,6 +122,12 @@
     color: #111111;
 }
 
+.fullPrice {
+    color: #757575;
+    text-decoration: line-through;
+    margin-left: 20px;
+}
+
 .sale {
     color: #8d8d8d;
     text-decoration: line-through;

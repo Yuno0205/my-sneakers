@@ -1,35 +1,55 @@
+import { NumericFormat } from 'react-number-format';
 import { Link } from 'react-router-dom';
 import ColorWayImage from '../../ColorWayImage/ColorWayImage';
+import ColorWaySmall from '../../ColorWayImage/ColorWaySmall';
 import styles from './CollectionsItem.module.css';
 
 function CollectionsItem({ item }) {
-    console.log(item.otherOptions);
     return (
         <div className={styles.wrapper}>
-            <Link to={`/collections/${item._id}`} key={item._id} className={styles.body}>
+            <Link to={`/collections/${item.options[0]._id}`} key={item._id} className={styles.body}>
                 <div className={styles.content}>
                     <div className={styles.itemImage}>
-                        <img alt="colecction" src={item.imageMain[0]} />
+                        <img alt="colecction" src={item.options[0].imageMain[0]} />
                     </div>
                     <div className={styles.info}>
                         <div className={styles.colorWay}>
-                            <ColorWayImage items={item.otherOptions} small />
-                            {/* <div className={styles.remain}>
-                                <span>+4</span>
-                            </div> */}
+                            <ColorWaySmall data={item.options} />
                         </div>
 
-                        {item.feature ? <div className={styles.status}>{item.feature}</div> : ''}
+                        {item.options[0].feature ? <div className={styles.status}>{item.options[0].feature}</div> : ''}
                         <div className={styles.titleInfo}>
                             <div className={styles.title}>{item.title}</div>
                             <div className={styles.brand}>{item.category}</div>
                         </div>
-                        <div className={styles.colours}>7 Colours </div>
+                        <div className={styles.colours}>{item.options.length} Colours </div>
                         <div className={styles.price}>
-                            <span className={styles.mainPrice}>{item.currentPrice}đ</span>
-                            {item.fullPrice ? <span className={styles.sale}>{item.fullPrice}đ</span> : ''}
+                            <span className={styles.mainPrice}>
+                                <NumericFormat
+                                    thousandSeparator={true}
+                                    value={item.options[0].currentPrice}
+                                    suffix="  VND"
+                                    displayType="text"
+                                />
+                            </span>
+                            <span className={styles.fullPrice}>
+                                {item.options[0].fullPrice ? (
+                                    <NumericFormat
+                                        thousandSeparator={true}
+                                        value={item.options[0].fullPrice}
+                                        suffix="  VND"
+                                        displayType="text"
+                                    />
+                                ) : (
+                                    ''
+                                )}
+                            </span>
                         </div>
-                        {item.discount ? <div className={styles.pricePerc}>{item.discount}% off</div> : ''}
+                        {item.options[0].discount ? (
+                            <div className={styles.pricePerc}>{item.options[0].discount}% off</div>
+                        ) : (
+                            ''
+                        )}
                     </div>
                 </div>
             </Link>

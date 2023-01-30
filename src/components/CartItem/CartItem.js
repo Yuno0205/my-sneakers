@@ -22,13 +22,13 @@ function CartItem({ favorite, openModal, handleShowModal }) {
                         <div className={styles.itemInfo}>
                             <div className={styles.basicInfo}>
                                 <div className={clsx(styles.infoData, styles.itemName)}>{item.title}</div>
-                                <div className={styles.infoData}>{item.gender[0]}'s Shoes</div>
+                                <div className={styles.feature}>{item.feature}</div>
                                 <div
                                     className={clsx(styles.infoData, {
                                         [styles.hide]: favorite,
                                     })}
                                 >
-                                    {item.color}
+                                    Color : {item.color}
                                 </div>
                                 <div className={clsx(styles.infoData, styles.selections)}>
                                     <div

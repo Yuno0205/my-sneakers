@@ -8,5 +8,6 @@ const routes = {
     wishlist: '/wishlist',
     checkout: '/checkout',
     loading: '/loading',
+    error404: '/*',
 };
 export default routes;

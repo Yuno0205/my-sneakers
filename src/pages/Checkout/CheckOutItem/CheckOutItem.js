@@ -17,7 +17,7 @@ function CheckOutItem() {
                                 <span>{item.title}</span>
                             </div>
                             <div className={styles.details}>
-                                <span>Style : {item.subCategory[0]}</span>
+                                <span>Feature : {item.feature}</span>
                                 <span>Size: {item.size}</span>
                                 <span>Color: {item.color}</span>
 
