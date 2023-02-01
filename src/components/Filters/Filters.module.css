@@ -145,7 +145,7 @@
 }
 
 .filterContent {
-    margin-top: 5px;
+    margin: 10px 0;
     height: auto;
     max-height: 500px;
     transition: max-height 200ms ease-in;

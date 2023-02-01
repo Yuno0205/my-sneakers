@@ -238,6 +238,10 @@
     border-radius: 50%;
 }
 
+.isWhite {
+    color: #000 !important;
+}
+
 .colorName {
     padding-top: 2px;
     font-size: 12px;
@@ -246,7 +250,7 @@
     white-space: normal;
 }
 .hide {
-    display: none;
+    opacity: 0;
 }
 
 .iconCheck {

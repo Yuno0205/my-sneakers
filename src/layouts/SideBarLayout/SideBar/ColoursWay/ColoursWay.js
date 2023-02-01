@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { CheckIcon, DownIcon, UpIcon } from '../../../../components/Icons';
 import ColorItem from './ColorItem';
 import styles from '../SideBar.module.css';
-function ColoursWay({ colours }) {
+function ColoursWay({ colours, filterColor, setFilterColor }) {
     const [hideFilter, setHideFilter] = useState(false);
 
     const handleFilter = (hideFilter) => {
@@ -27,7 +27,12 @@ function ColoursWay({ colours }) {
                 <div className={styles.filterInner}>
                     <div className={styles.colorsGroup}>
                         {colours?.map((item, index) => (
-                            <ColorItem key={index} color={item} />
+                            <ColorItem
+                                filterColor={filterColor}
+                                setFilterColor={setFilterColor}
+                                key={index}
+                                color={item}
+                            />
                         ))}
                     </div>
                 </div>

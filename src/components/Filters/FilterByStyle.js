@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { DownIcon, UpIcon } from '../Icons';
 
 import styles from './Filters.module.css';
-function FilterByGender({ filterGender, setFilterGender, gender }) {
+function FilterByStyle({ filterStyle, setFilterStyle, style }) {
     const [hideFilter, setHideFilter] = useState(false);
 
     const handleFilter = (hideFilter) => {
@@ -15,14 +15,14 @@ function FilterByGender({ filterGender, setFilterGender, gender }) {
         const value = e.target.value;
         const isChecked = e.target.checked;
 
-        setFilterGender(isChecked ? [...filterGender, value] : filterGender.filter((item) => item !== value));
+        setFilterStyle(isChecked ? [...filterStyle, value] : filterStyle.filter((item) => item !== value));
     };
 
     return (
         <div className={styles.filterItem}>
             <span onClick={() => handleFilter(hideFilter)} className={clsx(styles.spanTitle, styles.gender)}>
                 <div className={styles.filterTitle}>
-                    <div className={styles.filterLabel}>Gender</div>
+                    <div className={styles.filterLabel}>Styles</div>
                     <div className={styles.filterIcon}>{hideFilter ? <DownIcon /> : <UpIcon />}</div>
                 </div>
             </span>
@@ -31,7 +31,7 @@ function FilterByGender({ filterGender, setFilterGender, gender }) {
                     [styles.hide]: hideFilter,
                 })}
             >
-                {gender?.map((item, index) => (
+                {style?.map((item, index) => (
                     <div className={styles.inputItem} key={index}>
                         <input className={styles.cb} type="checkbox" id={index} value={item} onChange={handleChange} />
                         <label htmlFor={index}>{item}</label>
@@ -42,4 +42,4 @@ function FilterByGender({ filterGender, setFilterGender, gender }) {
     );
 }
 
-export default FilterByGender;
+export default FilterByStyle;

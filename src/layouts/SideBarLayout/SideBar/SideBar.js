@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import FilterByBrand from '../../../components/Filters/FilterByBrand';
+import FilterByFeature from '../../../components/Filters/FilterByFeature';
 import FilterByGender from '../../../components/Filters/FilterByGender';
 import FilterByPrice from '../../../components/Filters/FilterByPrice';
+import FilterByStyle from '../../../components/Filters/FilterByStyle';
 import { CheckIcon, DownIcon, UpIcon } from '../../../components/Icons/Icons';
 import { getProductFailure, getProductStart, getProductSuccess } from '../../../redux/productSlice';
 import { publicRequest } from '../../../utils/request';
@@ -16,9 +18,12 @@ import SizeItem from './SizeItem';
 function Sidebar({ showFilter }) {
     const [filters, setFilters] = useState({});
     const dispatch = useDispatch();
-    const [sort, setSort] = useState({ sort: 'rating', order: 'desc' });
+    const [sort, setSort] = useState({ sort: 'price', order: 'desc' });
     const [filterColor, setFilterColor] = useState([]);
     const [filterGender, setFilterGender] = useState([]);
+    const [filterBrand, setFilterBrand] = useState([]);
+    const [filterStyle, setFilterStyle] = useState([]);
+    const [filterFeature, setFilterFeature] = useState([]);
     const [page, setPage] = useState(1);
     const [search, setSearch] = useState('');
 
@@ -29,7 +34,7 @@ function Sidebar({ showFilter }) {
                 const res = await publicRequest.get(
                     `/products?page=${page}&sort=${sort.sort},${
                         sort.order
-                    }&gender=${filterGender.toString()}&color=${filterColor.toString()}&search=${search}`,
+                    }&gender=${filterGender.toString()}&brand=${filterBrand.toString()}&style=${filterStyle.toString()}&color=${filterColor.toString()}&feature=${filterFeature.toString()}&search=${search}`,
                 );
                 dispatch(getProductSuccess(res.data));
             } catch (err) {
@@ -38,10 +43,10 @@ function Sidebar({ showFilter }) {
         };
 
         getAllProducts();
-    }, [sort, filterColor, filterGender, page, search, dispatch]);
+    }, [sort, filterColor, filterGender, filterBrand, filterStyle, filterFeature, page, search, dispatch]);
 
     const listProduct = useSelector((state) => state.product.products);
-    console.log('Data', listProduct);
+    console.log('Data', listProduct.brand);
 
     return (
         <div
@@ -73,9 +78,27 @@ function Sidebar({ showFilter }) {
                                         filterGender={filterGender}
                                         setFilterGender={setFilterGender}
                                     />
-                                    <FilterByBrand search={search} />
-                                    <FilterByPrice search={search} />
-                                    <ColoursWay colours={listProduct.color} />
+                                    <FilterByBrand
+                                        brand={listProduct.brand ? listProduct.brand : []}
+                                        filterBrand={filterBrand}
+                                        setFilterBrand={setFilterBrand}
+                                    />
+                                    <FilterByStyle
+                                        style={listProduct.style ? listProduct.style : []}
+                                        filterStyle={filterStyle}
+                                        setFilterStyle={setFilterStyle}
+                                    />
+                                    <FilterByFeature
+                                        feature={listProduct.feature ? listProduct.feature : []}
+                                        filterFeature={filterFeature}
+                                        setFilterFeature={setFilterFeature}
+                                    />
+                                    <FilterByPrice />
+                                    <ColoursWay
+                                        colours={listProduct.color ? listProduct.color : []}
+                                        filterColor={filterColor}
+                                        setFilterColor={setFilterColor}
+                                    />
                                     <SizeItem />
                                 </div>
                             </div>
