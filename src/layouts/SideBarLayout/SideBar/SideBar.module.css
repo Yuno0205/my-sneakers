@@ -245,14 +245,14 @@
     word-break: break-word;
     white-space: normal;
 }
+.hide {
+    display: none;
+}
 
 .iconCheck {
     position: absolute;
     color: white;
     top: 5px;
-}
-
-.check {
 }
 
 /* Size */

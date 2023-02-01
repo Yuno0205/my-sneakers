@@ -4,10 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import { DownIcon, UpIcon } from '../Icons';
 
 import styles from './Filters.module.css';
-function FilterByGender({ setSearch, search }) {
-    const data = ['Male', 'Female', 'Unisex'];
+function FilterByGender({ filterGender, setFilterGender, gender }) {
     const [hideFilter, setHideFilter] = useState(false);
-    const [filterValue, setFilterValue] = useState({});
 
     const handleFilter = (hideFilter) => {
         hideFilter ? setHideFilter(false) : setHideFilter(true);
@@ -18,11 +16,9 @@ function FilterByGender({ setSearch, search }) {
         const isChecked = e.target.checked;
 
         const name = e.target.name;
-        setSearch({ gender: value });
-        setFilterValue(isChecked ? [...filterValue, value] : filterValue.filter((item) => item !== value));
-    };
 
-    console.log(filterValue);
+        setFilterGender(isChecked ? [...filterGender, value] : filterGender.filter((item) => item !== value));
+    };
 
     return (
         <div className={styles.filterItem}>
@@ -37,7 +33,7 @@ function FilterByGender({ setSearch, search }) {
                     [styles.hide]: hideFilter,
                 })}
             >
-                {data?.map((item, index) => (
+                {gender?.map((item, index) => (
                     <div className={styles.inputItem} key={index}>
                         <input className={styles.cb} type="checkbox" id={index} value={item} onChange={handleChange} />
                         <label htmlFor={index}>{item}</label>
