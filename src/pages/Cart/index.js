@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import Modal from '../../components/Modal';
 import { useState } from 'react';
 import CartSumary from '../../components/CartSumary/CartSumary';
+import WishlistItem from '../../components/CartItem/WishlistItem/WishlistItem';
 function Cart() {
     const [openModal, setOpenModal] = useState(false);
 
@@ -40,7 +41,7 @@ function Cart() {
                         <h4 className={styles.title}>Favourites</h4>
                         <div className={styles.content}>
                             <div className={styles.favouriteContent}>
-                                <CartItem openModal={openModal} handleShowModal={handleShowModal} favorite />
+                                <WishlistItem openModal={openModal} handleShowModal={handleShowModal} favorite />
                             </div>
                         </div>
                         <Link className={styles.viewMore} to="/">

@@ -69,7 +69,8 @@
 .favouriteContent {
     display: flex;
     flex-direction: row;
-
+    width: 100%;
+    flex-wrap: wrap;
     padding-left: 8px;
     padding-right: 8px;
 }

@@ -5,7 +5,7 @@ import Button from '../../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
 import styles from './ProductItem.module.css';
 
-function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
+function SoldOutProduct({ coating, sale, soldOut, handleShowModal, data }) {
     console.log(data);
     const classes = clsx(styles.item);
     return (
@@ -19,8 +19,15 @@ function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
                         to={'/'}
                     >
                         <div className={styles.relative}>
-                            <img alt="" src={data?.imageMain[0]} />
-                            <img alt="" className={styles.hoverProduct} src={data?.imageMain[1]} />
+                            <img
+                                alt=""
+                                src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/deee201a-0982-4e60-8213-621e93ca36cc/custom-nike-pegasus-39-shield-by-you.png"
+                            />
+                            <img
+                                alt=""
+                                className={styles.hoverProduct}
+                                src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/88faf772-3fb2-4edc-9fae-e58eedae75d4/custom-nike-pegasus-39-shield-by-you.png"
+                            />
                         </div>
                     </Link>
                     <div className={styles.actions}>
@@ -64,4 +71,4 @@ function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
     );
 }
 
-export default ProductItem;
+export default SoldOutProduct;

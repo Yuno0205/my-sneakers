@@ -1,0 +1,166 @@
+.cartItem {
+    display: flex;
+
+    box-shadow: rgb(229 229 229) 0px 0px 0px 0px inset, rgb(229 229 229) 0px 0px 0px 0px inset,
+        rgb(229 229 229) 0px -1px 0px 0px inset, rgb(229 229 229) 0px 0px 0px 0px inset;
+    padding: 24px 0px;
+    width: 50%;
+}
+
+.itemImg {
+    width: 180px;
+    min-width: 180px;
+    padding-right: 16px;
+    display: table-cell;
+    vertical-align: top;
+    margin: 0px;
+    height: 100%;
+}
+
+.itemImg img {
+    background: rgb(245, 245, 245);
+}
+
+.info {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.itemInfo {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.basicInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoData {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: rgb(117, 117, 117);
+    margin: 2px 0;
+}
+
+.feature {
+    color: #9e3500;
+}
+
+.hide {
+    display: none !important;
+    margin: 2px 0;
+    white-space: nowrap;
+}
+
+.show {
+    display: block !important;
+}
+
+.itemName {
+    color: #111;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.selections {
+    display: flex;
+    flex-flow: row wrap;
+    min-width: 0px;
+}
+
+.optionContent {
+    flex: 1;
+    display: inline-block;
+    cursor: default;
+}
+
+.sizeOptions {
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.optionContent select {
+    padding-left: 10px;
+    height: 100%;
+    width: 100%;
+    padding-right: 15px;
+    min-height: inherit;
+    font-size: 14px;
+    color: rgb(117, 117, 117);
+    background: none;
+
+    border-radius: 2px;
+}
+
+.openModal {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    background: 0px 0px;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    display: none;
+    box-shadow: 0px -1px 0px 0px inset;
+    line-height: 1;
+    padding: 4px 0px;
+    color: rgb(117, 117, 117);
+}
+
+.openModal:hover {
+    color: #111;
+}
+
+.addBag {
+    display: none;
+}
+
+.addBag p {
+    font-size: 1.8rem;
+    font-weight: 200;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+    vertical-align: top;
+    text-align: right;
+    color: rgb(17, 17, 17);
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    align-items: center;
+}
+
+.heart {
+    fill: red;
+}
+
+.action + .action {
+    margin-left: 25px;
+}
+
+.action:hover {
+    color: red;
+    cursor: pointer;
+}
+
+@media (max-width: 740px) {
+    .itemInfo {
+        flex-wrap: wrap;
+    }
+
+    .actions {
+        margin-top: 10px;
+    }
+}

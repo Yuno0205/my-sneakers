@@ -118,10 +118,14 @@ const Header = () => {
                     >
                         <ul>
                             <li>
-                                <Link className={styles.underline}>Men</Link>
+                                <Link to="/men" className={styles.underline}>
+                                    Men
+                                </Link>
                             </li>
                             <li>
-                                <Link className={styles.underline}>Women</Link>
+                                <Link to="/women" className={styles.underline}>
+                                    Women
+                                </Link>
                             </li>
                             <li>
                                 <Link className={styles.underline}>Kid</Link>
@@ -132,7 +136,7 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="./details" className={styles.underline}>
+                                <Link to="/sale" className={styles.underline}>
                                     Sale
                                 </Link>
                             </li>

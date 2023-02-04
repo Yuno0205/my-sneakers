@@ -25,14 +25,6 @@ function CollectionsItem({ item }) {
                         <div className={styles.colours}>{item.options.length} Colours </div>
                         <div className={styles.price}>
                             <span className={styles.mainPrice}>
-                                <NumericFormat
-                                    thousandSeparator={true}
-                                    value={item.options[0].currentPrice}
-                                    suffix="  VND"
-                                    displayType="text"
-                                />
-                            </span>
-                            <span className={styles.fullPrice}>
                                 {item.options[0].fullPrice ? (
                                     <NumericFormat
                                         thousandSeparator={true}
@@ -44,6 +36,25 @@ function CollectionsItem({ item }) {
                                     ''
                                 )}
                             </span>
+                            {item.options[0].fullPrice ? (
+                                <span className={styles.fullPrice}>
+                                    <NumericFormat
+                                        thousandSeparator={true}
+                                        value={item.options[0].currentPrice}
+                                        suffix="  VND"
+                                        displayType="text"
+                                    />
+                                </span>
+                            ) : (
+                                <div>
+                                    <NumericFormat
+                                        thousandSeparator={true}
+                                        value={item.options[0].currentPrice}
+                                        suffix="  VND"
+                                        displayType="text"
+                                    />
+                                </div>
+                            )}
                         </div>
                         {item.options[0].discount ? (
                             <div className={styles.pricePerc}>{item.options[0].discount}% off</div>

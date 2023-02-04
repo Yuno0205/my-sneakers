@@ -35,6 +35,8 @@
 .items {
     width: 85%;
     display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -46,8 +48,9 @@
 
 .item {
     width: 20%;
+    max-width: 20%;
     height: 380px;
-    margin: 0 2px;
+    padding: 0 2px;
 }
 
 .details {
@@ -84,17 +87,26 @@
     .content {
         flex-flow: row wrap;
         padding: 20px;
+        height: 100vh;
+        overflow: visible;
     }
 
     .suggest {
         width: 100%;
+        align-items: center;
     }
 
     .items {
         width: 100%;
+        padding: 20px 0;
+        flex-flow: row wrap;
+        overflow: scroll;
+        background-color: #fff;
+        height: 100%;
     }
 
     .item {
         width: 50%;
+        max-width: 50%;
     }
 }

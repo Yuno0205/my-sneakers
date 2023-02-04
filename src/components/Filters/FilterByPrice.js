@@ -4,10 +4,14 @@ import { useSearchParams } from 'react-router-dom';
 import { DownIcon, UpIcon } from '../Icons';
 
 import styles from './Filters.module.css';
-function FilterByPrice() {
-    const data = ['Under 1,000,000đ', '1,000,000đ to 4,000,000đ', 'Over 4,000,000đ'];
+function FilterByPrice(setRange) {
+    const data = [
+        { title: 'Under 1,000,000đ', data: { min: 0, max: 1000000 } },
+        { title: '1,000,000đ to 4,000,000đ', data: { min: 1000000, max: 4000000 } },
+        { title: 'Over 4,000,000đ', data: { min: 4000000, max: 10000000 } },
+    ];
     const [hideFilter, setHideFilter] = useState(false);
-    const [filterValue, setFilterValue] = useState({});
+
     const [search, setSearch] = useSearchParams();
 
     const handleFilter = (hideFilter) => {
@@ -15,15 +19,10 @@ function FilterByPrice() {
     };
 
     const handleChange = (e) => {
-        const value = e.target.value;
-        const isChecked = e.target.checked;
-
-        const name = e.target.name;
-
-        setFilterValue(isChecked ? [...filterValue, value] : filterValue.filter((item) => item !== value));
+        // const value = e.target.value;
+        // const isChecked = e.target.checked;
+        // setRange(isChecked ? value : { min: 0, max: 10000000 });
     };
-
-    console.log(filterValue);
 
     return (
         <div className={styles.filterItem}>
@@ -40,8 +39,14 @@ function FilterByPrice() {
             >
                 {data?.map((item, index) => (
                     <div className={styles.inputItem} key={index}>
-                        <input className={styles.cb} type="checkbox" id={index} value={item} onChange={handleChange} />
-                        <label htmlFor={index}>{item}</label>
+                        <input
+                            className={styles.cb}
+                            type="checkbox"
+                            id={index}
+                            value={item.data}
+                            onChange={handleChange}
+                        />
+                        <label htmlFor={index}>{item.title}</label>
                     </div>
                 ))}
             </div>

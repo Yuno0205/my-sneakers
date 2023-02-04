@@ -5,8 +5,11 @@ import styles from './SaleItem.module.css';
 import Tippy from '@tippyjs/react';
 import Button from '../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../Icons';
+import { useEffect, useState } from 'react';
+import { publicRequest } from '../../utils/request';
+import { NumericFormat } from 'react-number-format';
 
-function SaleItem({ coating, sale, soldOut, handleShowModal }) {
+function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
     return (
         <div className={styles.item}>
             <div className={styles.itemContent}>
@@ -18,11 +21,8 @@ function SaleItem({ coating, sale, soldOut, handleShowModal }) {
                         to={'/'}
                     >
                         <div className={styles.relative}>
-                            <img src="https://cdn.shopify.com/s/files/1/0267/0211/8947/products/product5.jpg?v=1570096493" />
-                            <img
-                                className={styles.hoverProduct}
-                                src="https://cdn.shopify.com/s/files/1/0267/0211/8947/products/product6_ff30be10-564e-46e2-9f75-4088d7ea8f0f.jpg?v=1570096386"
-                            />
+                            <img alt="" src={item.imageMain[0]} />
+                            <img alt="" className={styles.hoverProduct} src={item.imageMain[2]} />
                         </div>
                     </Link>
                     <div className={styles.actions}>
@@ -55,14 +55,28 @@ function SaleItem({ coating, sale, soldOut, handleShowModal }) {
                             [styles.labelSale]: sale,
                         })}
                     >
-                        {sale ? '50 %' : ''}
+                        {item.discount + '%'}
                     </div>
                 </div>
                 <div className={styles.itemInfo}>
-                    <h4 className={styles.itemName}>Nike 1</h4>
+                    <h4 className={styles.itemName}>{item.title}</h4>
                     <p className={styles.itemPrice}>
-                        <span>2,200,000đ</span>
-                        <s>3,000,000đ</s>
+                        <span>
+                            <NumericFormat
+                                thousandSeparator={true}
+                                value={item.fullPrice}
+                                suffix="  VND"
+                                displayType="text"
+                            />
+                        </span>
+                        <s>
+                            <NumericFormat
+                                thousandSeparator={true}
+                                value={item.currentPrice}
+                                suffix="  VND"
+                                displayType="text"
+                            />
+                        </s>
                     </p>
                 </div>
             </div>

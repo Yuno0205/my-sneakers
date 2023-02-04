@@ -1,25 +1,22 @@
+import { Link } from 'react-router-dom';
 import styles from './ErrorPage.module.css';
 function ErrorPage() {
     return (
         <div className={styles.wrapper}>
-            <section className={styles.page404}>
-                <div className={styles.container}>
-                    <div className={styles.row}>
-                        <div className={styles.col12}>
-                            <div className="col-sm-10 col-sm-offset-1 text-center">
-                                <div className="four_zero_four_bg">
-                                    <h1 className="text-center">404</h1>
-                                </div>
-                                <div className="content_box_404">
-                                    <h3 className="h2">Looks Like You're Lost</h3>
-                                    <p>The page you are looking for not available</p>
-                                    <a href="#">Go to Home</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div className={styles.mars}></div>
+            <img alt="" src="https://assets.codepen.io/1538474/404.svg" class={styles.logo404} />
+
+            <p className={styles.title}>Oh no!!</p>
+            <p className={styles.subtitle}>
+                You're either misspelling the URL <br /> or requesting a page that's no longer here.
+            </p>
+            <div align="center">
+                <Link className={styles.btnBack} to="/">
+                    Back to home ?
+                </Link>
+            </div>
+            <img alt="" src="https://assets.codepen.io/1538474/astronaut.svg" className={styles.astronaut} />
+            <img alt="" src="https://assets.codepen.io/1538474/spaceship.svg" className={styles.spaceship} />
         </div>
     );
 }

@@ -9,5 +9,8 @@ const routes = {
     checkout: '/checkout',
     loading: '/loading',
     error404: '/*',
+    men: '/men',
+    women: '/women',
+    sale: '/sale',
 };
 export default routes;

@@ -6,6 +6,9 @@ import Collections from '../pages/Collections';
 import config from '../config';
 import Cart from '../pages/Cart';
 import Wishlist from '../pages/Wishlist';
+import Men from '../pages/Men/index';
+import Women from '../pages/Women/index';
+import Sale from '../pages/Sale/index';
 import Checkout from '../pages/Checkout';
 import LoadingPage from '../pages/LoadingPage/LoadingPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
@@ -22,6 +25,9 @@ const publicRoutes = [
     { path: config.routes.loading, component: LoadingPage, layout: null },
     { path: config.routes.error404, component: ErrorPage, layout: null },
     { path: config.routes.collections, component: Collections, layout: 'sidebar' },
+    { path: config.routes.men, component: Men },
+    { path: config.routes.women, component: Women },
+    { path: config.routes.sale, component: Sale },
 ];
 
 const privateRoutes = [];

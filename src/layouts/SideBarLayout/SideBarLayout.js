@@ -6,12 +6,11 @@ import { DownIcon, FilterIcon } from '../../components/Icons';
 import Menu from '../../components/Popper/Menu';
 import { useState } from 'react';
 import Button from '../../components/Button';
+import { useSelector } from 'react-redux';
 function SideBarLayout({ children }) {
     const Options = [
-        { title: 'Price : Low - High' },
-        { title: 'Price : High - Low' },
-        { title: 'Featured' },
-        { title: 'Newest' },
+        { title: 'Price : Low - High', value: 'asc' },
+        { title: 'Price : High - Low', value: 'desc' },
     ];
 
     const [showFilter, setShowFilter] = useState(true);
@@ -19,6 +18,8 @@ function SideBarLayout({ children }) {
     const handleShowFilter = (value) => {
         value ? setShowFilter(false) : setShowFilter(true);
     };
+
+    const listProduct = useSelector((state) => state.product.products);
 
     return (
         <div className={styles.wrapper}>
@@ -30,7 +31,7 @@ function SideBarLayout({ children }) {
                         <div className={styles.headerContent}>
                             <h1 className={styles.headerTitle}>
                                 Men Shoes
-                                <span className={styles.itemCount}>(418)</span>
+                                <span className={styles.itemCount}>({listProduct.total})</span>
                             </h1>
                             <nav className={styles.headerNav}>
                                 <button onClick={() => handleShowFilter(showFilter)} className={styles.filterBtn}>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../redux/apiCall';
-import styles from './Collections.module.css';
+
 import { getProductFailure, getProductStart, getProductSuccess } from '../../redux/productSlice';
 import { publicRequest } from '../../utils/request';
 
