@@ -73,6 +73,11 @@
     border-radius: 30px;
 }
 
+.viewBag:hover {
+    box-shadow: #000 0px 1px 0px 0px inset, #000 -1px 0px 0px 0px inset, #000 0px -1px 0px 0px inset,
+        #000 1px 0px 0px 0px inset;
+}
+
 .checkOut {
     display: inline-block;
     vertical-align: top;
@@ -89,6 +94,10 @@
     border-radius: 30px;
     background: rgb(17, 17, 17);
     color: rgb(255, 255, 255);
+}
+
+.checkOut span {
+    color: #fff;
 }
 
 .checkOut:hover {

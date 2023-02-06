@@ -160,3 +160,13 @@
 .resgister span {
     font-weight: 700;
 }
+
+@media (max-width: 740px) {
+    .header {
+        padding: 0;
+    }
+
+    .social {
+        padding: 0;
+    }
+}

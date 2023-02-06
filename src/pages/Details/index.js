@@ -28,6 +28,7 @@ const Details = () => {
 
     const [data, setData] = useState();
     const [option, setOption] = useState();
+    const [generalInfo, setGeneralInfo] = useState([]);
 
     useEffect(() => {
         const getSingleProduct = async () => {
@@ -46,7 +47,7 @@ const Details = () => {
         const getRealtedProduct = async () => {
             try {
                 const res = await axios.get('http://localhost:5000/api/products/related/' + id);
-
+                setGeneralInfo(res.data);
                 setOption(res.data[0].options);
             } catch {
                 console.log('err when get single product');
@@ -55,26 +56,39 @@ const Details = () => {
         getRealtedProduct();
     }, [id]);
 
+    // const handleAddToCart = () => {
+    //     size
+    //         ? dispatch(
+    //               addToCart({
+    //                   ...data,
+    //                   quantity,
+    //                   color: data.color,
+    //                   size: size,
+    //                   price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+    //               }),
+    //           )
+    //         : notifySizeValidate();
+    // };
+
     const handleAddToCart = () => {
-        size
-            ? dispatch(
-                  addToCart({
-                      ...data,
-                      quantity,
-                      color: data.color,
-                      size: size,
-                      price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
-                  }),
-              )
-            : notifySizeValidate();
+        if (size) {
+            dispatch(
+                addToCart({
+                    ...data,
+                    quantity,
+                    color: data.color,
+                    size: size,
+                    price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+                }),
+            );
+            setModalOpen(true);
+        } else {
+            notifySizeValidate();
+        }
     };
 
     const handleSetSize = (value) => {
         setSize(value);
-    };
-
-    const handleAddToWishlist = () => {
-        console.log('haha');
     };
 
     const settings = {
@@ -131,14 +145,7 @@ const Details = () => {
                                 ))}
                             </SizeGroup>
                             <div className={styles.descriptions}>
-                                <p>
-                                    Nike's 1st lifestyle Air Max brings you style, comfort and big attitude. With a
-                                    design that draws inspiration from past Air Max icons, the Nike Air Max 270
-                                    showcases one of our greatest innovations yet with its large Air window. Deep red
-                                    accents pop against the lightweight black knit upper for a look that's striking and
-                                    versatile.
-                                    {data?.description}
-                                </p>
+                                <p>{generalInfo[0]?.description}</p>
                             </div>
                             <div className={styles.action}>
                                 <Button onClick={handleAddToCart} primary large>

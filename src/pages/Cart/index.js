@@ -44,7 +44,7 @@ function Cart() {
                                 <WishlistItem openModal={openModal} handleShowModal={handleShowModal} favorite />
                             </div>
                         </div>
-                        <Link className={styles.viewMore} to="/">
+                        <Link className={styles.viewMore} to="/wishlist">
                             View More Wishlist
                         </Link>
                     </div>

@@ -1,13 +1,18 @@
 import Tippy from '@tippyjs/react';
 import clsx from 'clsx';
+import { NumericFormat } from 'react-number-format';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { addToWishlist } from '../../../redux/wishlistSlice';
 import Button from '../../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
 import styles from './ProductItem.module.css';
 
 function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
-    console.log(data);
     const classes = clsx(styles.item);
+    const dispatch = useDispatch();
+
     return (
         <div className={classes}>
             <div className={styles.itemContent}>
@@ -26,7 +31,14 @@ function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
                     <div className={styles.actions}>
                         <Tippy delay={200} content="Add to wish list" placement="top">
                             <div className={clsx(styles.icon, { [styles.hide]: soldOut })}>
-                                <Button to="/wishlist" icon={<RegularHeart />} circle product></Button>
+                                <Button
+                                    onClick={() => {
+                                        dispatch(addToWishlist(data));
+                                    }}
+                                    icon={<RegularHeart />}
+                                    circle
+                                    product
+                                ></Button>
                             </div>
                         </Tippy>
 
@@ -53,13 +65,44 @@ function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
                     </div>
                 </div>
                 <div className={styles.itemInfo}>
-                    <h4 className={styles.itemName}>Nike 1</h4>
+                    <h4 className={styles.itemName}>{data.title}</h4>
                     <p className={styles.itemPrice}>
-                        <span>2,200,000đ</span>
-                        <s>3,000,000đ</s>
+                        <span>
+                            {data.fullPrice ? (
+                                <NumericFormat
+                                    thousandSeparator={true}
+                                    value={data.fullPrice}
+                                    suffix="  VND"
+                                    displayType="text"
+                                />
+                            ) : (
+                                ''
+                            )}
+                        </span>
+
+                        {data.fullPrice ? (
+                            <span className={styles.fullPrice}>
+                                <NumericFormat
+                                    thousandSeparator={true}
+                                    value={data.currentPrice}
+                                    suffix="  VND"
+                                    displayType="text"
+                                />
+                            </span>
+                        ) : (
+                            <div className={styles.normal}>
+                                <NumericFormat
+                                    thousandSeparator={true}
+                                    value={data.currentPrice}
+                                    suffix="  VND"
+                                    displayType="text"
+                                />
+                            </div>
+                        )}
                     </p>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

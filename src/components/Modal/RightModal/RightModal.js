@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React, { useState } from 'react';
+import { NumericFormat } from 'react-number-format';
 import { Link } from 'react-router-dom';
 import Button from '../../Button';
 import Image from '../../Image/Image';
@@ -20,18 +21,23 @@ function RightModal({ setOpenModal, data }) {
 
                         <span>Color : {data.color}</span>
                         <p>{data.category}</p>
-                        <p>{data.fullPrice ? data.fullPrice : data.currentPrice} VND</p>
+                        <p>
+                            <NumericFormat
+                                thousandSeparator={true}
+                                value={data?.fullPrice ? data.fullPrice : data?.currentPrice}
+                                suffix="  VND"
+                                displayType="text"
+                            />
+                        </p>
                     </div>
                 </div>
                 <div className={styles.actions}>
-                    <div className={styles.viewBag}>
-                        <Link to="/wishlist">
-                            <span>View bag (2)</span>
-                        </Link>
-                    </div>
-                    <div className={styles.checkOut}>
+                    <Link to="/wishlist" className={styles.viewBag}>
+                        <span>View bag </span>
+                    </Link>
+                    <Link to="/cart" className={styles.checkOut}>
                         <span>Check out</span>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -11,8 +11,6 @@ function WishlistItem({ favorite, openModal, handleShowModal }) {
     const dispatch = useDispatch();
     const wishlist = useSelector((state) => state.wishlist);
 
-    console.log(wishlist);
-
     return (
         <>
             {wishlist.items?.map((item, index) => (

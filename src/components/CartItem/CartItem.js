@@ -11,6 +11,8 @@ function CartItem({ favorite, openModal, handleShowModal }) {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
 
+    console.log(cart);
+
     return (
         <>
             {cart.items?.map((item, index) => (
