@@ -1,56 +1,98 @@
 import clsx from 'clsx';
+import { NumericFormat } from 'react-number-format';
 import ColoursWay from '../../layouts/SideBarLayout/SideBar/ColoursWay/ColoursWay';
 import Button from '../Button';
 import styles from './Modal.module.css';
+import SizeItem from '../../components/SizeGroup/SizeItem/SizeItem';
+import { ClearIcon } from '../Icons';
 
-function Modal({ openModal, handleShowModal }) {
+function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetSize }) {
     return (
-        <div
-            className={clsx(styles.wrapper, {
-                [styles.active]: openModal,
-            })}
-            onClick={() => handleShowModal(false)}
-        >
-            <div className={styles.container}>
-                <div className={styles.content}>
-                    <div className={styles.image}>
-                        <img src="https://secure-images.nike.com/is/image/DotCom/DQ4686_300?align=0,1&cropN=0,0,0,0&resMode=sharp&fmt=jpg&wid=592&bgc=f5f5f5" />
-                    </div>
-                    <div className={styles.info}>
-                        <div className={styles.infoContent}>
-                            <div className={styles.productInfo}>
-                                <div className={styles.above}>
-                                    <p>Men Shoe's</p>
-                                    <span>2,000,000đ</span>
-                                </div>
-                                <p className={styles.bottom}>Nike Air Max 270</p>
+        <>
+            {modalData ? (
+                <div
+                    className={clsx(styles.wrapper, {
+                        [styles.active]: openModal,
+                    })}
+                >
+                    <div className={styles.container}>
+                        <div className={styles.content}>
+                            <div className={styles.image}>
+                                <img alt="" src={modalData.imageMain[0] ?? ''} />
                             </div>
-
-                            <div className={styles.actions}>
-                                <div className={styles.sizeWrapper}>
-                                    <div className={styles.size}>
-                                        <div className={styles.sizeTitle}>Selected size</div>
-                                        <div className={styles.sizeContainer}>
-                                            <div className={styles.sizeGroup}>
-                                                <div className={styles.sizeItem}>40</div>
-                                                <div className={styles.sizeItem}>40</div>
-                                                <div className={styles.sizeItem}>40</div>
-                                                <div className={styles.sizeItem}>40</div>
-                                                <div className={styles.sizeItem}>40</div>
-                                                <div className={styles.sizeItem}>40</div>
-                                            </div>
+                            <div className={styles.info}>
+                                <div className={styles.infoContent}>
+                                    <div className={styles.productInfo}>
+                                        {/* <div className={styles.above}>
+                                            <p>Men Shoe's</p>
+                                            <span>
+                                                <NumericFormat
+                                                    thousandSeparator={true}
+                                                    value={
+                                                        modalData?.fullPrice
+                                                            ? modalData.fullPrice
+                                                            : modalData?.currentPrice
+                                                    }
+                                                    suffix="  VND"
+                                                    displayType="text"
+                                                />
+                                            </span>
+                                        </div> */}
+                                        <p className={styles.bottom}>{modalData.title}</p>
+                                        <div className={styles.price}>
+                                            <span>
+                                                <NumericFormat
+                                                    thousandSeparator={true}
+                                                    value={
+                                                        modalData?.fullPrice
+                                                            ? modalData.fullPrice
+                                                            : modalData?.currentPrice
+                                                    }
+                                                    suffix="  VND"
+                                                    displayType="text"
+                                                />
+                                            </span>
                                         </div>
                                     </div>
+
+                                    <div className={styles.actions}>
+                                        <div className={styles.sizeWrapper}>
+                                            <div className={styles.size}>
+                                                <div className={styles.sizeTitle}>Selected size</div>
+                                                <div className={styles.sizeContainer}>
+                                                    <div className={styles.sizeGroup}>
+                                                        {modalData.skuData.map((size, index) => (
+                                                            // <div key={index} className={styles.sizeItem}>
+                                                            //     {size.size}
+                                                            // </div>
+                                                            <SizeItem
+                                                                handleSetSize={handleSetSize}
+                                                                key={index}
+                                                                inStock={size.inStock}
+                                                            >
+                                                                {size.size}
+                                                            </SizeItem>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <Button onClick={handleAddToCart} primary large>
+                                            <p className={styles.add}>Add to bag</p>
+                                        </Button>
+                                    </div>
                                 </div>
-                                <Button primary large>
-                                    <p className={styles.add}>Add to bag</p>
-                                </Button>
+                            </div>
+                            <div onClick={() => setOpenModal(false)} className={styles.close}>
+                                <ClearIcon width="50px" height="50px" />
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            ) : (
+                <></>
+            )}
+        </>
     );
 }
 

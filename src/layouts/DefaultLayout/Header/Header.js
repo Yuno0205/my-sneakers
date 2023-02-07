@@ -232,7 +232,7 @@ const Header = () => {
                 </div>
                 <div className={styles.content}>
                     <Link className={styles.menuMobileItem}>
-                        <span>Hi , {user.displayName}</span>
+                        <span>Hi , {user?.displayName ?? 'Guest'}</span>
                     </Link>
                     <Link className={styles.menuMobileItem}>
                         <span>New and Featured</span>

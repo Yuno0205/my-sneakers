@@ -8,8 +8,49 @@ import { RegularCart, RegularHeart, RegularSearch } from '../Icons';
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../../utils/request';
 import { NumericFormat } from 'react-number-format';
+import { useDispatch } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
+import { addToCart } from '../../redux/cartSlice';
+import RightModal from '../Modal/RightModal/RightModal';
+import Modal from '../Modal/Modal';
+import { addToWishlist } from '../../redux/wishlistSlice';
 
 function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
+    const [modalOpen, setModalOpen] = useState(false);
+    const classes = clsx(styles.item);
+    const dispatch = useDispatch();
+
+    const [openModal, setOpenModal] = useState(false);
+    const [size, setSize] = useState();
+    const [quantity, setQuantity] = useState(1);
+    const notifySizeValidate = () => toast.error('Opps ! You must choose at least one size !');
+    const notifyError = () =>
+        toast.info(
+            'SO SORRY :( ! This feature is not complete yet, we will try to fix it in the future :( . Please scroll down to the arrivals part to experience it.',
+        );
+
+    // const handleSetSize = (value) => {
+    //     setSize(value);
+    // };
+
+    // const handleAddToCart = () => {
+    //     if (size) {
+    //         dispatch(
+    //             addToCart({
+    //                 ...item,
+    //                 quantity,
+    //                 color: item.color,
+    //                 size: size,
+    //                 price: item.fullPrice ? item.fullPrice * quantity : item.currentPrice * quantity,
+    //             }),
+    //         );
+    //         setOpenModal(false);
+    //         setModalOpen(true);
+    //     } else {
+    //         notifySizeValidate();
+    //     }
+    // };
+
     return (
         <div className={styles.item}>
             <div className={styles.itemContent}>
@@ -28,18 +69,25 @@ function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
                     <div className={styles.actions}>
                         <Tippy delay={200} content="Add to wish list" placement="top">
                             <div className={styles.icon}>
-                                <Button to="/wishlist" icon={<RegularHeart />} circle product></Button>
+                                <Button
+                                    onClick={() => {
+                                        dispatch(addToWishlist(item));
+                                    }}
+                                    icon={<RegularHeart />}
+                                    circle
+                                    product
+                                ></Button>
                             </div>
                         </Tippy>
 
                         <Tippy delay={200} content="Add to cart" placement="top">
-                            <div className={styles.icon}>
-                                <Button to="/wishlist" icon={<RegularCart />} circle product></Button>
+                            <div onClick={() => notifyError()} className={styles.icon}>
+                                <Button icon={<RegularCart />} circle product></Button>
                             </div>
                         </Tippy>
                         <Tippy delay={200} content="More infomation" placement="top">
-                            <div onClick={() => handleShowModal(true)} className={styles.icon}>
-                                <Button icon={<RegularSearch />} circle product></Button>
+                            <div className={styles.icon}>
+                                <Button to={`collections/${item._id}`} icon={<RegularSearch />} circle product></Button>
                             </div>
                         </Tippy>
                     </div>
@@ -80,6 +128,7 @@ function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
                     </p>
                 </div>
             </div>
+            <ToastContainer position="top-right" />
         </div>
     );
 }

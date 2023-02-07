@@ -6,7 +6,6 @@ import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
 import styles from './ProductItem.module.css';
 
 function SoldOutProduct({ coating, sale, soldOut, handleShowModal, data }) {
-    console.log(data);
     const classes = clsx(styles.item);
     return (
         <div className={classes}>

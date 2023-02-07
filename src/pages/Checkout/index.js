@@ -11,8 +11,6 @@ import { basicSchema } from '../../components/Validations/UserValidation';
 
 const onSubmit = async (values, actions) => {
     console.log('hahahaha');
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    actions.resetForm();
 };
 
 function Checkout() {
@@ -37,7 +35,7 @@ function Checkout() {
                             validationSchema={basicSchema}
                             onSubmit={onSubmit}
                         >
-                            {({ props }) => (
+                            {({ isValid }) => (
                                 <Form className={styles.form}>
                                     <div className={styles.info}>
                                         <div className={styles.nameInfo}>
@@ -69,10 +67,19 @@ function Checkout() {
                                         </div>
                                     </div>
                                     <div className={styles.continued}>
-                                        <Button onClick={() => console.log(props)} primary large type="submit">
-                                            <Link to="/success">
-                                                <span className={styles.white}>Check out</span>
-                                            </Link>
+                                        <Button
+                                            onClick={() => {
+                                                if (isValid) {
+                                                    onSubmit();
+                                                } else {
+                                                    alert('hahaha');
+                                                }
+                                            }}
+                                            primary
+                                            large
+                                            type="submit"
+                                        >
+                                            <span className={styles.white}>Check out</span>
                                         </Button>
                                         <Button outline large type="submit">
                                             <Link to="/collections">

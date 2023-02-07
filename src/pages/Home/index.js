@@ -16,13 +16,10 @@ import Modal from '../../components/Modal/Modal';
 import Fake from '../../components/Fake';
 import { publicRequest } from '../../utils/request';
 import SoldOutProduct from '../../components/Products/ProductItem/SoldOutProduct';
+import RightModal from '../../components/Modal/RightModal/RightModal';
 
 function Home() {
-    const [openModal, setOpenModal] = useState(false);
-
-    const handleShowModal = (value) => {
-        setOpenModal(value);
-    };
+    const [modalData, setModalData] = useState({});
 
     const settings = {
         dots: true,
@@ -112,7 +109,7 @@ function Home() {
                     <div className={styles.sliderWrapper}>
                         <Slider {...settings}>
                             {data.map((item, index) => {
-                                return <SaleItem sale key={index} item={item} handleShowModal={handleShowModal} />;
+                                return <SaleItem sale key={index} item={item} />;
                             })}
                         </Slider>
                     </div>
@@ -125,13 +122,10 @@ function Home() {
                     </div>
                     <Products>
                         <SoldOutProduct coating sale soldOut />
-                        {/* <ProductItem handleShowModal={handleShowModal} />
-                        <ProductItem />
-                        <ProductItem sale />
-                        <ProductItem /> */}
+
                         {arival ? (
                             arival?.map((arrival, index) => (
-                                <ProductItem handleShowModal={handleShowModal} data={arrival} />
+                                <ProductItem key={index} data={arrival} setModalData={setModalData} />
                             ))
                         ) : (
                             <div>No products</div>
@@ -141,7 +135,6 @@ function Home() {
             </div>
             <Advertisement />
             <Blogs />
-            <Modal handleShowModal={handleShowModal} openModal={openModal} />
         </div>
     );
 }

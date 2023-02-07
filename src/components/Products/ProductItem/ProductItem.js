@@ -1,17 +1,49 @@
 import Tippy from '@tippyjs/react';
 import clsx from 'clsx';
+import { useState } from 'react';
 import { NumericFormat } from 'react-number-format';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import { addToCart } from '../../../redux/cartSlice';
 import { addToWishlist } from '../../../redux/wishlistSlice';
 import Button from '../../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
+import Modal from '../../Modal/Modal';
+import RightModal from '../../Modal/RightModal/RightModal';
 import styles from './ProductItem.module.css';
 
-function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
+function ProductItem({ coating, sale, soldOut, data }) {
+    const [modalOpen, setModalOpen] = useState(false);
     const classes = clsx(styles.item);
     const dispatch = useDispatch();
+
+    const [openModal, setOpenModal] = useState(false);
+    const [size, setSize] = useState();
+    const [quantity, setQuantity] = useState(1);
+    const notifySizeValidate = () => toast.error('Opps ! You must choose at least one size !');
+
+    const handleSetSize = (value) => {
+        setSize(value);
+    };
+
+    const handleAddToCart = () => {
+        if (size) {
+            dispatch(
+                addToCart({
+                    ...data,
+                    quantity,
+                    color: data.color,
+                    size: size,
+                    price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+                }),
+            );
+            setOpenModal(false);
+            setModalOpen(true);
+        } else {
+            notifySizeValidate();
+        }
+    };
 
     return (
         <div className={classes}>
@@ -34,6 +66,7 @@ function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
                                 <Button
                                     onClick={() => {
                                         dispatch(addToWishlist(data));
+                                        setModalOpen(true);
                                     }}
                                     icon={<RegularHeart />}
                                     circle
@@ -43,16 +76,16 @@ function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
                         </Tippy>
 
                         <Tippy delay={200} content="Add to cart" placement="top">
-                            <div className={clsx(styles.icon, { [styles.hide]: soldOut })}>
-                                <Button to="/wishlist" icon={<RegularCart />} circle product></Button>
+                            <div
+                                onClick={() => setOpenModal(true)}
+                                className={clsx(styles.icon, { [styles.hide]: soldOut })}
+                            >
+                                <Button icon={<RegularCart />} circle product></Button>
                             </div>
                         </Tippy>
                         <Tippy delay={200} content="More infomation" placement="top">
-                            <div
-                                onClick={() => handleShowModal(true)}
-                                className={clsx(styles.icon, { [styles.hide]: soldOut })}
-                            >
-                                <Button icon={<RegularSearch />} circle product></Button>
+                            <div className={clsx(styles.icon, { [styles.hide]: soldOut })}>
+                                <Button to={`collections/${data._id}`} icon={<RegularSearch />} circle product></Button>
                             </div>
                         </Tippy>
                     </div>
@@ -102,7 +135,15 @@ function ProductItem({ coating, sale, soldOut, handleShowModal, data }) {
                     </p>
                 </div>
             </div>
-            <ToastContainer />
+            <ToastContainer position="bottom-left" />
+            {modalOpen && <RightModal data={data} setOpenModal={setModalOpen} />}
+            <Modal
+                handleAddToCart={handleAddToCart}
+                modalData={data}
+                setOpenModal={setOpenModal}
+                openModal={openModal}
+                handleSetSize={handleSetSize}
+            />
         </div>
     );
 }
