@@ -8,12 +8,18 @@ import CartSumary from '../../components/CartSumary/CartSumary';
 import CheckOutItem from './CheckOutItem/CheckOutItem';
 import styles from './Checkout.module.css';
 import { basicSchema } from '../../components/Validations/UserValidation';
-
-const onSubmit = async (values, actions) => {
-    console.log('hahahaha');
-};
+import { useSelector } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Checkout() {
+    const user = useSelector((state) => state.user.currentUser);
+    const navigate = useNavigate();
+    const notify = () => toast.error('Opps ! You must fill in all the information !');
+
+    const onSubmit = async (values, actions) => {
+        navigate('/success');
+    };
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>
@@ -35,14 +41,14 @@ function Checkout() {
                             validationSchema={basicSchema}
                             onSubmit={onSubmit}
                         >
-                            {({ isValid }) => (
+                            {({ isValid, touched, dirty }) => (
                                 <Form className={styles.form}>
                                     <div className={styles.info}>
                                         <div className={styles.nameInfo}>
-                                            <Input type="text" name="firstName" content="First Name" />
+                                            <Input type="text" name="firstName" content="First name" />
                                         </div>
                                         <div className={styles.nameInfo}>
-                                            <Input type="text" name="lastName" content="Last Name" />
+                                            <Input type="text" name="lastName" content="Last name" />
                                         </div>
                                     </div>
                                     <div style={{ marginBottom: '20px' }}>
@@ -72,7 +78,7 @@ function Checkout() {
                                                 if (isValid) {
                                                     onSubmit();
                                                 } else {
-                                                    alert('hahaha');
+                                                    notify();
                                                 }
                                             }}
                                             primary
@@ -86,7 +92,6 @@ function Checkout() {
                                                 <span className={styles.black}>Countinued Shopping</span>
                                             </Link>
                                         </Button>
-                                        <button type="submit">Submit</button>
                                     </div>
                                 </Form>
                             )}
@@ -100,6 +105,7 @@ function Checkout() {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

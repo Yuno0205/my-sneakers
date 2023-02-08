@@ -4,7 +4,7 @@ import SizeGroup from '../../components/SizeGroup/SizeGroup';
 import SizeItem from '../../components/SizeGroup/SizeItem/SizeItem';
 import ColorWayImage from '../../components/ColorWayImage/ColorWayImage';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Image from '../../components/Image/Image';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,6 +29,9 @@ const Details = () => {
     const [data, setData] = useState();
     const [option, setOption] = useState();
     const [generalInfo, setGeneralInfo] = useState([]);
+
+    const user = useSelector((state) => state.user.currentUser);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getSingleProduct = async () => {
@@ -71,19 +74,32 @@ const Details = () => {
     // };
 
     const handleAddToCart = () => {
-        if (size) {
-            dispatch(
-                addToCart({
-                    ...data,
-                    quantity,
-                    color: data.color,
-                    size: size,
-                    price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
-                }),
-            );
-            setModalOpen(true);
+        if (user) {
+            if (size) {
+                dispatch(
+                    addToCart({
+                        ...data,
+                        quantity,
+                        color: data.color,
+                        size: size,
+                        price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+                    }),
+                );
+                setModalOpen(true);
+            } else {
+                notifySizeValidate();
+            }
         } else {
-            notifySizeValidate();
+            navigate('/login');
+        }
+    };
+
+    const handleAddToWishlist = (data) => {
+        if (user) {
+            setModalOpen(true);
+            dispatch(addToWishlist(data));
+        } else {
+            navigate('/login');
         }
     };
 
@@ -153,13 +169,7 @@ const Details = () => {
                                 </Button>
                                 <ToastContainer />
                             </div>
-                            <div
-                                onClick={() => {
-                                    setModalOpen(true);
-                                    dispatch(addToWishlist(data));
-                                }}
-                                className={styles.action}
-                            >
+                            <div onClick={() => handleAddToWishlist(data)} className={styles.action}>
                                 <Button icon={<HeartIcon />} outline large>
                                     <span> Favourite</span>
                                 </Button>

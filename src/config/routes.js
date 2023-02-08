@@ -9,6 +9,7 @@ const routes = {
     checkout: '/checkout',
     loading: '/loading',
     error404: '/*',
+    success: '/success',
     men: '/men',
     women: '/women',
     sale: '/sale',

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './SaleItem.module.css';
 
 import Tippy from '@tippyjs/react';
@@ -8,7 +8,7 @@ import { RegularCart, RegularHeart, RegularSearch } from '../Icons';
 import { useEffect, useState } from 'react';
 import { publicRequest } from '../../utils/request';
 import { NumericFormat } from 'react-number-format';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import { addToCart } from '../../redux/cartSlice';
 import RightModal from '../Modal/RightModal/RightModal';
@@ -16,6 +16,8 @@ import Modal from '../Modal/Modal';
 import { addToWishlist } from '../../redux/wishlistSlice';
 
 function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
+    const user = useSelector((state) => state.user.currentUser);
+    const navigate = useNavigate();
     const [modalOpen, setModalOpen] = useState(false);
     const classes = clsx(styles.item);
     const dispatch = useDispatch();
@@ -29,27 +31,13 @@ function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
             'SO SORRY :( ! This feature is not complete yet, we will try to fix it in the future :( . Please scroll down to the arrivals part to experience it.',
         );
 
-    // const handleSetSize = (value) => {
-    //     setSize(value);
-    // };
-
-    // const handleAddToCart = () => {
-    //     if (size) {
-    //         dispatch(
-    //             addToCart({
-    //                 ...item,
-    //                 quantity,
-    //                 color: item.color,
-    //                 size: size,
-    //                 price: item.fullPrice ? item.fullPrice * quantity : item.currentPrice * quantity,
-    //             }),
-    //         );
-    //         setOpenModal(false);
-    //         setModalOpen(true);
-    //     } else {
-    //         notifySizeValidate();
-    //     }
-    // };
+    const handleAddToWishlist = (data) => {
+        if (user) {
+            dispatch(addToWishlist(data));
+        } else {
+            navigate('/login');
+        }
+    };
 
     return (
         <div className={styles.item}>
@@ -70,9 +58,7 @@ function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
                         <Tippy delay={200} content="Add to wish list" placement="top">
                             <div className={styles.icon}>
                                 <Button
-                                    onClick={() => {
-                                        dispatch(addToWishlist(item));
-                                    }}
+                                    onClick={() => handleAddToWishlist(item)}
                                     icon={<RegularHeart />}
                                     circle
                                     product

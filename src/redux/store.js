@@ -2,7 +2,6 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import userReducer from './userSlice';
 import productReducer from './productSlice';
 import cartReducer from './cartSlice';
-import filterReducer from './filterSlice';
 import wishlistReducer from './wishlistSlice';
 
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
@@ -21,6 +20,13 @@ const rootReducer = combineReducers({
 
     wishlist: persistReducer(persistConfig, wishlistReducer),
 });
+
+// const resetReducer = combineReducers({
+//     user: userReducer,
+//     product: productReducer,
+//     cart: cartReducer,
+//     wishlist: wishlistReducer,
+// });
 
 // const persistedReducer = persistReducer(persistConfig, rootReducer);
 

@@ -4,8 +4,6 @@ import styles from './Input.module.css';
 function Input({ content = '', ...props }) {
     const [field, meta] = useField(props);
 
-    console.log(meta);
-
     return (
         <div className={styles.wrapper}>
             <input

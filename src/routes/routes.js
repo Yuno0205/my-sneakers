@@ -13,6 +13,7 @@ import Checkout from '../pages/Checkout';
 import LoadingPage from '../pages/LoadingPage/LoadingPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import SignUp from '../pages/Login/SignUp';
+import Success from '../pages/Success';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -28,6 +29,7 @@ const publicRoutes = [
     { path: config.routes.men, component: Men },
     { path: config.routes.women, component: Women },
     { path: config.routes.sale, component: Sale },
+    { path: config.routes.success, component: Success, layout: null },
 ];
 
 const privateRoutes = [];

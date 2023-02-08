@@ -2,8 +2,8 @@ import Tippy from '@tippyjs/react';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { NumericFormat } from 'react-number-format';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { addToCart } from '../../../redux/cartSlice';
 import { addToWishlist } from '../../../redux/wishlistSlice';
@@ -14,9 +14,11 @@ import RightModal from '../../Modal/RightModal/RightModal';
 import styles from './ProductItem.module.css';
 
 function ProductItem({ coating, sale, soldOut, data }) {
+    const user = useSelector((state) => state.user.currentUser);
     const [modalOpen, setModalOpen] = useState(false);
     const classes = clsx(styles.item);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [openModal, setOpenModal] = useState(false);
     const [size, setSize] = useState();
@@ -45,6 +47,23 @@ function ProductItem({ coating, sale, soldOut, data }) {
         }
     };
 
+    const handleAddToWishlist = (data) => {
+        if (user) {
+            dispatch(addToWishlist(data));
+            setModalOpen(true);
+        } else {
+            navigate('/login');
+        }
+    };
+
+    const handleShowModal = () => {
+        if (user) {
+            setOpenModal(true);
+        } else {
+            navigate('/login');
+        }
+    };
+
     return (
         <div className={classes}>
             <div className={styles.itemContent}>
@@ -64,10 +83,7 @@ function ProductItem({ coating, sale, soldOut, data }) {
                         <Tippy delay={200} content="Add to wish list" placement="top">
                             <div className={clsx(styles.icon, { [styles.hide]: soldOut })}>
                                 <Button
-                                    onClick={() => {
-                                        dispatch(addToWishlist(data));
-                                        setModalOpen(true);
-                                    }}
+                                    onClick={() => handleAddToWishlist(data)}
                                     icon={<RegularHeart />}
                                     circle
                                     product
@@ -76,10 +92,7 @@ function ProductItem({ coating, sale, soldOut, data }) {
                         </Tippy>
 
                         <Tippy delay={200} content="Add to cart" placement="top">
-                            <div
-                                onClick={() => setOpenModal(true)}
-                                className={clsx(styles.icon, { [styles.hide]: soldOut })}
-                            >
+                            <div onClick={handleShowModal} className={clsx(styles.icon, { [styles.hide]: soldOut })}>
                                 <Button icon={<RegularCart />} circle product></Button>
                             </div>
                         </Tippy>
