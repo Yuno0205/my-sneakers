@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginFailure, loginStart, loginSuccess } from '../../../redux/userSlice';
 import Image from '../../../components/Image/Image';
 import axios from 'axios';
+import { publicRequest } from '../../../utils/request';
 
 const logout = () => {
     window.open('http://localhost:5000/auth/logout', '_self');
@@ -54,34 +55,49 @@ const Header = () => {
 
     // const [hideHeader, setHideHeader] = useState(false);
 
+    // useEffect(() => {
+    //     const getUser = () => {
+    //         dispatch(loginStart());
+    //         fetch('https://jorkan-backend.vercel.app/auth/login/success', {
+    //             method: 'GET',
+    //             mode: 'no-cors',
+    //             credentials: 'include',
+    //             headers: {
+    //                 Accept: 'application/json',
+    //                 'Content-Type': 'application/json',
+    //                 'Access-Control-Allow-Credentials': true,
+    //             },
+    //         })
+    //             .then((response) => {
+    //                 if (response.status === 200) return response.json();
+    //                 dispatch(loginFailure());
+    //                 throw new Error('authentication has been failed!');
+    //             })
+    //             .then((resObject) => {
+    //                 dispatch(loginSuccess(resObject.user));
+    //             })
+    //             .catch((err) => {
+    //                 dispatch(loginFailure());
+    //             });
+    //     };
+
+    //     getUser();
+    // }, []);
+
     useEffect(() => {
-        const getUser = () => {
+        const getAllProducts = async () => {
             dispatch(loginStart());
-            fetch('https://jorkan-backend.vercel.app/auth/login/success', {
-                method: 'GET',
-                mode: 'no-cors',
-                credentials: 'include',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Credentials': true,
-                },
-            })
-                .then((response) => {
-                    if (response.status === 200) return response.json();
-                    dispatch(loginFailure());
-                    throw new Error('authentication has been failed!');
-                })
-                .then((resObject) => {
-                    dispatch(loginSuccess(resObject.user));
-                })
-                .catch((err) => {
-                    dispatch(loginFailure());
-                });
+            try {
+                const res = await publicRequest.get('https://jorkan-backend.vercel.app/auth/login/success');
+                // dispatch(getProductSuccess(res.data));
+                console.log(res.data);
+            } catch (err) {
+                dispatch(loginFailure());
+            }
         };
 
-        getUser();
-    }, []);
+        getAllProducts();
+    }, [dispatch]);
 
     console.log('user', user);
 
