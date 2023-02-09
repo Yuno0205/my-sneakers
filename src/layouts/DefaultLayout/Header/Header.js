@@ -57,46 +57,46 @@ const Header = () => {
     useEffect(() => {
         const getUser = () => {
             dispatch(loginStart());
-            // fetch('https://jorkan-backend.vercel.app/auth/login/success', {
-            //     method: 'GET',
-            //     credentials: 'include',
-            //     headers: {
-            //         Accept: 'application/json',
-            //         'Content-Type': 'application/json',
-            //         'Access-Control-Allow-Credentials': true,
-            //         'Access-Control-Allow-Origin': 'https://delightful-pithivier-ab0977.netlify.app',
-            //     },
-            // })
-            //     .then((response) => {
-            //         if (response.status === 200) return response.json();
-            //         dispatch(loginFailure());
-            //         throw new Error('authentication has been failed!');
-            //     })
-            //     .then((resObject) => {
-            //         dispatch(loginSuccess(resObject.user));
-            //     })
-            //     .catch((err) => {
-            //         dispatch(loginFailure());
-            //     });
-
-            axios
-                .get('https://jorkan-backend.vercel.app/auth/login/success', {
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Credentials': true,
-                        'Access-Control-Allow-Origin': 'https://delightful-pithivier-ab0977.netlify.app',
-                    },
-                    withCredentials: true,
-                })
+            fetch('https://jorkan-backend.vercel.app/auth/login/success', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': true,
+                    'Access-Control-Allow-Origin': 'https://jorkan-backend.vercel.app',
+                },
+            })
                 .then((response) => {
-                    if (response.status === 200) {
-                        console.log(response.data);
-                    }
+                    if (response.status === 200) return response.json();
+                    dispatch(loginFailure());
+                    throw new Error('authentication has been failed!');
                 })
-                .catch((error) => {
-                    console.log(error);
+                .then((resObject) => {
+                    dispatch(loginSuccess(resObject.user));
+                })
+                .catch((err) => {
+                    dispatch(loginFailure());
                 });
+
+            // axios
+            //     .get('https://jorkan-backend.vercel.app/auth/login/success', {
+            //         headers: {
+            //             Accept: 'application/json',
+            //             'Content-Type': 'application/json',
+            //             'Access-Control-Allow-Credentials': true,
+            //             'Access-Control-Allow-Origin': 'https://delightful-pithivier-ab0977.netlify.app',
+            //         },
+            //         withCredentials: true,
+            //     })
+            //     .then((response) => {
+            //         if (response.status === 200) {
+            //             console.log(response.data);
+            //         }
+            //     })
+            //     .catch((error) => {
+            //         console.log(error);
+            //     });
         };
 
         getUser();
