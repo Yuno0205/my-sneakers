@@ -56,7 +56,7 @@ const Header = () => {
     useEffect(() => {
         const getUser = () => {
             dispatch(loginStart());
-            fetch('http://localhost:5000/auth/login/success', {
+            fetch('https://jorkan-backend.vercel.app/auth/login/success', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -79,6 +79,8 @@ const Header = () => {
         };
         getUser();
     }, []);
+
+    console.log('user ', user);
 
     const handleShowResults = (childData) => {
         setShowResults(childData);

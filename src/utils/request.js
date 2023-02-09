@@ -11,7 +11,7 @@ export const get = async (path, option = {}) => {
 
 export default request;
 
-const BASE_URL = 'http://localhost:5000/api/';
+const BASE_URL = 'https://jorkan-backend.vercel.app/api/';
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser.accessToken;
 
 export const publicRequest = axios.create({
