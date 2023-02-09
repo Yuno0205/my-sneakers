@@ -59,6 +59,7 @@ const Header = () => {
             dispatch(loginStart());
             fetch('https://jorkan-backend.vercel.app/auth/login/success', {
                 method: 'GET',
+                mode: 'no-cors',
                 credentials: 'include',
                 headers: {
                     Accept: 'application/json',
