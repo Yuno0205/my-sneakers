@@ -64,7 +64,6 @@ const Header = () => {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': true,
-                    'Access-Control-Allow-Origin': 'https://delightful-pithivier-ab0977.netlify.app',
                 },
             })
                 .then((response) => {
