@@ -64,7 +64,7 @@ const Header = () => {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': true,
-                    'Access-Control-Allow-Origin': 'https://jorkan-backend.vercel.app',
+                    'Access-Control-Allow-Origin': 'https://delightful-pithivier-ab0977.netlify.app/',
                 },
             })
                 .then((response) => {
@@ -78,25 +78,6 @@ const Header = () => {
                 .catch((err) => {
                     dispatch(loginFailure());
                 });
-
-            // axios
-            //     .get('https://jorkan-backend.vercel.app/auth/login/success', {
-            //         headers: {
-            //             Accept: 'application/json',
-            //             'Content-Type': 'application/json',
-            //             'Access-Control-Allow-Credentials': true,
-            //             'Access-Control-Allow-Origin': 'https://delightful-pithivier-ab0977.netlify.app',
-            //         },
-            //         withCredentials: true,
-            //     })
-            //     .then((response) => {
-            //         if (response.status === 200) {
-            //             console.log(response.data);
-            //         }
-            //     })
-            //     .catch((error) => {
-            //         console.log(error);
-            //     });
         };
 
         getUser();
