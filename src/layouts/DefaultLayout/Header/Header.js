@@ -82,7 +82,7 @@ const Header = () => {
         getUser();
     }, []);
 
-    console.log(user);
+    console.log('user', user);
 
     const handleShowResults = (childData) => {
         setShowResults(childData);
