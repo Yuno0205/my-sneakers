@@ -54,37 +54,16 @@ const Header = () => {
     // const [hideHeader, setHideHeader] = useState(false);
 
     useEffect(() => {
-        // const getUser = () => {
-        //     dispatch(loginStart());
-        //     fetch('https://jorkan-backend.vercel.app/auth/login/success', {
-        //         method: 'GET',
-        //         credentials: 'include',
-        //         headers: {
-        //             Accept: 'application/json',
-        //             'Content-Type': 'application/json',
-        //             'Access-Control-Allow-Credentials': true,
-        //         },
-        //     })
-        //         .then((response) => {
-        //             if (response.status === 200) return response.json();
-        //             dispatch(loginFailure());
-        //             throw new Error('authentication has been failed!');
-        //         })
-        //         .then((resObject) => {
-        //             dispatch(loginSuccess(resObject.user));
-        //         })
-        //         .catch((err) => {
-        //             dispatch(loginFailure());
-        //         });
-        // };
         const getUser = () => {
             dispatch(loginStart());
-            fetch('https://cors-anywhere.herokuapp.com/https://jorkan-backend.vercel.app/auth/login/success', {
+            fetch('https://jorkan-backend.vercel.app/auth/login/success', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': true,
+                    'Access-Control-Allow-Origin': 'https://delightful-pithivier-ab0977.netlify.app',
                 },
             })
                 .then((response) => {
@@ -99,10 +78,9 @@ const Header = () => {
                     dispatch(loginFailure());
                 });
         };
+
         getUser();
     }, []);
-
-    console.log('user ', user);
 
     const handleShowResults = (childData) => {
         setShowResults(childData);
