@@ -93,6 +93,7 @@ const Header = () => {
                 console.log(res.data);
             } catch (err) {
                 dispatch(loginFailure());
+                console.log(err);
             }
         };
 
