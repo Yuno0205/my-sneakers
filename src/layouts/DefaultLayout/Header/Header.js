@@ -28,7 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginFailure, loginStart, loginSuccess } from '../../../redux/userSlice';
 import Image from '../../../components/Image/Image';
 import axios from 'axios';
-import { publicRequest } from '../../../utils/request';
+import requestGetUser, { publicRequest } from '../../../utils/request';
 
 const logout = () => {
     window.open('http://localhost:5000/auth/logout', '_self');
@@ -56,31 +56,41 @@ const Header = () => {
     // const [hideHeader, setHideHeader] = useState(false);
 
     useEffect(() => {
-        const getUser = () => {
-            dispatch(loginStart());
-            fetch('https://jorkan-backend.vercel.app/auth/login/success', {
-                method: 'GET',
+        const getUser = async () => {
+            // dispatch(loginStart());
+            // fetch('https://jorkan-backend.vercel.app/auth/login/success', {
+            //     method: 'GET',
 
-                credentials: 'include',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Credentials': true,
-                },
-            })
-                .then((response) => {
-                    if (response.status === 200) return response.json();
-                    dispatch(loginFailure());
-                    throw new Error('authentication has been failed!');
-                })
-                .then((resObject) => {
-                    console.log('Success');
-                    dispatch(loginSuccess(resObject.user));
-                })
-                .catch((err) => {
-                    console.log('Errors : ', err);
-                    dispatch(loginFailure());
-                });
+            //     credentials: 'include',
+            //     headers: {
+            //         Accept: 'application/json',
+            //         'Content-Type': 'application/json',
+            //         'Access-Control-Allow-Credentials': true,
+            //     },
+            // })
+            //     .then((response) => {
+            //         if (response.status === 200) return response.json();
+            //         dispatch(loginFailure());
+            //         throw new Error('authentication has been failed!');
+            //     })
+            //     .then((resObject) => {
+            //         console.log('Success');
+            //         dispatch(loginSuccess(resObject.user));
+            //     })
+            //     .catch((err) => {
+            //         console.log('Errors : ', err);
+            //         dispatch(loginFailure());
+            //     });
+
+            dispatch(loginStart());
+            try {
+                const res = await requestGetUser.get(`auth/login/success`);
+                // dispatch(getProductSuccess(res.data));
+                console.log(res.data);
+            } catch (err) {
+                console.log('Errors : ', err);
+                dispatch(loginFailure());
+            }
         };
 
         getUser();
