@@ -143,6 +143,11 @@ const Header = () => {
                     >
                         <ul>
                             <li>
+                                <Link className={styles.underline} to="/collections">
+                                    Collections
+                                </Link>
+                            </li>
+                            <li>
                                 <Link to="/men" className={styles.underline}>
                                     Men
                                 </Link>
@@ -155,11 +160,7 @@ const Header = () => {
                             <li>
                                 <Link className={styles.underline}>Kid</Link>
                             </li>
-                            <li>
-                                <Link className={styles.underline} to="/collections">
-                                    Collections
-                                </Link>
-                            </li>
+
                             <li>
                                 <Link to="/sale" className={styles.underline}>
                                     Sale

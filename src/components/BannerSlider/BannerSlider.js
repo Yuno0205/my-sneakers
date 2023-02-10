@@ -67,7 +67,7 @@ function BannerSlider() {
                                     [styles.show]: change,
                                 })}
                             >
-                                <p>from 100$</p>
+                                <p>from 1,000,000đ</p>
                             </div>
                             <div
                                 className={clsx(styles.boxBtn, {
@@ -129,7 +129,7 @@ function BannerSlider() {
                                     [styles.show]: !change,
                                 })}
                             >
-                                <p>from 122$</p>
+                                <p>from 1,200,000đ</p>
                             </div>
                             <div
                                 className={clsx(styles.boxBtn, {

@@ -10,11 +10,9 @@ function ColorWaySmall({ data }) {
         <div className={styles.wrapper}>
             <div className={clsx(styles.content, styles.small)}>
                 {data?.map((item, index) => (
-                    <div key={index} className={clsx(styles.item, styles.small)}>
-                        <Link to={`/collections/${item._id}`}>
-                            <img alt="" src={item.imageExtra[0]} />
-                        </Link>
-                    </div>
+                    <Link to={`/collections/${item._id}`} key={index} className={clsx(styles.item, styles.small)}>
+                        <img alt="" src={item.imageExtra[0]} />
+                    </Link>
                 ))}
             </div>
         </div>
