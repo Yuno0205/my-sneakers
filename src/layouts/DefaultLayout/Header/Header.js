@@ -62,11 +62,11 @@ const Header = () => {
             //     method: 'GET',
 
             //     credentials: 'include',
-            //     headers: {
-            //         Accept: 'application/json',
-            //         'Content-Type': 'application/json',
-            //         'Access-Control-Allow-Credentials': true,
-            //     },
+            // headers: {
+            //     Accept: 'application/json',
+            //     'Content-Type': 'application/json',
+            //     'Access-Control-Allow-Credentials': true,
+            // },
             // })
             //     .then((response) => {
             //         if (response.status === 200) return response.json();
@@ -84,11 +84,18 @@ const Header = () => {
 
             dispatch(loginStart());
             try {
-                const res = await publicRequest.get(`auth/login/success`);
+                const res = await publicRequest.get(`auth/login/success`, {
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Credentials': true,
+                        'Access-Control-Allow-Origin': '*',
+                    },
+                });
                 // dispatch(getProductSuccess(res.data));
                 console.log(res.data);
             } catch (err) {
-                console.log('Errors : ', err);
+                console.log('Errors is: ', err);
                 dispatch(loginFailure());
             }
         };
