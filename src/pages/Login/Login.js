@@ -10,15 +10,15 @@ import clsx from 'clsx';
 
 function Login() {
     const google = () => {
-        window.open('https://jorkan-backend.vercel.app/auth/google', '_self');
+        window.open('https://jorkan-backend.vercel.app/api/auth/google', '_self');
     };
 
     const github = () => {
-        window.open('https://jorkan-backend.vercel.app/auth/github', '_self');
+        window.open('https://jorkan-backend.vercel.app/api/auth/github', '_self');
     };
 
     const facebook = () => {
-        window.open('https://jorkan-backend.vercel.app/auth/facebook', '_self');
+        window.open('https://jorkan-backend.vercel.app/api/auth/facebook', '_self');
     };
     return (
         <div className={styles.wrapper}>
