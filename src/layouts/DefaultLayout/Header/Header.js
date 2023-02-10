@@ -84,7 +84,7 @@ const Header = () => {
 
             dispatch(loginStart());
             try {
-                const res = await requestGetUser.get(`auth/login/success`);
+                const res = await publicRequest.get(`auth/login/success`);
                 // dispatch(getProductSuccess(res.data));
                 console.log(res.data);
             } catch (err) {
