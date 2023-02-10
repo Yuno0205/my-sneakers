@@ -31,7 +31,7 @@ import axios from 'axios';
 import requestGetUser, { publicRequest } from '../../../utils/request';
 
 const logout = () => {
-    window.open('http://localhost:5000/auth/logout', '_self');
+    window.open('https://jorkan-backend.vercel.app/api/auth/logout', '_self');
 };
 
 const MenuItems = [
