@@ -6,6 +6,7 @@
 
 .container {
     max-width: var(--default-layout-width);
+    margin: 0 auto;
 }
 .content {
     width: 100%;

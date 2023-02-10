@@ -1,6 +1,7 @@
 .wrapper {
     width: 100%;
     max-width: var(--default-layout-width);
+    margin: 0 auto;
 }
 .container {
     max-width: var(--default-layout-width);

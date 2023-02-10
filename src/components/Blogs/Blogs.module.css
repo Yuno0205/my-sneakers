@@ -2,6 +2,7 @@
     width: 100%;
     margin-top: 50px;
     max-width: var(--default-layout-width);
+    margin: 20px auto;
 }
 
 .container {

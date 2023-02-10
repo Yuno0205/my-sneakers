@@ -1,5 +1,5 @@
 .wrapper {
-    width: 100%;
+    width: 100vw;
     display: flex;
     height: var(--default-layout-header-height);
     justify-content: center;
@@ -9,6 +9,7 @@
     left: 0;
     z-index: 9;
     transition: all ease-in 1s;
+    background-color: var(--white);
 }
 
 .inner {
