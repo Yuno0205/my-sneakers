@@ -88,7 +88,7 @@ const Header = () => {
         const getAllProducts = async () => {
             dispatch(loginStart());
             try {
-                const res = await publicRequest.get('https://jorkan-backend.vercel.app/auth/login/success');
+                const res = await publicRequest.get('auth/login/success');
                 // dispatch(getProductSuccess(res.data));
                 console.log(res.data);
             } catch (err) {
