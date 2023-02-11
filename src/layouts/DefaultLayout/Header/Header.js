@@ -84,18 +84,13 @@ const Header = () => {
 
             dispatch(loginStart());
             try {
-                const res = await publicRequest.get(`api/auth/login/success`, {
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Credentials': true,
-                        'Access-Control-Allow-Origin': '*',
-                    },
-                });
+                const res = await publicRequest.get(`api/auth/login/success`);
+                const cookie = res.headers['set-cookie'];
+                document.cookie = cookie;
                 // dispatch(getProductSuccess(res.data));
                 console.log(res.data);
             } catch (err) {
-                console.log('Errors is: ', err);
+                console.log('Errors nài: ', err);
                 dispatch(loginFailure());
             }
         };
