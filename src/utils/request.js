@@ -11,7 +11,7 @@ import axios from 'axios';
 
 // export default requestGetUser;
 
-const BASE_URL = 'https://jorkan-backend.vercel.app/api/';
+const BASE_URL = 'https://jorkan-backend.vercel.app/';
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).user).currentUser.accessToken;
 
 export const publicRequest = axios.create({

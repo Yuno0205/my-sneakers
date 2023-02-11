@@ -84,7 +84,7 @@ const Header = () => {
 
             dispatch(loginStart());
             try {
-                const res = await publicRequest.get(`auth/login/success`, {
+                const res = await publicRequest.get(`api/auth/login/success`, {
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
