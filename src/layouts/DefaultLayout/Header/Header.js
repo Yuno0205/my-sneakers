@@ -70,7 +70,7 @@ const Header = () => {
                 .then((response) => {
                     if (response.status === 200) return response.json();
                     dispatch(loginFailure());
-                    console.log('Failed!');
+                    console.log('Failed! , check response :', response);
                     throw new Error('authentication has been failed!');
                 })
                 .then((resObject) => {
