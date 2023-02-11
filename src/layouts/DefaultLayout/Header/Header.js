@@ -59,7 +59,7 @@ const Header = () => {
         const getUser = async () => {
             dispatch(loginStart());
 
-            fetch('https://jorkan-backend.vercel.app/auth/login/success', {
+            fetch('https://jorkan-backend.vercel.app/api/auth/login/success', {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
