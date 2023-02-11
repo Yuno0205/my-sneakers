@@ -57,47 +57,33 @@ const Header = () => {
 
     useEffect(() => {
         const getUser = async () => {
-            // dispatch(loginStart());
-            // fetch('https://jorkan-backend.vercel.app/auth/login/success', {
-            //     method: 'GET',
-
-            //     credentials: 'include',
-            // headers: {
-            //     Accept: 'application/json',
-            //     'Content-Type': 'application/json',
-            //     'Access-Control-Allow-Credentials': true,
-            // },
-            // })
-            //     .then((response) => {
-            //         if (response.status === 200) return response.json();
-            //         dispatch(loginFailure());
-            //         throw new Error('authentication has been failed!');
-            //     })
-            //     .then((resObject) => {
-            //         console.log('Success');
-            //         dispatch(loginSuccess(resObject.user));
-            //     })
-            //     .catch((err) => {
-            //         console.log('Errors : ', err);
-            //         dispatch(loginFailure());
-            //     });
-
             dispatch(loginStart());
-            try {
-                const res = await publicRequest.get(`api/auth/login/success`);
-                const cookie = res.headers['set-cookie'];
-                document.cookie = cookie;
-                console.log('Cookie', cookie);
-                // dispatch(getProductSuccess(res.data));
-                console.log(res.data);
-            } catch (err) {
-                console.log('Errors nài: ', err);
-                dispatch(loginFailure());
-            }
+            fetch('https://jorkan-backend.vercel.app/auth/login/success', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+            })
+                .then((response) => {
+                    if (response.status === 200) return response.json();
+                    dispatch(loginFailure());
+                    console.log('Failed!');
+                    throw new Error('authentication has been failed!');
+                })
+                .then((resObject) => {
+                    console.log('Success');
+                    dispatch(loginSuccess(resObject.user));
+                })
+                .catch((err) => {
+                    console.log('Errors occur : ', err);
+                    dispatch(loginFailure());
+                });
         };
 
         getUser();
-    }, []);
+    }, [dispatch]);
 
     console.log('user', user);
 
