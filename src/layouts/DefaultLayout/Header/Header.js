@@ -87,6 +87,7 @@ const Header = () => {
                 const res = await publicRequest.get(`api/auth/login/success`);
                 const cookie = res.headers['set-cookie'];
                 document.cookie = cookie;
+                console.log('Cookie', cookie);
                 // dispatch(getProductSuccess(res.data));
                 console.log(res.data);
             } catch (err) {
