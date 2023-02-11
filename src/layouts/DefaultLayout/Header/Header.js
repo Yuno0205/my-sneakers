@@ -67,7 +67,6 @@ const Header = () => {
                     Accept: 'application/json',
                     'Access-Control-Allow-Origin': '*',
                 },
-                mode: 'no-cors',
             })
                 .then((response) => {
                     if (response.status === 200) return response.json();
