@@ -70,9 +70,15 @@ const Header = () => {
             })
                 .then((response) => {
                     if (response.status === 200) return response.json();
-                    dispatch(loginFailure());
-                    console.log('Failed! , check response :', response);
-                    throw new Error('authentication has been failed!');
+                    const newCookie = response.headers.get('set-cookie');
+
+                    console.log('Cookie', newCookie);
+
+                    // Gán cookie cho document.cookie
+                    document.cookie = newCookie;
+
+                    // Tiếp tục xử lý dữ liệu từ phản hồi
+                    return response.json();
                 })
                 .then((resObject) => {
                     console.log('Success');
