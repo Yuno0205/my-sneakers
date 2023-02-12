@@ -32,11 +32,7 @@ function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
         );
 
     const handleAddToWishlist = (data) => {
-        if (user) {
-            dispatch(addToWishlist(data));
-        } else {
-            navigate('/login');
-        }
+        dispatch(addToWishlist(data));
     };
 
     return (

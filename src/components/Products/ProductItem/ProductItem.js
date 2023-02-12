@@ -48,20 +48,12 @@ function ProductItem({ coating, sale, soldOut, data }) {
     };
 
     const handleAddToWishlist = (data) => {
-        if (user) {
-            dispatch(addToWishlist(data));
-            setModalOpen(true);
-        } else {
-            navigate('/login');
-        }
+        dispatch(addToWishlist(data));
+        setModalOpen(true);
     };
 
     const handleShowModal = () => {
-        if (user) {
-            setOpenModal(true);
-        } else {
-            navigate('/login');
-        }
+        setOpenModal(true);
     };
 
     return (

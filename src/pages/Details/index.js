@@ -74,33 +74,25 @@ const Details = () => {
     // };
 
     const handleAddToCart = () => {
-        if (user) {
-            if (size) {
-                dispatch(
-                    addToCart({
-                        ...data,
-                        quantity,
-                        color: data.color,
-                        size: size,
-                        price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
-                    }),
-                );
-                setModalOpen(true);
-            } else {
-                notifySizeValidate();
-            }
+        if (size) {
+            dispatch(
+                addToCart({
+                    ...data,
+                    quantity,
+                    color: data.color,
+                    size: size,
+                    price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+                }),
+            );
+            setModalOpen(true);
         } else {
-            navigate('/login');
+            notifySizeValidate();
         }
     };
 
     const handleAddToWishlist = (data) => {
-        if (user) {
-            setModalOpen(true);
-            dispatch(addToWishlist(data));
-        } else {
-            navigate('/login');
-        }
+        setModalOpen(true);
+        dispatch(addToWishlist(data));
     };
 
     const handleSetSize = (value) => {

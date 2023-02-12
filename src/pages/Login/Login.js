@@ -7,18 +7,25 @@ import { Link } from 'react-router-dom';
 import Input from '../../components/Input/Input';
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Login() {
+    const notify = toast.info(
+        'So sorry :( , there was an error with the social login when I deployed the project so I canceled this part of my project',
+    );
     const google = () => {
-        window.open('https://jorkan-backend.vercel.app/api/auth/login/success', '_self');
+        // window.open('https://jorkan-backend.vercel.app/api/auth/login/success', '_self');
+        notify();
     };
 
     const github = () => {
-        window.open('http://localhost:5000/api/auth/github', '_self');
+        // window.open('http://localhost:5000/api/auth/github', '_self');
+        notify();
     };
 
     const facebook = () => {
-        window.open('http://localhost:5000/api/auth/facebook', '_self');
+        // window.open('http://localhost:5000/api/auth/facebook', '_self');
+        notify();
     };
     return (
         <div className={styles.wrapper}>
@@ -77,6 +84,7 @@ function Login() {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

@@ -55,40 +55,38 @@ const Header = () => {
 
     // const [hideHeader, setHideHeader] = useState(false);
 
-    useEffect(() => {
-        const getUser = async () => {
-            dispatch(loginStart());
+    // useEffect(() => {
+    //     const getUser = async () => {
+    //         dispatch(loginStart());
 
-            fetch('https://jorkan-backend.vercel.app/api/auth/login/success', {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                },
-            })
-                .then((response) => {
-                    console.log('Response is :', response);
-                    if (response.status === 200) return response.json();
+    //         fetch('https://jorkan-backend.vercel.app/api/auth/login/success', {
+    //             method: 'GET',
+    //             credentials: 'include',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 Accept: 'application/json',
+    //                 'Access-Control-Allow-Origin': '*',
+    //             },
+    //         })
+    //             .then((response) => {
+    //                 console.log('Response is :', response);
+    //                 if (response.status === 200) return response.json();
 
-                    dispatch(loginFailure());
-                    throw new Error('authentication has been failed!');
-                })
-                .then((resObject) => {
-                    console.log('Success', resObject);
-                    dispatch(loginSuccess(resObject.user));
-                })
-                .catch((err) => {
-                    console.log('Errors occur : ', err);
-                    dispatch(loginFailure());
-                });
-        };
+    //                 dispatch(loginFailure());
+    //                 throw new Error('authentication has been failed!');
+    //             })
+    //             .then((resObject) => {
+    //                 console.log('Success', resObject);
+    //                 dispatch(loginSuccess(resObject.user));
+    //             })
+    //             .catch((err) => {
+    //                 console.log('Errors occur : ', err);
+    //                 dispatch(loginFailure());
+    //             });
+    //     };
 
-        getUser();
-    }, []);
-
-    console.log('user', user);
+    //     getUser();
+    // }, []);
 
     const handleShowResults = (childData) => {
         setShowResults(childData);
@@ -171,39 +169,30 @@ const Header = () => {
                         [styles.hideActions]: showResults,
                     })}
                 >
-                    {user ? (
-                        <>
-                            <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
-                                <div>
-                                    <Button
-                                        className={styles.wishlist}
-                                        to="/wishlist"
-                                        icon={<HeartIcon />}
-                                        circle
-                                    ></Button>
-                                </div>
-                            </Tippy>
-
-                            <Tippy interactive delay={[0, 50]} content="Your cart" placement="bottom">
-                                <div className={styles.place}>
-                                    <Button to="/cart" icon={<CartIcon />} circle></Button>
-                                    <span className={clsx(styles.badge)}>{cart.totalCount}</span>
-                                </div>
-                            </Tippy>
-                            <Menu items={MenuItems}>
-                                <Image className={styles.userAvatar} src={user.image} alt="avatar"></Image>
-                            </Menu>
-                            <div onClick={toggleShow} className={styles.bars}>
-                                <BarsIcon />
+                    <>
+                        <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
+                            <div>
+                                <Button className={styles.wishlist} to="/wishlist" icon={<HeartIcon />} circle></Button>
                             </div>
-                        </>
-                    ) : (
-                        <>
-                            <Button outline>
-                                <Link to="/login">Log in</Link>
-                            </Button>
-                        </>
-                    )}
+                        </Tippy>
+
+                        <Tippy interactive delay={[0, 50]} content="Your cart" placement="bottom">
+                            <div className={styles.place}>
+                                <Button to="/cart" icon={<CartIcon />} circle></Button>
+                                <span className={clsx(styles.badge)}>{cart.totalCount}</span>
+                            </div>
+                        </Tippy>
+                        <Menu items={MenuItems}>
+                            <Image
+                                className={styles.userAvatar}
+                                src="https://i.pinimg.com/736x/4d/5f/93/4d5f9367579b17b6fbb372ba57216c7c.jpg"
+                                alt="avatar"
+                            ></Image>
+                        </Menu>
+                        <div onClick={toggleShow} className={styles.bars}>
+                            <BarsIcon />
+                        </div>
+                    </>
                 </div>
 
                 <div

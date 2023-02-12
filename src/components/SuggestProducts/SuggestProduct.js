@@ -32,7 +32,7 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                             <Link
                                 to={`collections/${result._id}`}
                                 className={clsx(styles.item, { [styles.hide]: loading })}
-                                key={result.id}
+                                key={result._id}
                             >
                                 <div className={styles.image}>
                                     <Image src={result.imageMain[0]} alt="Nhật Hào"></Image>
