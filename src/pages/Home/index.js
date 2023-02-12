@@ -66,7 +66,7 @@ function Home() {
     useEffect(() => {
         const getAllData = async () => {
             try {
-                const res = await publicRequest.get(`api/options/sale`);
+                const res = await publicRequest.get(`options/sale`);
 
                 setData(res.data);
             } catch (err) {
@@ -80,7 +80,7 @@ function Home() {
     useEffect(() => {
         const getAllArrival = async () => {
             try {
-                const res = await publicRequest.get(`api/options/arrival`);
+                const res = await publicRequest.get(`options/arrival`);
 
                 setArrival(res.data);
             } catch (err) {

@@ -86,7 +86,7 @@ const Header = () => {
         };
 
         getUser();
-    }, [dispatch]);
+    }, []);
 
     console.log('user', user);
 
