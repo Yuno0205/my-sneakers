@@ -10,9 +10,10 @@ import clsx from 'clsx';
 import { toast, ToastContainer } from 'react-toastify';
 
 function Login() {
-    const notify = toast.info(
-        'So sorry :( , there was an error with the social login when I deployed the project so I canceled this part of my project',
-    );
+    const notify = () =>
+        toast.info(
+            'So sorry :( , there was an error with the social login when I deployed the project so I canceled this part of my project',
+        );
     const google = () => {
         // window.open('https://jorkan-backend.vercel.app/api/auth/login/success', '_self');
         notify();
