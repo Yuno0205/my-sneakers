@@ -69,14 +69,14 @@ const Header = () => {
                 },
             })
                 .then((response) => {
-                    console.log('Response', response);
+                    console.log('Response is :', response);
                     if (response.status === 200) return response.json();
-                    console.log('Fail , response is :', response);
+
                     dispatch(loginFailure());
                     throw new Error('authentication has been failed!');
                 })
                 .then((resObject) => {
-                    console.log('Success');
+                    console.log('Success', resObject);
                     dispatch(loginSuccess(resObject.user));
                 })
                 .catch((err) => {
