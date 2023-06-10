@@ -35,7 +35,7 @@ function Login() {
                             <div className={styles.socialGroup}>
                                 <div className={styles.socialItem}>
                                     <div className={styles.logo}>
-                                        <img src="https://img.icons8.com/clouds/512/google-logo.png" />
+                                        <img src="https://img.icons8.com/clouds/512/google-logo.png" alt="" />
                                     </div>
                                     <span>Google</span>
                                 </div>
@@ -45,7 +45,7 @@ function Login() {
                             <div className={styles.socialGroup}>
                                 <div className={clsx(styles.socialItem, styles.git)}>
                                     <div className={styles.logo}>
-                                        <img src="https://img.icons8.com/plasticine/512/github.png" />
+                                        <img src="https://img.icons8.com/plasticine/512/github.png" alt="" />
                                     </div>
                                     <span>Github</span>
                                 </div>
@@ -56,7 +56,7 @@ function Login() {
                             <div className={styles.socialGroup}>
                                 <div className={clsx(styles.socialItem, styles.fb)}>
                                     <div className={styles.logo}>
-                                        <img src="https://img.icons8.com/clouds/512/facebook-new.png" />
+                                        <img src="https://img.icons8.com/clouds/512/facebook-new.png" alt="" />
                                     </div>
                                     <span>Facebook</span>
                                 </div>
