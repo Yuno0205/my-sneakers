@@ -88,6 +88,19 @@ const Header = () => {
     //     getUser();
     // }, []);
 
+    useEffect(() => {
+        axios
+            .get('https://jorkan-backend.vercel.app/api/auth/login/success', {
+                withCredentials: true,
+            })
+            .then((res) => {
+                console.log(res);
+                if (res.data) {
+                    console.log(res.data.user);
+                }
+            });
+    }, []);
+
     const handleShowResults = (childData) => {
         setShowResults(childData);
     };
