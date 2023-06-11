@@ -11,7 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 function Login() {
     const google = () => {
-        window.open('https://jorkan-backend.vercel.app/api/auth/login/success', '_self');
+        window.open('https://jorkan-backend.vercel.app/api/auth/google', '_self');
     };
 
     const github = () => {
