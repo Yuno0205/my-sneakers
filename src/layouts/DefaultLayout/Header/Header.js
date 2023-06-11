@@ -28,7 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginFailure, loginStart, loginSuccess } from '../../../redux/userSlice';
 import Image from '../../../components/Image/Image';
 import axios from 'axios';
-import requestGetUser, { publicRequest } from '../../../utils/request';
+import { toast, ToastContainer } from 'react-toastify';
 
 const logout = () => {
     window.open('https://jorkan-backend.vercel.app/api/auth/logout', '_self');
@@ -52,6 +52,8 @@ const Header = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.currentUser);
     const cart = useSelector((state) => state.cart);
+
+    const notify = toast.error('Something went wrong !');
 
     // const [hideHeader, setHideHeader] = useState(false);
 
@@ -97,6 +99,10 @@ const Header = () => {
                 console.log(res);
                 if (res.data) {
                     console.log(res.data.user);
+                    dispatch(loginSuccess(res.data.user));
+                } else {
+                    notify();
+                    dispatch(loginFailure());
                 }
             });
     }, []);
