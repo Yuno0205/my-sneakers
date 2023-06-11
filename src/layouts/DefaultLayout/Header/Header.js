@@ -88,18 +88,18 @@ const Header = () => {
     //     getUser();
     // }, []);
 
-    // useEffect(() => {
-    //     axios
-    //         .get('https://jorkan-backend.vercel.app/api/auth/login/success', {
-    //             withCredentials: true,
-    //         })
-    //         .then((res) => {
-    //             console.log(res);
-    //             if (res.data) {
-    //                 console.log(res.data.user);
-    //             }
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios
+            .get('https://jorkan-backend.vercel.app/api/auth/login/success', {
+                withCredentials: true,
+            })
+            .then((res) => {
+                console.log(res);
+                if (res.data) {
+                    console.log(res.data.user);
+                }
+            });
+    }, []);
 
     const handleShowResults = (childData) => {
         setShowResults(childData);
@@ -182,30 +182,39 @@ const Header = () => {
                         [styles.hideActions]: showResults,
                     })}
                 >
-                    <>
-                        <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
-                            <div>
-                                <Button className={styles.wishlist} to="/wishlist" icon={<HeartIcon />} circle></Button>
-                            </div>
-                        </Tippy>
+                    {user ? (
+                        <>
+                            <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
+                                <div>
+                                    <Button
+                                        className={styles.wishlist}
+                                        to="/wishlist"
+                                        icon={<HeartIcon />}
+                                        circle
+                                    ></Button>
+                                </div>
+                            </Tippy>
 
-                        <Tippy interactive delay={[0, 50]} content="Your cart" placement="bottom">
-                            <div className={styles.place}>
-                                <Button to="/cart" icon={<CartIcon />} circle></Button>
-                                <span className={clsx(styles.badge)}>{cart.totalCount}</span>
+                            <Tippy interactive delay={[0, 50]} content="Your cart" placement="bottom">
+                                <div className={styles.place}>
+                                    <Button to="/cart" icon={<CartIcon />} circle></Button>
+                                    <span className={clsx(styles.badge)}>{cart.totalCount}</span>
+                                </div>
+                            </Tippy>
+                            <Menu items={MenuItems}>
+                                <Image className={styles.userAvatar} src={user.image} alt="avatar"></Image>
+                            </Menu>
+                            <div onClick={toggleShow} className={styles.bars}>
+                                <BarsIcon />
                             </div>
-                        </Tippy>
-                        <Menu items={MenuItems}>
-                            <Image
-                                className={styles.userAvatar}
-                                src="https://i.pinimg.com/736x/4d/5f/93/4d5f9367579b17b6fbb372ba57216c7c.jpg"
-                                alt="avatar"
-                            ></Image>
-                        </Menu>
-                        <div onClick={toggleShow} className={styles.bars}>
-                            <BarsIcon />
-                        </div>
-                    </>
+                        </>
+                    ) : (
+                        <>
+                            <Button outline>
+                                <Link to="/login">Log in</Link>
+                            </Button>
+                        </>
+                    )}
                 </div>
 
                 <div
