@@ -92,11 +92,10 @@ const Header = () => {
 
     useEffect(() => {
         axios
-            .get('https://jorkan-backend.vercel.app/api/auth/login/success', {
+            .get('https://jorrkan-api.onrender.com/api/auth/login/success', {
                 withCredentials: true,
             })
             .then((res) => {
-                console.log(res);
                 if (res.data) {
                     console.log(res.data.user);
                     dispatch(loginSuccess(res.data.user));
