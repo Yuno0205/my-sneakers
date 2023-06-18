@@ -99,10 +99,13 @@ const Header = () => {
                 if (res.data) {
                     console.log(res.data.user);
                     dispatch(loginSuccess(res.data.user));
-                } else {
-                    notify();
-                    dispatch(loginFailure());
                 }
+            })
+            .catch(function (error) {
+                // Handle when error
+
+                notify();
+                dispatch(loginFailure());
             });
     }, []);
 
