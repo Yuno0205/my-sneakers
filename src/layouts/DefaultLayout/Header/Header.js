@@ -103,7 +103,7 @@ const Header = () => {
             })
             .catch(function (error) {
                 // Handle when error
-
+                console.log(error);
                 notify();
                 dispatch(loginFailure());
             });
