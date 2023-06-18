@@ -53,7 +53,7 @@ const Header = () => {
     const user = useSelector((state) => state.user.currentUser);
     const cart = useSelector((state) => state.cart);
 
-    const notify = toast.error('Something went wrong !');
+    const notify = (content) => toast.error(content);
 
     // const [hideHeader, setHideHeader] = useState(false);
 
@@ -101,10 +101,10 @@ const Header = () => {
                     dispatch(loginSuccess(res.data.user));
                 }
             })
-            .catch(function (error) {
+            .catch((error) => {
                 // Handle when error
-                console.log(error);
-                notify();
+                console.log('error : ', error);
+                notify('Oppps ! Something went wrong :( Check it out !');
                 dispatch(loginFailure());
             });
     }, []);
