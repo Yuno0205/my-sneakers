@@ -1,0 +1,104 @@
+.wrapper {
+    padding: 10px;
+}
+
+.profile {
+    padding-left: 40px;
+    margin: 40px 0;
+}
+
+.profileBasic {
+    display: flex;
+}
+
+.profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgb(229, 229, 229);
+    overflow: hidden;
+}
+
+.profileImage img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.profileName {
+    display: flex;
+
+    justify-content: center;
+    flex-direction: column;
+
+    margin-left: 20px;
+}
+
+.profileName span {
+    font-size: 1.8rem;
+    color: var(--text-color-2);
+}
+
+.details {
+    margin: 40px 0;
+}
+
+.info {
+    display: flex;
+    margin-top: 30px;
+}
+
+.cover {
+    width: 100%;
+}
+
+.item {
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.5s;
+    margin-right: 40px;
+}
+
+.item span {
+    font-size: 1.8rem;
+    color: var(--text-color-2);
+}
+
+/* Wishlist */
+
+.wishlist {
+    padding-left: 40px;
+    margin: 40px 0;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.favourites {
+    min-height: 200px;
+}
+
+.favouriteContent {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.viewMore {
+    display: inline-block;
+
+    font-size: 14px;
+    color: rgb(117, 117, 117);
+    box-shadow: rgb(117 117 117) 0px -1px 0px 0px inset;
+}
+
+.viewMore:hover {
+    color: #111;
+}

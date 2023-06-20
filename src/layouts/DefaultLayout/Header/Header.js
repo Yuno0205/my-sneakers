@@ -35,10 +35,10 @@ const logout = () => {
 };
 
 const MenuItems = [
-    { icon: <UserIcon />, title: 'My profile', to: '/login' },
+    { icon: <UserIcon />, title: 'My profile', to: '/profile' },
     { icon: <OrdersIcon />, title: 'My Orders', to: '/login' },
     { icon: <SettingIcon />, title: 'Setting', to: '/login' },
-    { icon: <LogoutIcon />, title: 'Log out', to: '/login' },
+    { icon: <LogoutIcon />, title: 'Log out', to: '/logout' },
 ];
 
 const Header = () => {

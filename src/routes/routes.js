@@ -14,11 +14,13 @@ import LoadingPage from '../pages/LoadingPage/LoadingPage';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import SignUp from '../pages/Login/SignUp';
 import Success from '../pages/Success';
+import Profile from '../pages/Profile';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.cart, component: Cart },
     { path: config.routes.wishlist, component: Wishlist },
+    { path: config.routes.profile, component: Profile },
     { path: config.routes.details, component: Details },
     { path: config.routes.checkout, component: Checkout },
     { path: config.routes.login, component: Login, layout: null },

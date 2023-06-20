@@ -13,5 +13,6 @@ const routes = {
     men: '/men',
     women: '/women',
     sale: '/sale',
+    profile: '/profile',
 };
 export default routes;
