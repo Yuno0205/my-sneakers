@@ -3,12 +3,13 @@
     display: flex;
     height: var(--default-layout-header-height);
     justify-content: center;
-    box-shadow: 0px 1px 1px rgb((0), 0, 0 / 12%);
+    /* box-shadow: 0px 1px 1px rgb((0), 0, 0 / 12%); */
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 0;
     z-index: 9;
-    transition: all ease-in 1s;
+    transition: all ease-in 0.5s;
     background-color: var(--white);
 }
 

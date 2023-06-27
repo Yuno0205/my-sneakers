@@ -62,9 +62,6 @@ function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetS
                                                 <div className={styles.sizeContainer}>
                                                     <div className={styles.sizeGroup}>
                                                         {modalData.skuData.map((size, index) => (
-                                                            // <div key={index} className={styles.sizeItem}>
-                                                            //     {size.size}
-                                                            // </div>
                                                             <SizeItem
                                                                 handleSetSize={handleSetSize}
                                                                 key={index}
@@ -77,14 +74,16 @@ function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetS
                                                 </div>
                                             </div>
                                         </div>
-                                        <Button onClick={handleAddToCart} primary large>
-                                            <p className={styles.add}>Add to bag</p>
-                                        </Button>
+                                        <div className={styles.buttonAdd}>
+                                            <Button onClick={handleAddToCart} primary large>
+                                                <p className={styles.add}>Add to bag</p>
+                                            </Button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div onClick={() => setOpenModal(false)} className={styles.close}>
-                                <ClearIcon width="50px" height="50px" />
+                            <div title="Close (ESC)" onClick={() => setOpenModal(false)} className={styles.close}>
+                                <ClearIcon width="30px" height="30px" />
                             </div>
                         </div>
                     </div>

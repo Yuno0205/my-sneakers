@@ -11,6 +11,7 @@
     cursor: pointer;
     background-color: var(--white);
     justify-content: center;
+    transition: var(--transition, 0.3s);
 }
 
 .wrapper + .wrapper {

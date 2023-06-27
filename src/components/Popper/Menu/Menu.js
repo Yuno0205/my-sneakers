@@ -2,7 +2,6 @@ import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '../../Popper';
 import MenuItem from './MenuItem';
 import styles from './Menu.module.css';
-import { Link } from 'react-router-dom';
 
 function Menu({ children, items = [], trigger = 'mouseenter focus' }) {
     const renderItems = () => {

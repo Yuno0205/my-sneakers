@@ -36,7 +36,7 @@ const Details = () => {
     useEffect(() => {
         const getSingleProduct = async () => {
             try {
-                const res = await axios.get('https://jorkan-backend.vercel.app/api/options/find/' + id);
+                const res = await axios.get('https://jorrkan-api.onrender.com/api/options/find/' + id);
 
                 setData(res.data);
             } catch {
@@ -49,7 +49,7 @@ const Details = () => {
     useEffect(() => {
         const getRealtedProduct = async () => {
             try {
-                const res = await axios.get('https://jorkan-backend.vercel.app/api/products/related/' + id);
+                const res = await axios.get('https://jorrkan-api.onrender.com/api/products/related/' + id);
                 setGeneralInfo(res.data);
                 setOption(res.data[0].options);
             } catch {

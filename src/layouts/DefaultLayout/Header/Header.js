@@ -25,19 +25,20 @@ import Search from '../../../components/Search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFailure, loginStart, loginSuccess } from '../../../redux/userSlice';
+import { loginFailure, loginSuccess } from '../../../redux/userSlice';
 import Image from '../../../components/Image/Image';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const logout = () => {
-    window.open('https://jorkan-backend.vercel.app/api/auth/logout', '_self');
+    window.open('https://jorrkan-api.onrender.com/api/auth/logout', '_self');
 };
 
 const MenuItems = [
     { icon: <UserIcon />, title: 'My profile', to: '/profile' },
     { icon: <OrdersIcon />, title: 'My Orders', to: '/login' },
     { icon: <SettingIcon />, title: 'Setting', to: '/login' },
+    // { icon: <LogoutIcon />, title: 'Log out', onClick: logout() },
     { icon: <LogoutIcon />, title: 'Log out', to: '/logout' },
 ];
 
@@ -56,39 +57,6 @@ const Header = () => {
     const notify = (content) => toast.error(content);
 
     // const [hideHeader, setHideHeader] = useState(false);
-
-    // useEffect(() => {
-    //     const getUser = async () => {
-    //         dispatch(loginStart());
-
-    //         fetch('https://jorkan-backend.vercel.app/api/auth/login/success', {
-    //             method: 'GET',
-    //             credentials: 'include',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 Accept: 'application/json',
-    //                 'Access-Control-Allow-Origin': '*',
-    //             },
-    //         })
-    //             .then((response) => {
-    //                 console.log('Response is :', response);
-    //                 if (response.status === 200) return response.json();
-
-    //                 dispatch(loginFailure());
-    //                 throw new Error('authentication has been failed!');
-    //             })
-    //             .then((resObject) => {
-    //                 console.log('Success', resObject);
-    //                 dispatch(loginSuccess(resObject.user));
-    //             })
-    //             .catch((err) => {
-    //                 console.log('Errors occur : ', err);
-    //                 dispatch(loginFailure());
-    //             });
-    //     };
-
-    //     getUser();
-    // }, []);
 
     useEffect(() => {
         axios

@@ -12,6 +12,9 @@
     --text-color: #333;
     --text-color-2: #707072;
     --font-family: MyFont;
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --lazyload-bg-color: #ebebeb;
+    --shadow: 0 0 0 0.2rem var(--black);
 
     /* Default layout  */
     --default-layout-header-height: 60px;
