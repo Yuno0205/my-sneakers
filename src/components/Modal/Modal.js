@@ -7,6 +7,11 @@ import SizeItem from '../../components/SizeGroup/SizeItem/SizeItem';
 import { ClearIcon } from '../Icons';
 
 function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetSize }) {
+    const handleClose = () => {
+        setTimeout(() => {
+            setOpenModal(false);
+        }, 10);
+    };
     return (
         <>
             {modalData ? (
@@ -15,7 +20,15 @@ function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetS
                         [styles.active]: openModal,
                     })}
                 >
-                    <div className={styles.container}>
+                    <div
+                        // className={clsx(styles.container, {
+                        //     [styles.rightToShort]: !openModal,
+                        // })}
+
+                        className={clsx(styles.container, {
+                            [styles.rightToShort]: !openModal,
+                        })}
+                    >
                         <div className={styles.content}>
                             <div className={styles.image}>
                                 <img alt="" src={modalData.imageMain[0] ?? ''} />
@@ -23,21 +36,6 @@ function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetS
                             <div className={styles.info}>
                                 <div className={styles.infoContent}>
                                     <div className={styles.productInfo}>
-                                        {/* <div className={styles.above}>
-                                            <p>Men Shoe's</p>
-                                            <span>
-                                                <NumericFormat
-                                                    thousandSeparator={true}
-                                                    value={
-                                                        modalData?.fullPrice
-                                                            ? modalData.fullPrice
-                                                            : modalData?.currentPrice
-                                                    }
-                                                    suffix="  VND"
-                                                    displayType="text"
-                                                />
-                                            </span>
-                                        </div> */}
                                         <p className={styles.bottom}>{modalData.title}</p>
                                         <div className={styles.price}>
                                             <span>
@@ -82,7 +80,7 @@ function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetS
                                     </div>
                                 </div>
                             </div>
-                            <div title="Close (ESC)" onClick={() => setOpenModal(false)} className={styles.close}>
+                            <div title="Close (ESC)" onClick={() => handleClose()} className={styles.close}>
                                 <ClearIcon width="30px" height="30px" />
                             </div>
                         </div>

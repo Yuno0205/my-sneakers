@@ -29,7 +29,7 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                 <div className={clsx(styles.items)}>
                     {searchResults && searchResults.length > 0 ? (
                         searchResults.map((result) => (
-                            <Link
+                            <div
                                 to={`collections/${result._id}`}
                                 className={clsx(styles.item, { [styles.hide]: loading })}
                                 key={result._id}
@@ -49,7 +49,7 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                                         />
                                     </span>
                                 </div>
-                            </Link>
+                            </div>
                         ))
                     ) : (
                         <>{!loading && <NoProducts />}</>

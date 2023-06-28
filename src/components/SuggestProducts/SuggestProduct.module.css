@@ -1,17 +1,16 @@
 .content {
     position: absolute;
     width: 100%;
-    height: 600px;
+    height: 100vh;
     background-color: #fff;
-    padding: 46px 32px 0;
-
+    padding: 46px 0 0 30px;
     top: var(--default-layout-header-height);
     display: flex;
     flex-direction: row;
 }
 
 .suggest {
-    width: 15%;
+    width: 200px;
     display: flex;
     flex-direction: column;
     color: #757575;
@@ -33,10 +32,10 @@
 }
 
 .items {
-    width: 85%;
+    width: calc(100% - 100px);
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden;
+    overflow: scroll;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -47,10 +46,9 @@
 }
 
 .item {
-    width: 20%;
-    max-width: 20%;
-    height: 380px;
-    padding: 0 2px;
+    flex-basis: 25%;
+
+    padding: 0 5px;
 }
 
 .details {
@@ -83,30 +81,58 @@
     margin-right: 50%;
 }
 
-@media (max-width: 740px) {
+@media (max-width: 940px) {
     .content {
         flex-flow: row wrap;
         padding: 20px;
-        height: 100vh;
-        overflow: visible;
+        margin-bottom: 20px;
+        overflow-y: scroll;
     }
 
     .suggest {
         width: 100%;
-        align-items: center;
     }
 
     .items {
         width: 100%;
         padding: 20px 0;
         flex-flow: row wrap;
-        overflow: scroll;
         background-color: #fff;
-        height: 100%;
     }
 
     .item {
-        width: 50%;
+        flex-basis: 50%;
+        margin-bottom: 10px;
+    }
+    .details h4 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 740px) {
+    .content {
+        flex-flow: row wrap;
+        padding: 10px;
+        margin-bottom: 20px;
+        overflow-y: scroll;
+    }
+
+    .suggest {
+        width: 100%;
+    }
+
+    .items {
+        width: 100%;
+        padding: 20px 0;
+        flex-flow: row wrap;
+        background-color: #fff;
+    }
+
+    .item {
+        flex-basis: 50%;
         max-width: 50%;
+        margin-bottom: 10px;
     }
 }

@@ -1,15 +1,17 @@
 .wrapper {
+    width: 100%;
+
     position: fixed;
+    overflow: hidden;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: transparent;
     overflow: hidden;
     visibility: hidden;
     opacity: 0;
     display: none;
-    transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
     z-index: 10;
     padding: 30px 0;
 }
@@ -18,7 +20,8 @@
     display: block;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
+    background-color: rgba(0, 0, 0, 0.75);
+    /* transition: opacity 5s ease 0s, visibility 5s ease 0s; */
 }
 
 .container {
@@ -27,22 +30,30 @@
     opacity: 1;
     visibility: visible;
     position: relative;
-
+    animation: 0.4s cubic-bezier(0.26, 0.54, 0.32, 1) forwards fadeInLeftShort;
     width: 100%;
     min-width: 320px;
     border-radius: 10px;
     text-align: center;
     transition: opacity 0.6s ease 0.2s, transform 0.4s ease 0.2s, height 0.4s ease 0s;
     min-height: 400px;
-    max-height: 90vh;
+    height: 90vh;
+    /* max-height: 90vh; */
     margin: auto;
     background: rgb(255, 255, 255);
+}
+
+.rightToShort {
+    opacity: 0;
+    animation: 0.4s cubic-bezier(0.26, 0.54, 0.32, 1) forwards fadeInRightShort;
 }
 
 .content {
     display: flex;
     flex-direction: row;
     z-index: 13;
+    overflow: hidden;
+    max-height: 100%;
 }
 
 .close {
@@ -203,7 +214,7 @@
 
 /* Animation */
 
-@keyframes myAnimation {
+@keyframes fadeInLeftShort {
     0% {
         opacity: 0;
         -webkit-transform: translateX(-100px);
@@ -218,4 +229,54 @@
         -ms-transform: translateX(0);
         transform: translateX(0);
     }
+}
+
+@keyframes fadeInRightShort {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateX(100px);
+        -moz-transform: translateX(100px);
+        -ms-transform: translateX(100px);
+        transform: translateX(100px);
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 1023px) {
+    .content {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .container {
+        max-width: 80%;
+    }
+
+    .info {
+        flex: 1;
+        max-width: 100%;
+    }
+
+    .image img {
+        max-width: 100%;
+    }
+
+    .sizeTitle {
+        display: none;
+    }
+
+    .sizeContainer {
+        overflow-y: hidden;
+    }
+}
+
+@media (max-width: 740px) {
 }
