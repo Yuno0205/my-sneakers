@@ -20,12 +20,12 @@ function SoldOutProduct({ coating, sale, soldOut, handleShowModal, data }) {
                         <div className={styles.relative}>
                             <img
                                 alt=""
-                                src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/deee201a-0982-4e60-8213-621e93ca36cc/custom-nike-pegasus-39-shield-by-you.png"
+                                src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/8142d726-b5ac-4917-a60e-7e6e8889e766/impact-4-basketball-shoes-CcJxBx.png"
                             />
                             <img
                                 alt=""
                                 className={styles.hoverProduct}
-                                src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/88faf772-3fb2-4edc-9fae-e58eedae75d4/custom-nike-pegasus-39-shield-by-you.png"
+                                src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/1fc8bf03-6435-4622-856a-0e02faf14411/impact-4-basketball-shoes-CcJxBx.png"
                             />
                         </div>
                     </Link>
@@ -62,7 +62,7 @@ function SoldOutProduct({ coating, sale, soldOut, handleShowModal, data }) {
                     <h4 className={styles.itemName}>Nike 1</h4>
                     <p className={styles.itemPrice}>
                         <span>2,200,000đ</span>
-                        <s>3,000,000đ</s>
+                        <span className={styles.fullPrice}>3,000,000đ</span>
                     </p>
                 </div>
             </div>

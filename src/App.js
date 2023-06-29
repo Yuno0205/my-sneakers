@@ -3,8 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
 
 import LoadingPage from './pages/LoadingPage/LoadingPage';
-const SideBarLayout = lazy(() => import('./layouts/SideBarLayout/SideBarLayout'));
-const DefaultLayout = lazy(() => import('./layouts/DefaultLayout'));
+const SideBarLayout = lazy(() => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(import('./layouts/SideBarLayout/SideBarLayout')), 2000);
+    });
+});
+
+const DefaultLayout = lazy(() => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(import('./layouts/DefaultLayout')), 3000);
+    });
+});
 
 function App() {
     return (

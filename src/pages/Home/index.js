@@ -17,8 +17,22 @@ import Fake from '../../components/Fake';
 import { publicRequest } from '../../utils/request';
 import SoldOutProduct from '../../components/Products/ProductItem/SoldOutProduct';
 import RightModal from '../../components/Modal/RightModal/RightModal';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { useMediaQuery } from 'react-responsive';
+
+const screenSizes = {
+    small: 480,
+    medium: 768,
+    large: 1024,
+};
 
 function Home() {
+    const isSmallScreen = useMediaQuery({ maxWidth: screenSizes.small });
+    const isMediumScreen = useMediaQuery({ minWidth: screenSizes.small + 1, maxWidth: screenSizes.medium });
+
+    // Chiều cao skeleton item tương ứng với từng kích thước màn hình
+    const skeletonItemHeight = isSmallScreen ? 200 : isMediumScreen ? 250 : 300;
     const [modalData, setModalData] = useState({});
 
     const settings = {
@@ -53,7 +67,7 @@ function Home() {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    dots: true,
+                    dots: false,
                 },
             },
         ],
@@ -62,34 +76,38 @@ function Home() {
     const [data, setData] = useState([]);
     const [arival, setArrival] = useState([]);
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const getAllData = async () => {
             try {
-                const res = await publicRequest.get(`options/sale`);
-
-                setData(res.data);
+                const res1 = await publicRequest.get('options/sale');
+                const res2 = await publicRequest.get('options/arrival');
+                setData(res1.data);
+                setArrival(res2.data);
             } catch (err) {
-                console.log(err);
+                console.log('An error occurred :', err);
+            } finally {
+                setIsLoading(false);
             }
         };
 
         getAllData();
-    }, [page]);
-
-    useEffect(() => {
-        const getAllArrival = async () => {
-            try {
-                const res = await publicRequest.get(`options/arrival`);
-
-                setArrival(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
-        getAllArrival();
     }, []);
+
+    // useEffect(() => {
+    //     const getAllArrival = async () => {
+    //         try {
+    //             const res = await publicRequest.get(`options/arrival`);
+
+    //             setArrival(res.data);
+    //         } catch (err) {
+    //             console.log(err);
+    //         }
+    //     };
+
+    //     getAllArrival();
+    // }, []);
 
     return (
         <div>
@@ -106,12 +124,65 @@ function Home() {
                         </div>
                     </div>
 
-                    <div className={styles.sliderWrapper}>
+                    {/* <div className={styles.sliderWrapper}>
                         <Slider {...settings}>
                             {data.map((item, index) => {
                                 return <SaleItem sale key={index} item={item} />;
                             })}
                         </Slider>
+                    </div> */}
+                    <div className={styles.sliderWrapper}>
+                        {isLoading ? (
+                            // Hiển thị skeleton loading khi isLoading = true
+
+                            <div className={styles.skeList}>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                            </div>
+                        ) : (
+                            // Hiển thị dữ liệu khi đã fetch xong
+                            <Slider {...settings}>
+                                {data ? (
+                                    data.map((item, index) => <SaleItem key={index} item={item} />)
+                                ) : (
+                                    <div>Cant find data !</div>
+                                )}
+                            </Slider>
+                        )}
                     </div>
                 </div>
             </div>
@@ -120,17 +191,99 @@ function Home() {
                     <div className={styles.title}>
                         <h3>New Arrivals</h3>
                     </div>
-                    <Products>
-                        <SoldOutProduct coating sale soldOut />
 
-                        {arival ? (
-                            arival?.map((arrival, index) => (
-                                <ProductItem key={index} data={arrival} setModalData={setModalData} />
-                            ))
-                        ) : (
-                            <div>No products</div>
-                        )}
-                    </Products>
+                    {isLoading ? (
+                        // Hiển thị skeleton loading khi isLoading = true
+                        <div className={styles.skeletonWrapper}>
+                            <div className={styles.skeList}>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={styles.skeList}>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                                <div className={styles.skeItem}>
+                                    <Skeleton height={skeletonItemHeight} />
+                                    <h4>
+                                        <Skeleton />
+                                    </h4>
+                                    <p>
+                                        <Skeleton />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <Products>
+                            <SoldOutProduct coating sale soldOut />
+                            {arival ? (
+                                arival.map((arrival, index) => (
+                                    <ProductItem key={index} data={arrival} setModalData={setModalData} />
+                                ))
+                            ) : (
+                                <div>No products</div>
+                            )}
+                        </Products>
+                    )}
                 </div>
             </div>
             <Advertisement />

@@ -1,4 +1,4 @@
-.wrapper {
+/* .wrapper {
     background-image: linear-gradient(to right, #36d1dc, #5b86e5);
     overflow: hidden;
     position: fixed;
@@ -264,5 +264,41 @@
     100% {
         left: -100%;
         opacity: 0;
+    }
+} */
+
+.wrapper {
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+}
+
+.textStroke {
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-size: 56px;
+    stroke-width: 1.5px;
+    user-select: none;
+    animation: strokeAnimation 3s linear infinite;
+    animation-direction: alternate;
+}
+
+@keyframes strokeAnimation {
+    0% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 0 50%;
+        fill: transparent;
+    }
+    40% {
+        stroke-dashoffset: 155;
+    }
+    70% {
+        stroke-dashoffset: 260;
+        stroke-dasharray: 70% 0;
+        fill: transparent;
+    }
+    100% {
+        stroke-dashoffset: 520;
+        fill: #fff;
     }
 }
