@@ -1,0 +1,19 @@
+.wrapper {
+    margin: 40px 0;
+}
+
+.text {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 11rem;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    -webkit-text-stroke-color: #dfdfdf;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    -webkit-text-stroke-width: 1px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    color: #dfdfdf;
+    white-space: nowrap;
+}

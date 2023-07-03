@@ -1,6 +1,5 @@
 import Home from '../pages/Home';
 import Details from '../pages/Details';
-
 import Login from '../pages/Login';
 import Collections from '../pages/Collections';
 import config from '../config';
@@ -18,11 +17,7 @@ import Profile from '../pages/Profile';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
-    { path: config.routes.cart, component: Cart },
-    { path: config.routes.wishlist, component: Wishlist },
-    { path: config.routes.profile, component: Profile },
     { path: config.routes.details, component: Details },
-    { path: config.routes.checkout, component: Checkout },
     { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.resgister, component: SignUp, layout: null },
     { path: config.routes.loading, component: LoadingPage, layout: null },
@@ -34,6 +29,19 @@ const publicRoutes = [
     { path: config.routes.success, component: Success, layout: null },
 ];
 
-const privateRoutes = [];
+const privateRoutes = [
+    { path: config.routes.cart, component: Cart },
+    { path: config.routes.wishlist, component: Wishlist },
+    { path: config.routes.profile, component: Profile },
+    { path: config.routes.checkout, component: Checkout },
+];
 
-export { publicRoutes, privateRoutes };
+const getRoutes = (isLoggedIn) => {
+    if (isLoggedIn) {
+        return [...publicRoutes, ...privateRoutes];
+    } else {
+        return publicRoutes;
+    }
+};
+
+export { getRoutes };

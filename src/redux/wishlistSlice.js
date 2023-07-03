@@ -14,6 +14,7 @@ const wishlistSlice = createSlice({
 
             if (existingIndex >= 0) {
                 toast.info('The product already exists in the wishlist');
+                return;
             } else {
                 state.items.push(action.payload);
 

@@ -6,6 +6,9 @@ const images = {
     slide1: require('../images/slide1.webp'),
     slide2: require('../images/slide2.webp'),
     slideBackground: require('../images/sliderBackground.jpg'),
+    blog1: require('../images/blog1.jpg'),
+    blog2: require('../images/blog2.jpg'),
+    blog3: require('../images/blog3.jpg'),
 };
 
 export default images;

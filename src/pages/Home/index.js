@@ -20,6 +20,8 @@ import RightModal from '../../components/Modal/RightModal/RightModal';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useMediaQuery } from 'react-responsive';
+import MarqueeCustom from '../../components/Marquee';
+import VideoCustom from '../../components/Video';
 
 const screenSizes = {
     small: 480,
@@ -124,13 +126,6 @@ function Home() {
                         </div>
                     </div>
 
-                    {/* <div className={styles.sliderWrapper}>
-                        <Slider {...settings}>
-                            {data.map((item, index) => {
-                                return <SaleItem sale key={index} item={item} />;
-                            })}
-                        </Slider>
-                    </div> */}
                     <div className={styles.sliderWrapper}>
                         {isLoading ? (
                             // Hiển thị skeleton loading khi isLoading = true
@@ -177,7 +172,9 @@ function Home() {
                             // Hiển thị dữ liệu khi đã fetch xong
                             <Slider {...settings}>
                                 {data ? (
-                                    data.map((item, index) => <SaleItem key={index} item={item} />)
+                                    data.map((item, index) => (
+                                        <SaleItem key={index} item={item} setModalData={setModalData} />
+                                    ))
                                 ) : (
                                     <div>Cant find data !</div>
                                 )}
@@ -287,6 +284,8 @@ function Home() {
                 </div>
             </div>
             <Advertisement />
+            <MarqueeCustom />
+            <VideoCustom />
             <Blogs />
         </div>
     );

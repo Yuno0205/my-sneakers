@@ -14,7 +14,8 @@ import RightModal from '../../Modal/RightModal/RightModal';
 import styles from './ProductItem.module.css';
 
 function ProductItem({ coating, sale, soldOut, data }) {
-    const user = useSelector((state) => state.user.currentUser);
+    const wishlist = useSelector((state) => state.wishlist);
+
     const [modalOpen, setModalOpen] = useState(false);
     const classes = clsx(styles.item);
     const dispatch = useDispatch();
@@ -47,9 +48,22 @@ function ProductItem({ coating, sale, soldOut, data }) {
         }
     };
 
+    // const handleAddToWishlist = (data) => {
+    //     dispatch(addToWishlist(data));
+    //     setModalOpen(true);
+    // };
+
     const handleAddToWishlist = (data) => {
-        dispatch(addToWishlist(data));
-        setModalOpen(true);
+        const existingIndex = wishlist.items.findIndex((item) => item._id === data._id && item.size === data.size);
+
+        if (existingIndex >= 0) {
+            toast.info('The product already exists in the wishlist');
+            // Exist ? Return
+            return;
+        } else {
+            dispatch(addToWishlist(data));
+            setModalOpen(true);
+        }
     };
 
     const handleShowModal = () => {

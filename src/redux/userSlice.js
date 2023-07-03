@@ -24,3 +24,6 @@ const userSlice = createSlice({
 
 export const { loginStart, loginSuccess, loginFailure } = userSlice.actions;
 export default userSlice.reducer;
+
+// Selector để lấy trạng thái đăng nhập
+export const selectIsLoggedIn = (state) => state.user.currentUser !== null;

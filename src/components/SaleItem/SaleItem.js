@@ -15,11 +15,9 @@ import RightModal from '../Modal/RightModal/RightModal';
 import Modal from '../Modal/Modal';
 import { addToWishlist } from '../../redux/wishlistSlice';
 
-function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
-    const user = useSelector((state) => state.user.currentUser);
-    const navigate = useNavigate();
-    const [modalOpen, setModalOpen] = useState(false);
-    const classes = clsx(styles.item);
+function SaleItem({ coating, sale, soldOut, setModalData, item }) {
+    const wishlist = useSelector((state) => state.wishlist);
+
     const dispatch = useDispatch();
 
     const [openModal, setOpenModal] = useState(false);
@@ -32,7 +30,16 @@ function SaleItem({ coating, sale, soldOut, handleShowModal, item }) {
         );
 
     const handleAddToWishlist = (data) => {
-        dispatch(addToWishlist(data));
+        const existingIndex = wishlist.items.findIndex((item) => item._id === data._id && item.size === data.size);
+
+        if (existingIndex >= 0) {
+            toast.info('The product already exists in the wishlist');
+            // Exist ? Return
+            return;
+        } else {
+            dispatch(addToWishlist(data));
+            setOpenModal(true);
+        }
     };
 
     return (

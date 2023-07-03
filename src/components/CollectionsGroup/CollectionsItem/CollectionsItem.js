@@ -3,10 +3,18 @@ import { Link } from 'react-router-dom';
 import ColorWayImage from '../../ColorWayImage/ColorWayImage';
 import ColorWaySmall from '../../ColorWayImage/ColorWaySmall';
 import styles from './CollectionsItem.module.css';
+import { motion } from 'framer-motion';
 
 function CollectionsItem({ item }) {
     return (
-        <div className={styles.wrapper}>
+        <motion.div
+            layout
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className={styles.wrapper}
+        >
             <Link to={`/collections/${item.options[0]._id}`} key={item._id} className={styles.body}>
                 <div className={styles.content}>
                     <div className={styles.itemImage}>
@@ -64,7 +72,7 @@ function CollectionsItem({ item }) {
                     </div>
                 </div>
             </Link>
-        </div>
+        </motion.div>
     );
 }
 
