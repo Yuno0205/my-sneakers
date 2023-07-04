@@ -13,24 +13,6 @@ export const basicSchema = yup.object().shape({
         .required('Phone number is required !'),
     firstName: yup.string().min(2).required('Your first name is required !'),
     lastName: yup.string().min(2).required('Your last name is required !'),
-    password: yup.string().min(6).required('Password is required !'),
-    address: yup.string().required('Address is required !'),
-    confirmPassword: yup
-        .string()
-        .oneOf([yup.ref('password'), null], 'Passwords must match !')
-        .required('Required'),
-});
 
-// export const advancedSchema = yup.object().shape({
-//   username: yup
-//     .string()
-//     .min(3, "Username must be at least 3 characters long")
-//     .required("Required"),
-//   jobType: yup
-//     .string()
-//     .oneOf(["designer", "developer", "manager", "other"], "Invalid Job Type")
-//     .required("Required"),
-//   acceptedTos: yup
-//     .boolean()
-//     .oneOf([true], "Please accept the terms of service"),
-// });
+    address: yup.string().required('Address is required !'),
+});

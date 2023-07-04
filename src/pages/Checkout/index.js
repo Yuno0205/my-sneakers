@@ -16,8 +16,19 @@ function Checkout() {
     const navigate = useNavigate();
     const notify = () => toast.error('Opps ! You must fill in all the information !');
 
+    // const onSubmit = async (values, actions) => {
+    //     if (isValid && dirty) {
+    //         navigate('/success');
+    //     } else {
+    //         notify();
+    //     }
+    // };
+
     const onSubmit = async (values, actions) => {
-        navigate('/success');
+        console.log('Dataa : ', values);
+        console.log('Action : ', actions);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        actions.resetForm();
     };
 
     return (
@@ -41,7 +52,7 @@ function Checkout() {
                             validationSchema={basicSchema}
                             onSubmit={onSubmit}
                         >
-                            {({ isValid, touched, dirty }) => (
+                            {({ isSubmitting }) => (
                                 <Form className={styles.form}>
                                     <div className={styles.info}>
                                         <div className={styles.nameInfo}>
@@ -73,20 +84,13 @@ function Checkout() {
                                         </div>
                                     </div>
                                     <div className={styles.continued}>
-                                        <Button
-                                            onClick={() => {
-                                                if (isValid) {
-                                                    onSubmit();
-                                                } else {
-                                                    notify();
-                                                }
-                                            }}
-                                            primary
-                                            large
-                                            type="submit"
-                                        >
+                                        <Button disabled={isSubmitting} primary large type="submit">
                                             <span className={styles.white}>Check out</span>
                                         </Button>
+
+                                        {/* <button disabled={isSubmitting} type="submit">
+                                            Submit
+                                        </button> */}
                                         <Button outline large type="submit">
                                             <Link to="/collections">
                                                 <span className={styles.black}>Countinued Shopping</span>

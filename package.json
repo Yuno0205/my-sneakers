@@ -11,7 +11,7 @@
         "axios": "^1.2.0",
         "clsx": "^1.2.1",
         "dotenv": "^16.0.3",
-        "formik": "^2.2.9",
+        "formik": "^2.4.2",
         "framer-motion": "^10.12.17",
         "normalize.css": "^8.0.1",
         "path-browserify": "^1.0.1",
