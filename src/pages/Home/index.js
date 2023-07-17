@@ -22,6 +22,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import { useMediaQuery } from 'react-responsive';
 import MarqueeCustom from '../../components/Marquee';
 import VideoCustom from '../../components/Video';
+import Decoration from '../../components/Decoration';
 
 const screenSizes = {
     small: 480,
@@ -117,6 +118,7 @@ function Home() {
             <Fake />
             <Banner />
             <AdService />
+            <Decoration />
             <div className={styles.wrapper}>
                 <div className={styles.content}>
                     <div className={styles.title}>

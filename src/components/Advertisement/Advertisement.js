@@ -3,6 +3,8 @@ import styles from './Advertisement.module.css';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
+import Image from '../Image/Image';
+import images from '../../assets/images';
 
 const slideUpFadeInVariants = {
     hidden: { opacity: 0, y: 100 },
@@ -38,10 +40,11 @@ function Advertisement() {
                 <div className={styles.content}>
                     <div className={styles.boxImg}>
                         <Link to="/">
-                            <img
+                            {/* <img
                                 alt=""
                                 src="https://cdn.shopify.com/s/files/1/0267/0211/8947/files/banner-v7.jpg?v=1613631152"
-                            />
+                            /> */}
+                            <img alt="" src={images.advertisement} />
                         </Link>
                     </div>
                     <div className={styles.info}>

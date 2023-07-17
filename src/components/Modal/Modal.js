@@ -21,10 +21,6 @@ function Modal({ openModal, setOpenModal, modalData, handleAddToCart, handleSetS
                     })}
                 >
                     <div
-                        // className={clsx(styles.container, {
-                        //     [styles.rightToShort]: !openModal,
-                        // })}
-
                         className={clsx(styles.container, {
                             [styles.rightToShort]: !openModal,
                         })}
