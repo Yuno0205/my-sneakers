@@ -13,7 +13,7 @@ import Advertisement from '../../components/Advertisement/Advertisement';
 import Blogs from '../../components/Blogs/Blogs';
 import { useEffect, useState } from 'react';
 import Modal from '../../components/Modal/Modal';
-import Fake from '../../components/Fake';
+import Fake from '../../components/Slider';
 import { publicRequest } from '../../utils/request';
 import SoldOutProduct from '../../components/Products/ProductItem/SoldOutProduct';
 import RightModal from '../../components/Modal/RightModal/RightModal';
@@ -23,6 +23,7 @@ import { useMediaQuery } from 'react-responsive';
 import MarqueeCustom from '../../components/Marquee';
 import VideoCustom from '../../components/Video';
 import Decoration from '../../components/Decoration';
+import BannerSlider from '../../components/Slider/BannerSlider';
 
 const screenSizes = {
     small: 480,
@@ -114,8 +115,7 @@ function Home() {
 
     return (
         <div>
-            {/* <SliderBanner /> */}
-            <Fake />
+            <BannerSlider />
             <Banner />
             <AdService />
             <Decoration />
