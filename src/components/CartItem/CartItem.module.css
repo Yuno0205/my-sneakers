@@ -1,9 +1,22 @@
+.wrapper {
+    min-height: 200px;
+}
+
+.wrapper .noItems {
+    padding-top: 20px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .cartItem {
     display: flex;
 
     box-shadow: rgb(229 229 229) 0px 0px 0px 0px inset, rgb(229 229 229) 0px 0px 0px 0px inset,
         rgb(229 229 229) 0px -1px 0px 0px inset, rgb(229 229 229) 0px 0px 0px 0px inset;
-    padding: 24px 0px;
+    padding: 24px 10px;
     width: 100%;
 }
 
@@ -162,5 +175,20 @@
 
     .actions {
         margin-top: 10px;
+    }
+
+    .itemImg {
+        min-width: 140px;
+    }
+
+    .itemName {
+        max-width: 130px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .selections {
+        flex-flow: column wrap;
     }
 }

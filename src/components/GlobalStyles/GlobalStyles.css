@@ -38,7 +38,6 @@ body {
     text-rendering: optimizeSpeed;
     color: var(--text-color);
     overflow-y: overlay;
-    overflow-x: hidden;
 }
 
 /* Scroll bar */

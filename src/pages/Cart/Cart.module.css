@@ -64,6 +64,7 @@
 
 .favourites {
     min-height: 200px;
+    padding: 20px;
 }
 
 .favouriteContent {
@@ -85,6 +86,13 @@
 
 .viewMore:hover {
     color: #111;
+}
+
+.actions {
+    min-height: 150px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
 }
 
 /* Responsive */
@@ -110,5 +118,14 @@
         flex-basis: 100%;
         max-width: 100%;
         flex-wrap: wrap;
+    }
+
+    .wrapper {
+        font-size: 1.4rem;
+    }
+
+    .bag {
+        flex-basis: 100%;
+        max-width: 100%;
     }
 }

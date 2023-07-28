@@ -1,0 +1,86 @@
+.wrapper {
+    padding: 20px;
+}
+
+.wrapper h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.sidebar {
+    width: 350px;
+
+    overflow-y: auto;
+}
+
+.mainContent {
+    flex: 1;
+}
+
+/* Flex container for the table */
+.tableContainer {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+/* Flex item representing a row in the table */
+.tableRow {
+    display: flex;
+    min-height: 100px;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    padding-left: 10px;
+}
+
+.tableRow:hover {
+    cursor: pointer;
+}
+
+.tableRow::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 0;
+
+    height: 0;
+    width: 3px;
+
+    background-color: #6693f5;
+    transition: height 0.5s ease;
+}
+
+.tableRow.checked::before {
+    height: 80%;
+}
+
+/* Flex item representing a cell in the table */
+.tableCell {
+    flex: 1;
+
+    display: flex;
+}
+
+.block {
+    display: block;
+    padding: 10px;
+}
+
+.inputRadio {
+    visibility: hidden;
+}
+
+.selected {
+    color: #6693f5;
+}
+
+.mainContent {
+    padding: 0 20px;
+}

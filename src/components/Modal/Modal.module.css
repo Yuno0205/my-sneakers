@@ -279,4 +279,7 @@
 }
 
 @media (max-width: 740px) {
+    .container {
+        min-width: 280px;
+    }
 }

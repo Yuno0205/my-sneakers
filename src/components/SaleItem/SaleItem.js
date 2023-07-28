@@ -88,7 +88,7 @@ function SaleItem({ coating, sale, soldOut, setModalData, item }) {
                         {soldOut ? 'Sold out' : ''}
                     </div>
                     <div
-                        className={clsx({
+                        className={clsx(styles.salePercent, {
                             [styles.labelSale]: sale,
                         })}
                     >

@@ -14,5 +14,6 @@ const routes = {
     women: '/women',
     sale: '/sale',
     profile: '/profile',
+    orders: '/orders',
 };
 export default routes;

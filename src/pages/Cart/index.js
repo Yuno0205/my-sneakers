@@ -27,14 +27,19 @@ function Cart() {
                         </div>
                         <div className={styles.summary}>
                             <CartSumary />
-                            <Link to="/checkout">
-                                <Button primary large>
-                                    <span>Check out</span>
-                                </Button>
-                                <Button icon={<HeartIcon />} outline large>
-                                    <span>Wishlist</span>
-                                </Button>
-                            </Link>
+                            <div className={styles.actions}>
+                                <Link to="/checkout">
+                                    <Button primary large>
+                                        <span>Check out</span>
+                                    </Button>
+                                </Link>
+
+                                <Link to="/wishlist">
+                                    <Button icon={<HeartIcon />} outline large>
+                                        <span>Wishlist</span>
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.favourites}>

@@ -14,6 +14,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import SignUp from '../pages/Login/SignUp';
 import Success from '../pages/Success';
 import Profile from '../pages/Profile';
+import Orders from '../pages/Orders/Orders';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -27,6 +28,7 @@ const publicRoutes = [
     { path: config.routes.women, component: Women },
     { path: config.routes.sale, component: Sale },
     { path: config.routes.success, component: Success, layout: null },
+    { path: config.routes.orders, component: Orders },
 ];
 
 const privateRoutes = [
