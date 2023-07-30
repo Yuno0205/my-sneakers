@@ -1,22 +1,33 @@
+/* /* AdService.module.css */
+
 .service {
-    width: 100%;
     margin-bottom: 70px;
 }
 
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    /* Thêm giới hạn kích thước để tránh overflow */
+    max-width: 100%;
+    overflow: hidden; /* Ẩn nội dung tràn ngang khi viewport quá nhỏ */
+}
+
 .serviceContent {
-    width: 100vw;
+    /* Xóa width: 100vw; để sử dụng chiều rộng mặc định */
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 50px 0;
+    /* Thêm thuộc tính overflow để ẩn nội dung tràn ngang */
+    overflow: hidden;
 }
 
 .serviceType {
     padding: 0 15px;
     width: 100%;
-    overflow: hidden;
+    /* Xóa overflow: hidden; để ẩn nội dung tràn ngang */
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -57,7 +68,6 @@
     font-weight: 600;
     color: #000;
     letter-spacing: 0.3em;
-
     text-transform: uppercase;
     margin-bottom: 5px;
 }
@@ -71,16 +81,16 @@
 
 @media (max-width: 1024px) {
     .serviceContent {
-        width: 100%;
+        /* Xóa width: 100%; để sử dụng chiều rộng mặc định */
     }
 }
 
 @media (max-width: 740px) {
     .serviceContent {
-        width: 100%;
+        /* Xóa width: 100%; để sử dụng chiều rộng mặc định */
         flex-flow: column wrap;
     }
     .serviceType {
-        width: 100%;
+        /* Xóa width: 100%; để sử dụng chiều rộng mặc định */
     }
 }

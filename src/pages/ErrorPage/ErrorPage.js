@@ -1,22 +1,41 @@
 import { Link } from 'react-router-dom';
 import styles from './ErrorPage.module.css';
+import Button from '../../components/Button/Button';
 function ErrorPage() {
     return (
         <div className={styles.wrapper}>
-            <div className={styles.mars}></div>
-            <img alt="" src="https://assets.codepen.io/1538474/404.svg" class={styles.logo404} />
-
-            <p className={styles.title}>Oh no!!</p>
-            <p className={styles.subtitle}>
-                You're either misspelling the URL <br /> or requesting a page that's no longer here.
-            </p>
-            <div align="center">
-                <Link className={styles.btnBack} to="/">
-                    Back to home ?
-                </Link>
+            <div>
+                <h1 className={styles.h1}>404</h1>
+                <h3 className={styles.h3}>page not found</h3>
             </div>
-            <img alt="" src="https://assets.codepen.io/1538474/astronaut.svg" className={styles.astronaut} />
-            <img alt="" src="https://assets.codepen.io/1538474/spaceship.svg" className={styles.spaceship} />
+            <div className={styles.container}>
+                <div className={styles.ghostCopy}>
+                    <div className={styles.one}></div>
+                    <div className={styles.two}></div>
+                    <div className={styles.three}></div>
+                    <div className={styles.four}></div>
+                </div>
+                <div className={styles.ghost}>
+                    <div className={styles.face}>
+                        <div className={styles.eye}></div>
+                        <div className={styles.eyeRight}></div>
+                        <div className={styles.mouth}></div>
+                    </div>
+                </div>
+                <div className={styles.shadow}></div>
+            </div>
+            <div className="bottom">
+                <p className={styles.p}>Boo, looks like a ghost stole this page!</p>
+
+                <div className={styles.buttons}>
+                    <Button outline>
+                        <Link to="/">Back to home ?</Link>
+                    </Button>
+                    <Button outline className={styles.btn}>
+                        <Link to="/">Also home :))</Link>
+                    </Button>
+                </div>
+            </div>
         </div>
     );
 }

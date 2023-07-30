@@ -1,12 +1,5 @@
 .wrapper {
-    position: relative;
-    min-height: 1px;
-    font-size: 16px;
-    line-height: 1.75;
-    padding-left: 8px;
-    padding-right: 8px;
-    width: 33.33333333333333%;
-    vertical-align: top;
+    flex: 1;
 }
 
 .body {
@@ -115,4 +108,22 @@
     height: 40px;
     width: 40px;
     padding: 6px;
+}
+
+@media (max-width: 1024px) {
+    .body {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .basicInfo {
+        flex-flow: column;
+    }
 }

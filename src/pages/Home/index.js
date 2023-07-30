@@ -99,25 +99,13 @@ function Home() {
         getAllData();
     }, []);
 
-    // useEffect(() => {
-    //     const getAllArrival = async () => {
-    //         try {
-    //             const res = await publicRequest.get(`options/arrival`);
-
-    //             setArrival(res.data);
-    //         } catch (err) {
-    //             console.log(err);
-    //         }
-    //     };
-
-    //     getAllArrival();
-    // }, []);
-
     return (
         <div>
             <BannerSlider />
             <Banner />
+
             <AdService />
+
             <Decoration />
             <div className={styles.wrapper}>
                 <div className={styles.content}>
@@ -172,15 +160,17 @@ function Home() {
                             </div>
                         ) : (
                             // Hiển thị dữ liệu khi đã fetch xong
-                            <Slider {...settings}>
-                                {data ? (
-                                    data.map((item, index) => (
-                                        <SaleItem key={index} item={item} setModalData={setModalData} />
-                                    ))
-                                ) : (
-                                    <div>Cant find data !</div>
-                                )}
-                            </Slider>
+                            <div className={styles.blockOver}>
+                                <Slider {...settings}>
+                                    {data ? (
+                                        data.map((item, index) => (
+                                            <SaleItem key={index} item={item} setModalData={setModalData} />
+                                        ))
+                                    ) : (
+                                        <div>Cant find data !</div>
+                                    )}
+                                </Slider>
+                            </div>
                         )}
                     </div>
                 </div>

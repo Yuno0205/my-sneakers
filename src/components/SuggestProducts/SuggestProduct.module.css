@@ -135,4 +135,8 @@
         max-width: 50%;
         margin-bottom: 10px;
     }
+
+    .image {
+        min-height: auto;
+    }
 }

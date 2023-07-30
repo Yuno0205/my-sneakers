@@ -11,15 +11,16 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     border-radius: 5px;
     padding: 11px 16px;
     background-color: #fff;
+    transition: all 0.3s ease;
 }
 
-.menuItem > span {
-    margin-right: 25px;
-}
+/* .menuItem > span {
+    margin: 0 15px;
+} */
 
 .menuItem:hover {
     cursor: pointer;

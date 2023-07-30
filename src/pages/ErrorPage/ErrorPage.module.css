@@ -1,119 +1,206 @@
-@keyframes floating {
-    from {
-        transform: translateY(0px);
+.wrapper {
+    background: #d3deea;
+    width: 100vw;
+    height: 100vh;
+}
+
+.top {
+    margin-top: 30px;
+}
+
+.container {
+    margin: 0 auto;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin-top: -40px;
+}
+
+.ghost {
+    width: 50%;
+    height: 53%;
+    left: 25%;
+    top: 10%;
+    position: absolute;
+    border-radius: 50% 50% 0 0;
+    background: #ededed;
+    border: 1px solid #bfc0c0;
+    border-bottom: none;
+    animation: float 2s ease-out infinite;
+}
+
+.ghostCopy {
+    width: 50%;
+    height: 53%;
+    left: 25%;
+    top: 10%;
+    position: absolute;
+    border-radius: 50% 50% 0 0;
+    background: #ededed;
+    border: 1px solid #bfc0c0;
+    border-bottom: none;
+    animation: float 2s ease-out infinite;
+    z-index: 0;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    top: 20%;
+}
+.eye,
+.eyeRight {
+    position: absolute;
+    background: #585959;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    top: 40%;
+}
+
+.eye {
+    left: 25%;
+}
+.eyeRight {
+    right: 25%;
+}
+
+.mouth {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    width: 10px;
+    height: 10px;
+    border: 3px solid;
+    border-radius: 50%;
+    border-color: transparent #585959 #585959 transparent;
+    transform: rotate(45deg);
+}
+
+.one,
+.two,
+.three,
+.four {
+    position: absolute;
+    background: #ededed;
+    top: 85%;
+    width: 25%;
+    height: 23%;
+    border: 1px solid #bfc0c0;
+    z-index: 0;
+}
+
+.one {
+    border-radius: 0 0 100% 30%;
+    left: -1px;
+}
+
+.two {
+    left: 23%;
+    border-radius: 0 0 50% 50%;
+}
+
+.three {
+    left: 50%;
+    border-radius: 0 0 50% 50%;
+}
+
+.four {
+    left: 74.5%;
+    border-radius: 0 0 30% 100%;
+}
+
+.shadow {
+    position: absolute;
+    width: 30%;
+    height: 7%;
+    background: #bfc0c0;
+    left: 35%;
+    top: 80%;
+    border-radius: 50%;
+    animation: scale 2s infinite;
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
     }
-    65% {
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    50% {
         transform: translateY(15px);
     }
-    to {
-        transform: translateY(0px);
-    }
 }
 
-.wrapper {
-    background-image: url('https://assets.codepen.io/1538474/star.svg'), linear-gradient(to bottom, #05007a, #4d007d);
-    height: 100vh;
-    background-attachment: fixed;
-    overflow: hidden;
+.bottom {
+    margin-top: 10px;
 }
 
-.mars {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    height: 27vmin;
-    background: url('https://assets.codepen.io/1538474/mars.svg') no-repeat bottom center;
-    background-size: cover;
+.h1 {
+    font-family: 'Abril Fatface', serif;
+    color: #ededed;
+    text-align: center;
+    font-size: 9em;
+    margin: 0;
+    text-shadow: -1px 0 #bfc0c0, 0 1px #bfc0c0, 1px 0 #bfc0c0, 0 -1px #bfc0c0;
+}
+.h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #bfc0c0;
+    margin-top: -20px;
+    font-weight: 900;
+}
+.p {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: #585959;
+    font-size: 0.6em;
+    margin-top: -20px;
+    text-transform: uppercase;
 }
 
-.logo404 {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 16vmin;
-    width: 30vmin;
-}
-@media (max-width: 480px) and (min-width: 320px) {
-    .logo-404 {
-        top: 45vmin;
-    }
+.search {
+    text-align: center;
 }
 
-.meteor {
-    position: absolute;
-    right: 2vmin;
-    top: 16vmin;
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 10px 20px;
+    flex-flow: wrap;
 }
 
-.title {
-    color: white;
-    font-family: 'Nunito', sans-serif;
+.btn {
+    margin: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.6rem;
     font-weight: 600;
-    text-align: center;
-    font-size: 5vmin;
-    margin-top: 31vmin;
-}
-@media (max-width: 480px) and (min-width: 320px) {
-    .title {
-        margin-top: 65vmin;
-    }
-}
-
-.subtitle {
-    color: white;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 400;
-    text-align: center;
-    font-size: 3.5vmin;
-    margin-top: -1vmin;
-    margin-bottom: 9vmin;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 9px 16px;
+    border-radius: 30px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    background-color: var(--white);
+    justify-content: center;
+    transition: var(--transition, 0.3s);
 }
 
-.btnBack {
-    border: 1px solid white;
-    color: white;
-    height: 5vmin;
-    padding: 12px;
-    font-family: 'Nunito', sans-serif;
-    text-decoration: none;
-    border-radius: 5px;
-}
-.btnBack:hover {
-    background: white;
-    color: #4d007d;
-}
-@media (max-width: 480px) and (min-width: 320px) {
-    .btn-back {
-        font-size: 3.5vmin;
-    }
-}
-
-.astronaut {
-    position: absolute;
-    top: 18vmin;
-    left: 40vmin;
-    height: 30vmin;
-    animation: floating 3s infinite ease-in-out;
-}
-@media (max-width: 480px) and (min-width: 320px) {
-    .astronaut {
-        top: 2vmin;
-    }
-}
-
-.spaceship {
-    position: absolute;
-    bottom: 15vmin;
-    right: 24vmin;
-    width: 200px;
-}
-
-@media (max-width: 480px) and (min-width: 320px) {
-    .spaceship {
-        width: 45vmin;
-        bottom: 18vmin;
-    }
+.btn:hover {
+    background: #bfc0c0;
+    transition: all 0.4s ease-out;
 }

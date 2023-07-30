@@ -11,7 +11,7 @@
 .modalContainer {
     position: absolute;
     top: 60px;
-    right: 40px;
+    right: 0px;
     background-color: rgb(255, 255, 255);
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
@@ -111,4 +111,10 @@
 
 .infoItem p + p {
     margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+    .modalContainer {
+        max-width: 80%;
+    }
 }

@@ -15,5 +15,6 @@ const routes = {
     sale: '/sale',
     profile: '/profile',
     orders: '/orders',
+    page404: '/404',
 };
 export default routes;

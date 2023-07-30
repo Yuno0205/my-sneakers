@@ -22,7 +22,9 @@ function WishlistItem({ favorite, openModal, handleShowModal }) {
                         <div className={styles.info}>
                             <div className={styles.itemInfo}>
                                 <div className={styles.basicInfo}>
-                                    <div className={clsx(styles.infoData, styles.itemName)}>{item.title}</div>
+                                    <div className={clsx(styles.infoData, styles.itemName)}>
+                                        <span>{item.title}</span>
+                                    </div>
                                     <div className={styles.feature}>{item.feature}</div>
                                     <div
                                         className={clsx(styles.infoData, {

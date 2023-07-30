@@ -1,5 +1,6 @@
 .wrapper {
-    padding-top: 40px;
+    padding: 40px 15px;
+
     width: 100%;
     font-size: 1.8rem;
 }
@@ -127,5 +128,9 @@
     .bag {
         flex-basis: 100%;
         max-width: 100%;
+    }
+
+    .favourites {
+        padding: 10px;
     }
 }

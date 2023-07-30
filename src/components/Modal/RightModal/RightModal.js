@@ -20,7 +20,8 @@ const variants = {
     },
     visible: {
         opacity: 1,
-        x: 0,
+        x: '0',
+
         transition: {
             duration: 0.3,
         },

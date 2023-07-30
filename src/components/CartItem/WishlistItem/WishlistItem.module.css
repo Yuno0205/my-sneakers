@@ -54,8 +54,6 @@
 }
 
 .infoData {
-    white-space: nowrap;
-    text-overflow: ellipsis;
     color: rgb(117, 117, 117);
     margin: 2px 0;
 }
@@ -175,5 +173,16 @@
 
     .actions {
         margin-top: 10px;
+    }
+
+    .cartItem {
+        width: 100%;
+    }
+
+    .infoData {
+        max-width: 70%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 }

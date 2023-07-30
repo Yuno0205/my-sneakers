@@ -1,18 +1,17 @@
 import Tippy from '@tippyjs/react/headless';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 import Loading from '../Loading';
 import NoProducts from '../Others/NoProduct';
 import styles from './SuggestProduct.module.css';
 import Image from '../Image/Image';
 import { NumericFormat } from 'react-number-format';
+import { Link } from 'react-router-dom';
 
-function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults, loading }) {
-    const navigate = useNavigate();
-
-    const handleClick = (id) => {
-        navigate(`collections/${id}`);
+function SuggestProducts({ setDisplayCoating, setShowResults, searchResults, loading }) {
+    const handleHide = () => {
+        setShowResults(false);
+        setDisplayCoating(false);
     };
     return (
         <Tippy interactive>
@@ -29,8 +28,9 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                 <div className={clsx(styles.items)}>
                     {searchResults && searchResults.length > 0 ? (
                         searchResults.map((result) => (
-                            <div
-                                to={`collections/${result._id}`}
+                            <Link
+                                to={`/collections/${result._id}`}
+                                onClick={handleHide}
                                 className={clsx(styles.item, { [styles.hide]: loading })}
                                 key={result._id}
                             >
@@ -49,7 +49,7 @@ function SuggestProducts({ setDisplayCoating, setShowSuggestions, searchResults,
                                         />
                                     </span>
                                 </div>
-                            </div>
+                            </Link>
                         ))
                     ) : (
                         <>{!loading && <NoProducts />}</>

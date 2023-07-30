@@ -9,7 +9,7 @@ function FavouriteItem({ data, hide }) {
     const dispatch = useDispatch();
 
     return (
-        <>
+        <div className={styles.wrapper}>
             {data.items ? (
                 data.items.map((item) => (
                     <div>
@@ -50,7 +50,7 @@ function FavouriteItem({ data, hide }) {
             ) : (
                 <div>Not found any product</div>
             )}
-        </>
+        </div>
     );
 }
 

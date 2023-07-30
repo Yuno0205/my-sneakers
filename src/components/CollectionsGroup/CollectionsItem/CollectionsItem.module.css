@@ -120,12 +120,14 @@
     padding-right: 5px;
     font-weight: 500;
     color: #111111;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .fullPrice {
     color: #757575;
     text-decoration: line-through;
-    margin-left: 20px;
+    margin-left: auto;
 }
 
 .sale {
