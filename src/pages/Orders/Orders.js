@@ -1,37 +1,40 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Orders.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import OrderItem from '../../components/Orders/OrderItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserOrders } from '../../redux/orderSlice';
+import { selectUserToken } from '../../redux/userSlice';
 
 function Orders() {
-    const [selectedRow, setSelectedRow] = useState(null); // Trạng thái lưu thông tin của tableRow được chọn
+    const [selectedRow, setSelectedRow] = useState(null);
+    const [selectedOrder, setSelectedOrder] = useState(null);
 
-    const tableRows = [
-        {
-            id: 1,
-            orderNumber: '#524775',
-            price: '20,000,000 VND',
-            items: '8 items',
-            status: 'Pending',
-            date: 'July 2',
-        },
-        {
-            id: 2,
-            orderNumber: '#524776',
-            price: '10,000,000 VND',
-            items: '5 items',
-            status: 'Pending',
-            date: 'July 2',
-        },
-        // Thêm các thông tin cho các tableRow khác (nếu có)
-    ];
+    const token = useSelector(selectUserToken);
+    const userId = useSelector((state) => state.user.currentUser?.user?._id);
+    const orders = useSelector((state) => state.order.orders);
+
+    const navigate = useNavigate();
+
+    console.log(token);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // if (!token) {
+        //     // navigate('/login');
+        //     return;
+        // }
+        dispatch(getUserOrders({ token, userId }));
+    }, [dispatch]);
 
     const handleRadioChange = (id) => {
         setSelectedRow(id);
-    };
 
-    console.log(selectedRow);
+        const order = orders.find((order) => order._id === id);
+        setSelectedOrder(order);
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -39,36 +42,36 @@ function Orders() {
             <div className={styles.container}>
                 <div className={styles.sidebar}>
                     <div className={styles.tableContainer}>
-                        {tableRows.map((row) => (
+                        {orders.map((item) => (
                             <div
-                                key={row.id}
+                                key={item._id}
                                 className={clsx(styles.tableRow, {
-                                    [styles.checked]: selectedRow === row.id,
+                                    [styles.checked]: selectedRow === item._id,
                                 })}
-                                onClick={() => handleRadioChange(row.id)}
+                                onClick={() => handleRadioChange(item._id)}
                             >
                                 <input
                                     className={styles.inputRadio}
                                     type="radio"
                                     name="orderItem"
-                                    checked={selectedRow === row.id}
-                                    // onChange={() => handleRadioChange(row.id)}
+                                    checked={selectedRow === item._id}
+                                    // onChange={() => handleRadioChange(item.id)}
                                 />
                                 <div className={styles.tableCell}>
                                     <div className={styles.block}>
-                                        <div>
-                                            <h3 className={selectedRow === row.id ? styles.selected : ''}>
-                                                {row.orderNumber}
+                                        <div className={styles.orderId}>
+                                            <h3 className={selectedRow === item._id ? styles.selected : ''}>
+                                                {item._id}
                                             </h3>
                                         </div>
-                                        <div>{row.price}</div>
-                                        <div>{row.items}</div>
+                                        <div>{item.price}</div>
+                                        <div>{item.items.length} items</div>
                                     </div>
                                 </div>
                                 <div className={styles.tableCell}>
                                     <div className={styles.block}>
-                                        <p>{row.status}</p>
-                                        <p>{row.date}</p>
+                                        <p>{item.status}</p>
+                                        <p>{item.updatedAt}</p>
                                     </div>
                                 </div>
                             </div>
@@ -76,9 +79,13 @@ function Orders() {
                     </div>
                 </div>
                 <div className={styles.mainContent}>
-                    <h2>Order #47847</h2>
-                    <OrderItem />
-                    <OrderItem />
+                    {/* Chỉ hiển thị OrderItem khi đã chọn một order trong sidebar */}
+                    {selectedOrder && (
+                        <div className={styles.listItem}>
+                            <h2>Order #{selectedOrder._id}</h2>
+                            <OrderItem data={selectedOrder.items} />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

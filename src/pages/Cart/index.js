@@ -15,7 +15,7 @@ function Cart() {
         setOpenModal(value);
     };
     return (
-        <div>
+        <div style={{ maxWidth: '100%' }}>
             <div className={styles.wrapper}>
                 <div className={styles.container}>
                     <div className={styles.content}>

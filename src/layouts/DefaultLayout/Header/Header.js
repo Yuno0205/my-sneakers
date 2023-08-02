@@ -25,10 +25,11 @@ import Search from '../../../components/Search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFailure, loginSuccess } from '../../../redux/userSlice';
+import { getUserInfo, loginFailure, loginSuccess, selectUserToken } from '../../../redux/userSlice';
 import Image from '../../../components/Image/Image';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { getCartInfo } from '../../../redux/cartSlice';
 
 const logout = () => {
     window.open('https://jorrkan-api.onrender.com/api/auth/logout', '_self');
@@ -52,30 +53,42 @@ const Header = () => {
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.currentUser);
+    const { isFetching, error } = useSelector((state) => state.user);
     const cart = useSelector((state) => state.cart);
+    const userToken = useSelector(selectUserToken);
 
     const notify = (content) => toast.error(content);
 
     // const [hideHeader, setHideHeader] = useState(false);
 
+    // useEffect(() => {
+    //     axios
+    //         .get('https://jorrkan-api.onrender.com/api/auth/login/success', {
+    //             withCredentials: true,
+    //         })
+    //         .then((res) => {
+    //             if (res.data) {
+
+    //                 dispatch(loginSuccess(res.data.user));
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             // Handle when error
+
+    //             notify('Oppps ! Something went wrong :( Check it out !');
+    //             dispatch(loginFailure());
+    //         });
+    // }, []);
+
     useEffect(() => {
-        axios
-            .get('https://jorrkan-api.onrender.com/api/auth/login/success', {
-                withCredentials: true,
-            })
-            .then((res) => {
-                if (res.data) {
-                    console.log(res.data.user);
-                    dispatch(loginSuccess(res.data.user));
-                }
-            })
-            .catch((error) => {
-                // Handle when error
-                console.log('error : ', error);
-                notify('Oppps ! Something went wrong :( Check it out !');
-                dispatch(loginFailure());
-            });
+        dispatch(getUserInfo());
     }, []);
+
+    // useEffect(() => {
+    //     if (userToken) {
+    //         dispatch(getCartInfo(userToken));
+    //     }
+    // }, [dispatch, userToken]);
 
     const handleShowResults = (childData) => {
         setShowResults(childData);
@@ -158,7 +171,7 @@ const Header = () => {
                         [styles.hideActions]: showResults,
                     })}
                 >
-                    {user ? (
+                    {user && user.user ? (
                         <>
                             <Tippy delay={[0, 50]} content="Wish list" placement="bottom">
                                 <div>
@@ -178,7 +191,7 @@ const Header = () => {
                                 </div>
                             </Tippy>
                             <Menu items={MenuItems}>
-                                <Image className={styles.userAvatar} src={user.image} alt="avatar"></Image>
+                                <Image className={styles.userAvatar} src={user.user.image} alt="avatar"></Image>
                             </Menu>
                             <div onClick={toggleShow} className={styles.bars}>
                                 <BarsIcon />
@@ -230,7 +243,7 @@ const Header = () => {
                 </div>
                 <div className={styles.content}>
                     <Link className={styles.menuMobileItem}>
-                        <span>Hi , {user?.displayName ?? 'Guest'}</span>
+                        <span>Hi , {user && user.user ? user.user.displayName : 'Guest'}</span>
                     </Link>
                     <Link className={styles.menuMobileItem}>
                         <span>New and Featured</span>

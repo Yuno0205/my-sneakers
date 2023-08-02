@@ -9,14 +9,13 @@
 
 .container {
     display: flex;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     margin-top: 40px;
 }
 
 .sidebar {
     width: 350px;
-    overflow-y: auto;
 }
 
 .mainContent {
@@ -68,6 +67,16 @@
     padding: 10px;
 }
 
+.orderId {
+    max-width: 100px;
+}
+
+.orderId h3 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .inputRadio {
     visibility: hidden;
 }
@@ -78,6 +87,11 @@
 
 .mainContent {
     padding: 0 20px;
+}
+
+.listItem {
+    display: flex;
+    flex-flow: column wrap;
 }
 
 /* Responsive styles for smaller screens */

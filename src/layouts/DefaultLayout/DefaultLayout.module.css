@@ -8,4 +8,5 @@
     min-height: 700px;
     margin: 0 auto;
     margin-top: var(--default-layout-header-height);
+    overflow-x: hidden;
 }

@@ -5,6 +5,11 @@
     src: url('../../assets/fonts/MyFonts/RubikRegular.ttf');
 }
 
+@font-face {
+    font-family: Nike;
+    src: url('../../assets/fonts/MyFonts/Nike-Futura.woff2');
+}
+
 :root {
     --primary: #111;
     --white: #fff;
@@ -12,6 +17,7 @@
     --text-color: #333;
     --text-color-2: #707072;
     --font-family: MyFont;
+    --font-nike: Nike;
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     --lazyload-bg-color: #ebebeb;
     --shadow: 0 0 0 0.2rem var(--black);

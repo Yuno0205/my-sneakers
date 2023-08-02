@@ -1,11 +1,9 @@
 import { NumericFormat } from 'react-number-format';
 import { useSelector } from 'react-redux';
 import styles from './CheckOutItem.module.css';
-function CheckOutItem() {
-    const cart = useSelector((state) => state.cart);
-    console.log(cart);
+function CheckOutItem({ cart }) {
     return (
-        <>
+        <div>
             {cart.items?.map((item, index) => (
                 <div key={index} className={styles.wrapper}>
                     <div className={styles.content}>
@@ -44,7 +42,7 @@ function CheckOutItem() {
                     </div>
                 </div>
             ))}
-        </>
+        </div>
     );
 }
 

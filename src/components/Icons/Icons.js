@@ -365,3 +365,9 @@ export const SadIcon = ({ width = '2.4rem', height = '2.4rem', className = '' })
         />
     </svg>
 );
+
+export const SpinerIcon = ({ width = '20rem', height = '20rem', className = '', extraClass = '' }) => (
+    <svg className={className} width={width} height={height} viewBox="0 0 40 60">
+        <polygon className={extraClass} fill="none" stroke="#fff" strokeWidth="1" points="16,1 32,32 1,32" />
+    </svg>
+);

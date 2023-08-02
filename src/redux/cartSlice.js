@@ -1,5 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+
 import { toast } from 'react-toastify';
+import { userRequest } from '../utils/request';
+
+// export const getCartInfo = createAsyncThunk('cart/getCartInfo', async (token) => {
+//     try {
+//         const response = await userRequest(token).get('cart');
+
+//         return response.data;
+//     } catch (error) {
+//         console.log('Error :', error);
+//         throw error;
+//     }
+// });
+
+// export const addItemToCart = createAsyncThunk('cart/additemToCart', async ({ token, ...data }) => {
+//     try {
+//         const response = await userRequest(token).post('cart', { data });
+//         console.log(response.data);
+//         return response.data;
+//     } catch (error) {
+//         console.log('Error :', error);
+//         throw error;
+//     }
+// });
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -10,10 +35,6 @@ const cartSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            // state.quantity += 1;
-            // state.items.push(action.payload);
-            // state.total += action.payload.price * action.payload.quantity;
-
             const existingIndex = state.items.findIndex(
                 (item) => item._id === action.payload._id && item.size === action.payload.size,
             );
@@ -73,6 +94,30 @@ const cartSlice = createSlice({
             state.totalCount = totalCount;
         },
     },
+    // extraReducers: (builder) => {
+    //     builder
+    //         .addCase(getCartInfo.pending, (state) => {
+    //             // Xử lý khi yêu cầu GET đang diễn ra
+    //             // Ví dụ: cập nhật trạng thái loading
+    //             console.log('GGoif goi');
+    //         })
+    //         .addCase(getCartInfo.fulfilled, (state, action) => {
+    //             // state.items = action.payload.products;
+    //         })
+    //         .addCase(getCartInfo.rejected, (state) => {
+    //             // Xử lý khi yêu cầu GET bị từ chối
+    //             // Ví dụ: cập nhật trạng thái lỗi (nếu có)
+    //             console.log('shit');
+    //         })
+    //         .addCase(addItemToCart.fulfilled, (state, action) => {
+    //             // Xử lý khi yêu cầu thành công
+    //             // action.payload chứa dữ liệu trả về từ API (nếu có)
+    //         })
+    //         .addCase(addItemToCart.rejected, (state, action) => {
+    //             // Xử lý khi yêu cầu bị từ chối (lỗi)
+    //             // action.error chứa thông tin lỗi từ API
+    //         });
+    // },
 });
 
 export const { addToCart, changeSize, removeFromCart, changeQuantity, getCartTotal } = cartSlice.actions;

@@ -8,27 +8,72 @@ import CartSumary from '../../components/CartSumary/CartSumary';
 import CheckOutItem from './CheckOutItem/CheckOutItem';
 import styles from './Checkout.module.css';
 import { basicSchema } from '../../components/Validations/UserValidation';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
+import ModalCustom from '../../components/Modal/ModalCustom/ModalCustom';
+import { useState } from 'react';
+
+import { createOrder } from '../../redux/orderSlice';
+import { selectUserToken } from '../../redux/userSlice';
 
 function Checkout() {
-    const user = useSelector((state) => state.user.currentUser);
-    const navigate = useNavigate();
-    const notify = () => toast.error('Opps ! You must fill in all the information !');
+    const dispatch = useDispatch();
 
-    // const onSubmit = async (values, actions) => {
-    //     if (isValid && dirty) {
-    //         navigate('/success');
-    //     } else {
-    //         notify();
-    //     }
-    // };
+    const navigate = useNavigate();
+    const token = useSelector(selectUserToken);
+    const cart = useSelector((state) => state.cart);
+
+    console.log(cart.items);
+
+    const notify = () => toast.error('Opps ! You must fill in all the information !');
+    const notify2 = () => toast.info('Your shopping cart is empty, please add the product to the cart and come back !');
+
+    const [showModal, setShowModal] = useState(false);
 
     const onSubmit = async (values, actions) => {
-        console.log('Dataa : ', values);
-        console.log('Action : ', actions);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        actions.resetForm();
+        if (!token) {
+            navigate('/login');
+            return;
+        }
+
+        if (cart.items.length === 0) {
+            notify2();
+            return;
+        }
+        const customerInfo = {
+            name: values.firstName + values.lastName,
+            address: values.address,
+            email: values.email,
+            phoneNumber: values.phoneNumber,
+        };
+
+        const items = cart.items.map((product) => ({
+            productId: product._id,
+            quantity: product.quantity,
+            color: product.color,
+            size: product.size,
+            title: product.title,
+            feature: product.feature,
+            image: product.imageMain[0],
+        }));
+
+        const orderData = {
+            customerInfo,
+            items,
+            total: cart.totalAmount,
+            address: values.address,
+        };
+
+        console.log(orderData);
+        try {
+            dispatch(createOrder(orderData, token));
+            // actions.resetForm();
+            setShowModal(true);
+        } catch (error) {
+            console.error('Lỗi khi gửi yêu cầu:', error);
+            // Hiển thị thông báo lỗi
+            notify();
+        }
     };
 
     return (
@@ -88,9 +133,6 @@ function Checkout() {
                                             <span className={styles.white}>Check out</span>
                                         </Button>
 
-                                        {/* <button disabled={isSubmitting} type="submit">
-                                            Submit
-                                        </button> */}
                                         <Button outline large type="submit">
                                             <Link to="/collections">
                                                 <span className={styles.black}>Countinued Shopping</span>
@@ -105,10 +147,11 @@ function Checkout() {
                         <CartSumary title="In your bag" />
 
                         <div>Product's infomation :</div>
-                        <CheckOutItem />
+                        <CheckOutItem cart={cart} />
                     </div>
                 </div>
             </div>
+            <ModalCustom showModal={showModal} />
             <ToastContainer />
         </div>
     );

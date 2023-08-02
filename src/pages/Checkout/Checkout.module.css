@@ -196,4 +196,8 @@
     .info {
         flex-direction: column;
     }
+
+    .wrapper {
+        font-size: 1.4rem;
+    }
 }

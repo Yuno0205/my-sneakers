@@ -5,16 +5,19 @@ import { NumericFormat } from 'react-number-format';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { addToCart } from '../../../redux/cartSlice';
+import { addItemToCart, addToCart } from '../../../redux/cartSlice';
 import { addToWishlist } from '../../../redux/wishlistSlice';
 import Button from '../../Button';
 import { RegularCart, RegularHeart, RegularSearch } from '../../Icons';
 import Modal from '../../Modal/Modal';
 import RightModal from '../../Modal/RightModal/RightModal';
 import styles from './ProductItem.module.css';
+import { selectUserToken } from '../../../redux/userSlice';
 
 function ProductItem({ coating, sale, soldOut, data }) {
     const wishlist = useSelector((state) => state.wishlist);
+    const token = useSelector(selectUserToken);
+    const userToken = useSelector(selectUserToken);
 
     const [modalOpen, setModalOpen] = useState(false);
     const classes = clsx(styles.item);
@@ -31,6 +34,11 @@ function ProductItem({ coating, sale, soldOut, data }) {
     };
 
     const handleAddToCart = () => {
+        if (!token) {
+            navigate('/login');
+
+            return;
+        }
         if (size) {
             dispatch(
                 addToCart({
@@ -39,6 +47,7 @@ function ProductItem({ coating, sale, soldOut, data }) {
                     color: data.color,
                     size: size,
                     price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+                    token: userToken,
                 }),
             );
             setOpenModal(false);
