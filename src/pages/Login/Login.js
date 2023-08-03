@@ -56,7 +56,7 @@ function Login() {
                             </div>
                         </div>
 
-                        <div onClick={facebook} className={styles.social}>
+                        <div onClick={google} className={styles.social}>
                             <div className={styles.socialGroup}>
                                 <div className={clsx(styles.socialItem, styles.fb)}>
                                     <div className={styles.logo}>

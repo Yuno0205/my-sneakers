@@ -10,7 +10,7 @@ function Sale() {
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        const getAllMovies = async () => {
+        const getAllProducts = async () => {
             try {
                 const res = await publicRequest.get(`/products/sale`);
 
@@ -20,7 +20,7 @@ function Sale() {
             }
         };
 
-        getAllMovies();
+        getAllProducts();
     }, [page]);
 
     return (

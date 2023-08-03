@@ -277,7 +277,7 @@ function Home() {
             </div>
             <Advertisement />
             <MarqueeCustom />
-            {/* <VideoCustom /> */}
+            <VideoCustom />
             <Blogs />
         </div>
     );

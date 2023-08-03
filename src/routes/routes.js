@@ -28,7 +28,6 @@ const publicRoutes = [
     { path: config.routes.women, component: Women },
     { path: config.routes.sale, component: Sale },
     { path: config.routes.success, component: Success, layout: null },
-    { path: config.routes.orders, component: Orders },
 ];
 
 const privateRoutes = [
@@ -36,6 +35,7 @@ const privateRoutes = [
     { path: config.routes.wishlist, component: Wishlist },
     { path: config.routes.profile, component: Profile },
     { path: config.routes.checkout, component: Checkout },
+    { path: config.routes.orders, component: Orders },
 ];
 
 const getRoutes = (isLoggedIn) => {

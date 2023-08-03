@@ -9,7 +9,7 @@
     flex-wrap: wrap;
 
     padding: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .content.small {
@@ -21,6 +21,7 @@
 
 .item {
     width: 20%;
+
     border: 1px solid transparent;
     border-radius: 4px;
     overflow: hidden;
@@ -29,8 +30,7 @@
 }
 
 .item.small {
-    height: auto;
-    max-height: 45px;
+    height: 60px;
     object-fit: cover;
 }
 
@@ -40,9 +40,6 @@
 }
 
 .item.small img {
-    max-height: 100%;
-    width: auto;
-    height: auto;
     object-fit: cover;
     border-radius: 4px;
 }

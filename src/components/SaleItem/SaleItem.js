@@ -29,6 +29,14 @@ function SaleItem({ coating, sale, soldOut, setModalData, item }) {
             'SO SORRY :( ! This feature is not complete yet, we will try to fix it in the future :( . Please scroll down to the arrivals part to experience it.',
         );
 
+    const handleSetSize = (value) => {
+        setSize(value);
+    };
+
+    const handleShowModal = () => {
+        setOpenModal(true);
+    };
+
     const handleAddToWishlist = (data) => {
         const existingIndex = wishlist.items.findIndex((item) => item._id === data._id && item.size === data.size);
 
@@ -40,6 +48,29 @@ function SaleItem({ coating, sale, soldOut, setModalData, item }) {
             dispatch(addToWishlist(data));
             setOpenModal(true);
         }
+    };
+
+    const handleAddToCart = () => {
+        // if (!token) {
+        //     navigate('/login');
+        //     return;
+        // }
+        // if (size) {
+        //     dispatch(
+        //         addToCart({
+        //             ...data,
+        //             quantity,
+        //             color: data.color,
+        //             size: size,
+        //             price: data.fullPrice ? data.fullPrice * quantity : data.currentPrice * quantity,
+        //             token: userToken,
+        //         }),
+        //     );
+        //     setOpenModal(false);
+        //     setModalOpen(true);
+        // } else {
+        //     notifySizeValidate();
+        // }
     };
 
     return (
@@ -70,7 +101,7 @@ function SaleItem({ coating, sale, soldOut, setModalData, item }) {
                         </Tippy>
 
                         <Tippy delay={200} content="Add to cart" placement="top">
-                            <div onClick={() => notifyError()} className={styles.icon}>
+                            <div onClick={handleShowModal} className={styles.icon}>
                                 <Button icon={<RegularCart />} circle product></Button>
                             </div>
                         </Tippy>
@@ -118,6 +149,13 @@ function SaleItem({ coating, sale, soldOut, setModalData, item }) {
                 </div>
             </div>
             <ToastContainer position="top-right" />
+            {/* <Modal
+                handleAddToCart={handleAddToCart}
+                modalData={item}
+                setOpenModal={setOpenModal}
+                openModal={openModal}
+                handleSetSize={handleSetSize}
+            /> */}
         </div>
     );
 }

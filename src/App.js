@@ -19,8 +19,8 @@ const DefaultLayout = lazy(() => {
 });
 
 function App() {
-    // const isLoggedIn = useSelector(selectIsLoggedIn);
-    const isLoggedIn = true; //Test check out
+    const isLoggedIn = useSelector(selectIsLoggedIn);
+
     return (
         <Router>
             <Suspense fallback={<LoadingPage />}>

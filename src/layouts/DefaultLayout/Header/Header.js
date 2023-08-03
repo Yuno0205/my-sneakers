@@ -30,17 +30,18 @@ import Image from '../../../components/Image/Image';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { getCartInfo } from '../../../redux/cartSlice';
+import Skeleton from 'react-loading-skeleton';
 
 const logout = () => {
+    console.log('Logout');
     window.open('https://jorrkan-api.onrender.com/api/auth/logout', '_self');
 };
 
 const MenuItems = [
     { icon: <UserIcon />, title: 'My profile', to: '/profile' },
-    { icon: <OrdersIcon />, title: 'My Orders', to: '/login' },
+    { icon: <OrdersIcon />, title: 'My Orders', to: '/orders' },
     { icon: <SettingIcon />, title: 'Setting', to: '/login' },
-    // { icon: <LogoutIcon />, title: 'Log out', onClick: logout() },
-    { icon: <LogoutIcon />, title: 'Log out', to: '/logout' },
+    { icon: <LogoutIcon />, title: 'Log out', onClick: () => logout() },
 ];
 
 const Header = () => {
@@ -58,27 +59,6 @@ const Header = () => {
     const userToken = useSelector(selectUserToken);
 
     const notify = (content) => toast.error(content);
-
-    // const [hideHeader, setHideHeader] = useState(false);
-
-    // useEffect(() => {
-    //     axios
-    //         .get('https://jorrkan-api.onrender.com/api/auth/login/success', {
-    //             withCredentials: true,
-    //         })
-    //         .then((res) => {
-    //             if (res.data) {
-
-    //                 dispatch(loginSuccess(res.data.user));
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             // Handle when error
-
-    //             notify('Oppps ! Something went wrong :( Check it out !');
-    //             dispatch(loginFailure());
-    //         });
-    // }, []);
 
     useEffect(() => {
         dispatch(getUserInfo());
@@ -191,7 +171,11 @@ const Header = () => {
                                 </div>
                             </Tippy>
                             <Menu items={MenuItems}>
-                                <Image className={styles.userAvatar} src={user.user.image} alt="avatar"></Image>
+                                {isFetching ? (
+                                    <Skeleton circle width={'35px'} height={'35px'} />
+                                ) : (
+                                    <Image className={styles.userAvatar} src={user.user.image} alt="avatar"></Image>
+                                )}
                             </Menu>
                             <div onClick={toggleShow} className={styles.bars}>
                                 <BarsIcon />
@@ -253,15 +237,15 @@ const Header = () => {
                         <span>Collections</span>
                         <NextIcon width="2.4rem" height="2.4rem" />
                     </Link>
-                    <Link className={styles.menuMobileItem}>
+                    <Link to="/men" className={styles.menuMobileItem}>
                         <span>Men</span>
                         <NextIcon width="2.4rem" height="2.4rem" />
                     </Link>
-                    <Link className={styles.menuMobileItem}>
+                    <Link to="/women" className={styles.menuMobileItem}>
                         <span>Woman</span>
                         <NextIcon width="2.4rem" height="2.4rem" />
                     </Link>
-                    <Link className={styles.menuMobileItem}>
+                    <Link to="/sale" className={styles.menuMobileItem}>
                         <span>Sale</span>
                         <NextIcon width="2.4rem" height="2.4rem" />
                     </Link>
